@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cube.c                                          :+:      :+:    :+:   */
+/*   ft_tab_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 16:35:16 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/23 22:55:04 by tlassere         ###   ########.fr       */
+/*   Created: 2024/01/30 10:33:37 by tlassere          #+#    #+#             */
+/*   Updated: 2024/01/30 18:32:18 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_tab_len(char **tab)
 {
-	return (0);
+	int	i;
+
+	if (tab == NULL)
+		return (-1);
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }

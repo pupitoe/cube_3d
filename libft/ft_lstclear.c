@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cube.c                                          :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 16:35:16 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/23 22:55:04 by tlassere         ###   ########.fr       */
+/*   Created: 2023/10/19 20:32:36 by tlassere          #+#    #+#             */
+/*   Updated: 2023/10/24 15:45:41 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	return (0);
+	t_list	*buff;
+	t_list	*set;
+
+	if (lst == NULL || *lst == NULL)
+		return ;
+	buff = *lst;
+	while (buff->next)
+	{
+		set = buff->next;
+		ft_lstdelone(buff, del);
+		buff = set;
+	}
+	ft_lstdelone(buff, del);
+	*lst = NULL;
 }

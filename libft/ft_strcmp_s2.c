@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cube.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp_s2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 16:35:16 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/23 22:55:04 by tlassere         ###   ########.fr       */
+/*   Created: 2023/11/01 12:28:19 by tlassere          #+#    #+#             */
+/*   Updated: 2023/11/01 13:11:04 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_strcmp_s2(const char *s1, const char *s2)
 {
-	return (0);
+	return (ft_strncmp(s1, s2, ft_strlen(s2)));
 }
