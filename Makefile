@@ -6,7 +6,7 @@
 #    By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 16:29:01 by tlassere          #+#    #+#              #
-#    Updated: 2024/03/23 22:35:52 by tlassere         ###   ########.fr        #
+#    Updated: 2024/03/23 23:14:02 by tlassere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,31 +20,41 @@ OBJECTS			::= $(SOURCES:.c=.o)
 
 HEADER			::= headers
 
+LIBMLX			::= ./MLX42
+
 LIBFT_DIR		::= libft
 
 LIBFT			::= $(LIBFT_DIR)/libft.a
 
 CFLAGS			::= -Wall -Wextra -Werror
 
-LDFLAGS			::= $(CFLAGS) -lm
+LDFLAGS			::= $(CFLAGS) -lm -ldl -lglfw -pthread
+
+MLX_C			::= $(LIBMLX)/build/libmlx42.a
 
 .c.o:
-	$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT_DIR) -c -o $@ $<
+	$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT_DIR) -I $(LIBMLX)/include -c -o $@ $<
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(LIBFT)
-	$(CC) $(LDFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJECTS) $(LIBFT) $(MLX_C)
+	$(CC) $(LDFLAGS) $(OBJECTS) $(LIBFT) $(MLX_C) -o $(NAME)
 
 clean:
 	make -C libft clean
+	rm -rf $(LIBMLX)/build
 	rm -f $(OBJECTS)
 
 fclean: clean
 	make -C libft fclean
 	rm -f $(NAME)
 
+$(MLX_C):
+	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+
 $(LIBFT):
 	make -C libft
 
 re: fclean all
+
+.PHONY: all clean fclean re
