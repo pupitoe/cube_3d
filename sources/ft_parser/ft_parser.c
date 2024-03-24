@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cub.h                                           :+:      :+:    :+:   */
+/*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/24 17:58:27 by tlassere         ###   ########.fr       */
+/*   Created: 2024/03/24 17:45:32 by tlassere          #+#    #+#             */
+/*   Updated: 2024/03/24 17:46:56 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CUB_H
-# define FT_CUB_H
+#include "ft_cub.h"
 
-# include "libft.h"
-# include "MLX42/MLX42.h"
-# include "ft_parser.h"
-
-typedef struct s_vec
+int	ft_parser(const char *path_file)
 {
-	size_t	x;
-	size_t	y;
-	int		rotat;
-}t_vec;
+	int	status;
 
-typedef struct s_data
-{
-	t_vec	player;
-	char	**map;
-}t_data;
-
-#endif
+	status = SUCCESS;
+	if (path_file == NULL)
+		status = FAIL;
+	return (status);
+}
