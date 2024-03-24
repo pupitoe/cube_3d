@@ -6,7 +6,7 @@
 #    By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 16:29:01 by tlassere          #+#    #+#              #
-#    Updated: 2024/03/23 23:14:02 by tlassere         ###   ########.fr        #
+#    Updated: 2024/03/23 23:14:02by tlassere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,17 +28,17 @@ LIBFT			::= $(LIBFT_DIR)/libft.a
 
 CFLAGS			::= -Wall -Wextra -Werror
 
-LDFLAGS			::= $(CFLAGS) -lm -ldl -lglfw -pthread
-
 MLX_C			::= $(LIBMLX)/build/libmlx42.a
 
+LDFLAGS			::= $(MLX_C) -lm -ldl -lglfw -pthread
+
 .c.o:
-	$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT_DIR) -I $(LIBMLX)/include -c -o $@ $<
+	$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT_DIR) -I$(LIBMLX)/include -c -o $@ $<
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(MLX_C)
-	$(CC) $(LDFLAGS) $(OBJECTS) $(LIBFT) $(MLX_C) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LDFLAGS) $(LIBFT) -o $(NAME)
 
 clean:
 	make -C libft clean

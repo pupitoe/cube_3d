@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/23 22:55:13 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/24 16:33:37 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define FT_CUB_H
 
 # include "libft.h"
+# include "MLX42/MLX42.h"
 
 #endif
