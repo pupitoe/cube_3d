@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/24 18:53:38 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/24 18:59:19 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	ft_game_start(t_data *data)
 {
-	(void)data;
-	return (SUCCESS);
+	int	status;
+
+	status = SUCCESS;
+	ft_bzero(data, sizeof(t_data));
+	return (status);
 }
