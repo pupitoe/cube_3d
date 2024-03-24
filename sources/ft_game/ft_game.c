@@ -1,40 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cube.c                                          :+:      :+:    :+:   */
+/*   ft_game.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 16:35:16 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/24 18:52:28 by tlassere         ###   ########.fr       */
+/*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
+/*   Updated: 2024/03/24 18:53:38 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-static void	ft_data_clear(t_data *data)
+int	ft_game_start(t_data *data)
 {
-	free(data);
-}
-
-int	main(int argc, char **argv)
-{
-	int		status;
-	t_data	*data;
-
-	status = FAIL;
-	data = NULL;
-	if (argc == 2)
-	{
-		data = malloc(sizeof(t_data));
-		if (data)
-		{
-			if (ft_parser(argv[1], data) == SUCCESS)
-				status = ft_game_start(data);
-			ft_data_clear(data);
-		}
-	}
-	else
-		ft_fprintf(STDERR, "Error\nBad arguments\n");
-	return (status);
+	(void)data;
+	return (SUCCESS);
 }

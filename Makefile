@@ -13,7 +13,9 @@
 NAME			::= cub3D
 T_FT_PARSER		::=	ft_parser
 FT_PARSER		::= $(foreach buffer, $(T_FT_PARSER), ft_parser/$(buffer))
-SOURCES_CONTENT ::= ft_cube $(FT_PARSER)
+T_FT_GAME		::= ft_game	
+FT_GAME			::= $(foreach buffer, $(T_FT_GAME), ft_game/$(buffer))
+SOURCES_CONTENT ::= ft_cube $(FT_PARSER) $(FT_GAME)
 SOURCES			::= $(foreach buffer, $(SOURCES_CONTENT), sources/$(buffer).c)
 OBJECTS			::= $(SOURCES:.c=.o)
 HEADER			::= headers
@@ -30,7 +32,7 @@ LDFLAGS			::= $(MLX_C) -lm -ldl -lglfw -pthread
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(LIBFT) $(MLX_C)
+$(NAME): $(LIBFT) $(MLX_C) $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LDFLAGS) $(LIBFT) -o $(NAME)
 
 clean:
