@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/26 00:03:11 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/26 00:29:40 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	ft_print_map(t_data *data)
 		j = 0;
 		while (j < data->map_size.x)
 		{
-			if (data->map[i][j] == 0)
+			if (data->map[i][j] == 1)
 				ft_put_block(data, (t_vec){j * size_x, i * size_y, 0}, (t_vec){size_x, size_y, 0}, 0xFF0000FF);
 			else
 				ft_put_block(data, (t_vec){j * size_x, i * size_y, 0}, (t_vec){size_x, size_y, 0}, 0xFFFFFFFF);
@@ -88,7 +88,7 @@ int	ft_game_start(t_data *data)
 	if (data->mlx)
 	{
 		status = SUCCESS;
-		data->img = mlx_new_image(data->mlx, WINDOW_HIGHT, WINDOW_WIDTH);
+		data->img = mlx_new_image(data->mlx, WINDOW_HIGHT * 4, WINDOW_WIDTH * 4);
 		if (data->img && mlx_image_to_window(data->mlx, data->img, 0, 0) >= 0)
 		{
 			mlx_loop_hook(data->mlx, &test, data);
