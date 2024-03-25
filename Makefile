@@ -44,6 +44,10 @@ fclean: clean
 	make -C libft fclean
 	rm -f $(NAME)
 
+rec:
+	rm -f $(OBJECTS)
+	make
+
 $(MLX_C):
 	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
