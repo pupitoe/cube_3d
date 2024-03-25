@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:35:16 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/24 18:52:28 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/25 21:54:51 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	ft_data_clear(t_data *data)
 {
+	//ft_map_free(&data->map, data->map_size.y);
 	free(data);
 }
 
@@ -29,6 +30,7 @@ int	main(int argc, char **argv)
 		data = malloc(sizeof(t_data));
 		if (data)
 		{
+			ft_bzero(data, sizeof(t_data));
 			if (ft_parser(argv[1], data) == SUCCESS)
 				status = ft_game_start(data);
 			ft_data_clear(data);

@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME			::= cub3D
-T_FT_PARSER		::=	ft_parser
+T_FT_PARSER		::=	ft_parser ft_map
 FT_PARSER		::= $(foreach buffer, $(T_FT_PARSER), ft_parser/$(buffer))
 T_FT_GAME		::= ft_game	
 FT_GAME			::= $(foreach buffer, $(T_FT_GAME), ft_game/$(buffer))

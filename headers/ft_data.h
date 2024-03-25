@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/24 18:52:08 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/25 21:50:02 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ typedef struct s_vec
 typedef struct s_data
 {
 	t_vec	player;
-	char	**map;
+	int		map[100][100];
+	t_vec	map_size;
 }t_data;
 
 #endif
