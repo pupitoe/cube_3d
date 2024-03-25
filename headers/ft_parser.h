@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cub.h                                           :+:      :+:    :+:   */
+/*   ft_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/24 18:51:59 by tlassere         ###   ########.fr       */
+/*   Created: 2024/03/24 17:51:44 by tlassere          #+#    #+#             */
+/*   Updated: 2024/03/25 21:56:24 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CUB_H
-# define FT_CUB_H
+#ifndef FT_PARSER_H
+# define FT_PARSER_H
 
-# include "libft.h"
-# include "MLX42/MLX42.h"
-# include "ft_data.h"
-# include "ft_parser.h"
-# include "ft_game.h"
+# define EOF_MAP 256
+
+int		ft_parser(const char *path_file, t_data *data);
+void	ft_map_free(int ***map, int heigth);
+int		**ft_map_dup(int **map, t_vec size);
 
 #endif

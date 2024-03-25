@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cub.h                                           :+:      :+:    :+:   */
+/*   ft_data.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/24 18:51:59 by tlassere         ###   ########.fr       */
+/*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
+/*   Updated: 2024/03/25 21:50:02 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CUB_H
-# define FT_CUB_H
+#ifndef FT_DATA_H
+# define FT_DATA_H
 
-# include "libft.h"
-# include "MLX42/MLX42.h"
-# include "ft_data.h"
-# include "ft_parser.h"
-# include "ft_game.h"
+typedef struct s_vec
+{
+	size_t	x;
+	size_t	y;
+	int		rotat;
+}t_vec;
+
+typedef struct s_data
+{
+	t_vec	player;
+	int		map[100][100];
+	t_vec	map_size;
+}t_data;
 
 #endif

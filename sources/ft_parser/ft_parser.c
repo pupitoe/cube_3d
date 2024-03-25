@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cube.c                                          :+:      :+:    :+:   */
+/*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 16:35:16 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/25 21:54:51 by tlassere         ###   ########.fr       */
+/*   Created: 2024/03/24 17:45:32 by tlassere          #+#    #+#             */
+/*   Updated: 2024/03/25 21:55:09 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-static void	ft_data_clear(t_data *data)
-{
-	//ft_map_free(&data->map, data->map_size.y);
-	free(data);
-}
-
-int	main(int argc, char **argv)
+int	ft_parser(const char *path_file, t_data *data)
 {
 	int		status;
-	t_data	*data;
-
-	status = FAIL;
-	data = NULL;
-	if (argc == 2)
+	
+	int mapt[7][8] = 
 	{
-		data = malloc(sizeof(t_data));
-		if (data)
-		{
-			ft_bzero(data, sizeof(t_data));
-			if (ft_parser(argv[1], data) == SUCCESS)
-				status = ft_game_start(data);
-			ft_data_clear(data);
-		}
+		{1,1,1,1,1,1,1,1,},
+		{1,0,0,0,0,0,0,1,},
+		{1,0,0,0,0,0,0,1,},
+		{1,0,1,1,1,1,0,1,},
+		{1,0,0,0,1,0,0,1,},
+		{1,0,0,0,1,0,0,1,},
+		{1,1,1,1,1,1,1,1,},
+	};
+	status = SUCCESS;
+	if (path_file == NULL)
+		status = FAIL;
+	data->map_size.x = 8;
+	data->map_size.y = 7;
+	for (size_t i = 0; i < data->map_size.y; i++)
+	{
+		for (size_t j = 0; j < data->map_size.x; j++)
+			data->map[i][j] = mapt[i][j];
 	}
-	else
-		ft_fprintf(STDERR, "Error\nBad arguments\n");
 	return (status);
 }
