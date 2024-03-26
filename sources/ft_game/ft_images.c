@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:59:49 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/26 20:31:06 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:35:08 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_load_image(t_data *data)
 	data->img.ray = mlx_new_image(data->mlx, MAP_SIZE_OBJECT,
 		MAP_SIZE_OBJECT);
 	if (data->img.ray)
-		ft_put_ray(data->img.ray, data->player.rotat);
+		ft_put_ray(data->img.ray, data->player.rotat, (t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0});
 	if (data->img.player)
 		ft_put_block(data->img.player, (t_vec){0, 0, 0}, (t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, BLACK);
 	if (data->img.player == NULL || data->img.map == NULL || data->img.ray == NULL)
