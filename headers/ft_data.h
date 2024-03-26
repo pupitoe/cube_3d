@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/25 23:40:47 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/26 13:50:39 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ struct s_data_time
 	float	framerate;
 };
 
+struct s_img
+{
+	mlx_image_t	*map;
+	mlx_image_t	*player;
+};
+
+
 typedef struct s_data
 {
 	t_vec				player;
@@ -33,7 +40,7 @@ typedef struct s_data
 	t_vec				map_size;
 	struct s_data_time	time;
 	mlx_t				*mlx;
-	mlx_image_t			*img;
+	struct s_img		img;
 }t_data;
 
 #endif
