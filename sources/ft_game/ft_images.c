@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:59:49 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/26 17:00:06 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:31:06 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_delet_images(t_data *data)
 		mlx_delete_image(data->mlx, data->img.map);
 	if (data->img.player)
 		mlx_delete_image(data->mlx, data->img.player);
+	if (data->img.ray)
+		mlx_delete_image(data->mlx, data->img.ray);
 }
 
 int	ft_load_image(t_data *data)
@@ -29,9 +31,13 @@ int	ft_load_image(t_data *data)
 		WINDOW_WIDTH * 4);
 	data->img.player = mlx_new_image(data->mlx, MAP_SIZE_OBJECT,
 		MAP_SIZE_OBJECT);
+	data->img.ray = mlx_new_image(data->mlx, MAP_SIZE_OBJECT,
+		MAP_SIZE_OBJECT);
+	if (data->img.ray)
+		ft_put_ray(data->img.ray, data->player.rotat);
 	if (data->img.player)
 		ft_put_block(data->img.player, (t_vec){0, 0, 0}, (t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, BLACK);
-	if (data->img.player == NULL || data->img.map == NULL)
+	if (data->img.player == NULL || data->img.map == NULL || data->img.ray == NULL)
 	{
 		status = FAIL;
 		ft_delet_images(data);
@@ -49,6 +55,8 @@ int ft_put_img(t_data *data)
 	if (mlx_image_to_window(data->mlx, data->img.player, data->player.x * MAP_SIZE_OBJECT,
 		data->player.y * MAP_SIZE_OBJECT) == -1)
 		status = FAIL;
+	if (mlx_image_to_window(data->mlx, data->img.ray, data->player.x * MAP_SIZE_OBJECT,
+		data->player.y * MAP_SIZE_OBJECT) == -1)
 	if (status == FAIL)
 		ft_delet_images(data);
 	return (status);

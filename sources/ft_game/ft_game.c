@@ -37,6 +37,7 @@ int	ft_game_start(t_data *data)
 			mlx_loop_hook(data->mlx, &ft_key_hook_y, data);
 			mlx_loop_hook(data->mlx, &ft_key_hook_x, data);
 			mlx_loop(data->mlx);
+			ft_delet_images(data);
 		}
 		mlx_terminate(data->mlx);
 	}
