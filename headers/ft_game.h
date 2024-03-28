@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/28 14:27:48 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:34:29 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WINDOW_HIGHT 540
 # define WINDOW_WIDTH 960
 
-# define MAP_SIZE_OBJECT 40
+# define MAP_SIZE_OBJECT 60
 
 # define PLAYER_SPEED 5
 # define BLACK 0x000000FF
@@ -30,6 +30,7 @@ void	ft_print_map_hook(void *vdata);
 
 void	ft_key_hook_y(void *vdata);
 void	ft_key_hook_x(void *vdata);
+void	ft_key_hook_arrow(void *vdata);
 
 void	ft_delet_images(t_data *data);
 int		ft_load_image(t_data *data);

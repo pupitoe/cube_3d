@@ -27,15 +27,16 @@ int	ft_game_start(t_data *data)
 	data->time.framerate = ft_get_frame(10);
 	data->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HIGHT, "cub3D", true);
 	mlx_get_monitor_size(0, &width, &height);
-	mlx_set_window_limit(data->mlx, 480, 270, width, height);
 	if (data->mlx)
 	{
 		status = SUCCESS;
+		mlx_set_window_limit(data->mlx, 480, 270, width, height);
 		if (ft_load_image(data) == SUCCESS && ft_put_img(data) == SUCCESS)
 		{
 			mlx_loop_hook(data->mlx, &ft_print_map_hook, data);
 			mlx_loop_hook(data->mlx, &ft_key_hook_y, data);
 			mlx_loop_hook(data->mlx, &ft_key_hook_x, data);
+			mlx_loop_hook(data->mlx, &ft_key_hook_arrow, data);
 			mlx_loop(data->mlx);
 			ft_delet_images(data);
 		}
