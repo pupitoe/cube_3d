@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:58:19 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/28 20:35:41y tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:34:20 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	ft_move(t_data *data, int val, float rotat)
 {
-	int x;
-	int	y;
+	int		x;
+	int		y;
+	float	rotat_pi;
 
 	rotat += data->player.rotat;
-	if (rotat > 360.0f)
-		rotat -= 360.0f;
-	x = (int)lround(val * -cos(rotat * PI180));
-	y = (int)lround(val * sin(rotat * PI180));
+	rotat_pi = rotat * PI180;
+	x = (int)lround(val * -cos(rotat_pi));
+	y = (int)lround(val * sin(rotat_pi));
 	data->player.x += x;
 	data->player.y += y;
 	data->img.player->instances[0].x += x;
@@ -86,6 +86,8 @@ void	ft_key_hook_arrow(void *vdata)
 		printf("->\n");
 	}
 	printf("player rotation: %f\n", data->player.rotat);
-	ft_put_block(data->img.ray, (t_vec){0, 0, 0}, (t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, 0);
-	ft_put_ray(data->img.ray, data->player.rotat, (t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0});
+	ft_put_block(data->img.ray, (t_vec){0, 0, 0},
+		(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, 0);
+	ft_put_ray(data->img.ray, data->player.rotat,
+		(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0});
 }

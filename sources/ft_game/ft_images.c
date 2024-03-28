@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:59:49 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/26 20:35:08 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/28 22:39:23 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,19 @@ int	ft_load_image(t_data *data)
 
 	status = SUCCESS;
 	data->img.map = mlx_new_image(data->mlx, WINDOW_HIGHT * 4,
-		WINDOW_WIDTH * 4);
+			WINDOW_WIDTH * 4);
 	data->img.player = mlx_new_image(data->mlx, MAP_SIZE_OBJECT,
-		MAP_SIZE_OBJECT);
+			MAP_SIZE_OBJECT);
 	data->img.ray = mlx_new_image(data->mlx, MAP_SIZE_OBJECT,
-		MAP_SIZE_OBJECT);
+			MAP_SIZE_OBJECT);
 	if (data->img.ray)
-		ft_put_ray(data->img.ray, data->player.rotat, (t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0});
+		ft_put_ray(data->img.ray, data->player.rotat,
+			(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0});
 	if (data->img.player)
-		ft_put_block(data->img.player, (t_vec){0, 0, 0}, (t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, BLACK);
-	if (data->img.player == NULL || data->img.map == NULL || data->img.ray == NULL)
+		ft_put_block(data->img.player, (t_vec){0, 0, 0},
+			(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, BLACK);
+	if (data->img.player == NULL || data->img.map == NULL
+		|| data->img.ray == NULL)
 	{
 		status = FAIL;
 		ft_delet_images(data);
@@ -45,18 +48,19 @@ int	ft_load_image(t_data *data)
 	return (status);
 }
 
-int ft_put_img(t_data *data)
+int	ft_put_img(t_data *data)
 {
 	int	status;
 
 	status = SUCCESS;
 	if (mlx_image_to_window(data->mlx, data->img.map, 0, 0) == -1)
 		status = FAIL;
-	if (mlx_image_to_window(data->mlx, data->img.player, data->player.x * MAP_SIZE_OBJECT,
-		data->player.y * MAP_SIZE_OBJECT) == -1)
+	if (mlx_image_to_window(data->mlx, data->img.player, data->player.x
+			* MAP_SIZE_OBJECT, data->player.y * MAP_SIZE_OBJECT) == -1)
 		status = FAIL;
-	if (mlx_image_to_window(data->mlx, data->img.ray, data->player.x * MAP_SIZE_OBJECT,
-		data->player.y * MAP_SIZE_OBJECT) == -1)
+	if (mlx_image_to_window(data->mlx, data->img.ray, data->player.x
+			* MAP_SIZE_OBJECT, data->player.y * MAP_SIZE_OBJECT) == -1)
+		status = FAIL;
 	if (status == FAIL)
 		ft_delet_images(data);
 	return (status);
