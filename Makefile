@@ -13,7 +13,7 @@
 NAME			::= cub3D
 T_FT_PARSER		::=	ft_parser ft_map
 FT_PARSER		::= $(foreach buffer, $(T_FT_PARSER), ft_parser/$(buffer))
-T_FT_GAME		::= ft_game	
+T_FT_GAME		::= ft_game	ft_map ft_move ft_images ft_ray
 FT_GAME			::= $(foreach buffer, $(T_FT_GAME), ft_game/$(buffer))
 SOURCES_CONTENT ::= ft_cube $(FT_PARSER) $(FT_GAME)
 SOURCES			::= $(foreach buffer, $(SOURCES_CONTENT), sources/$(buffer).c)
@@ -43,6 +43,10 @@ clean:
 fclean: clean
 	make -C libft fclean
 	rm -f $(NAME)
+
+rec:
+	rm -f $(OBJECTS)
+	make
 
 $(MLX_C):
 	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4

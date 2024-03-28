@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:35:16 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/25 21:54:51 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/25 23:10:16 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static void	ft_data_clear(t_data *data)
 {
-	//ft_map_free(&data->map, data->map_size.y);
+	ft_map_free(&data->map, data->map_size.y);
 	free(data);
+	(void)data;
 }
 
 int	main(int argc, char **argv)
