@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/28 18:06:22 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:23:34 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 static float	ft_get_frame(int fps)
 {
 	return (1.0f / (float)fps);
+}
+
+void	ft_escape(mlx_key_data_t key, void *vdata)
+{
+	t_data	*data;
+
+	data = vdata;
+	if (key.key == MLX_KEY_ESCAPE)
+		mlx_close_window(data->mlx);
 }
 
 int	ft_game_start(t_data *data)
@@ -37,6 +46,7 @@ int	ft_game_start(t_data *data)
 			mlx_loop_hook(data->mlx, &ft_key_hook_y, data);
 			mlx_loop_hook(data->mlx, &ft_key_hook_x, data);
 			mlx_loop_hook(data->mlx, &ft_key_hook_arrow, data);
+			mlx_key_hook(data->mlx, &ft_escape, data);
 			mlx_loop(data->mlx);
 			ft_delet_images(data);
 		}

@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/28 16:34:29 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:14:45 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@
 int		ft_game_start(t_data *data);
 void	ft_put_block(mlx_image_t *img, t_vec pos, t_vec size, int color);
 void	ft_print_map_hook(void *vdata);
-
-void	ft_key_hook_y(void *vdata);
-void	ft_key_hook_x(void *vdata);
-void	ft_key_hook_arrow(void *vdata);
 
 void	ft_delet_images(t_data *data);
 int		ft_load_image(t_data *data);
