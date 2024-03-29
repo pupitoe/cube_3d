@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/28 23:14:45 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/29 15:27:19 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # define WINDOW_HIGHT 540
 # define WINDOW_WIDTH 960
 
-# define MAP_SIZE_OBJECT 60
+# define MAP_SIZE_OBJECT 50
+# define SCALE 40
 
 # define PLAYER_SPEED 5
 # define BLACK 0x000000FF

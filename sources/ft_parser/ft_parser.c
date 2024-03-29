@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:45:32 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/28 23:37:03 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/29 15:24:30 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int	ft_parser(const char *path_file, t_data *data)
 		status = FAIL;
 	data->map_size.x = 18;
 	data->map_size.y = 24;
-	data->player.x = 4;
-	data->player.y = 4;
+	data->player.x = 4 * SCALE;
+	data->player.y = 4 * SCALE;
 	data->player.rotat = 0.0f;
 	data->map = malloc(sizeof(int *) * data->map_size.y);
 	for (size_t i = 0; i < data->map_size.y; i++)
