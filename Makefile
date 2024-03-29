@@ -19,7 +19,8 @@ SOURCES_CONTENT ::= ft_cube $(FT_PARSER) $(FT_GAME)
 SOURCES			::= $(foreach buffer, $(SOURCES_CONTENT), sources/$(buffer).c)
 OBJECTS			::= $(SOURCES:.c=.o)
 HEADER			::= headers
-HEADER_FILES	::= $(HEADER)/ft_cube.h
+T_HEADER_FILES	::= ft_cub ft_data ft_game ft_move ft_parser ft_math
+HEADER_FILES	::= $(foreach buffer, $(T_HEADER_FILES), $(HEADER)/$(buffer).h)
 LIBMLX			::= ./MLX42
 LIBFT_DIR		::= libft
 LIBFT			::= $(LIBFT_DIR)/libft.a
@@ -32,7 +33,7 @@ LDFLAGS			::= $(MLX_C) -lm -ldl -lglfw -pthread
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX_C) $(OBJECTS)
+$(NAME): $(LIBFT) $(MLX_C) $(OBJECTS) $(HEADER_FILES)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LDFLAGS) $(LIBFT) -o $(NAME)
 
 clean:
