@@ -12,6 +12,26 @@
 
 #include "ft_cub.h"
 
+bool	ft_is_hit(t_data *data, t_vec pos)
+{
+	bool	status;
+	size_t	i;
+
+	i = 0;
+	status = false;
+	while (i / data->map_size.x < data->map_size.y)
+	{
+		if (data->map[i  / data->map_size.x][i % data->map_size.x] == WALL)
+		{
+			if (i % data->map_size.x * SCALE >= pos.x && i % data->map_size.x * SCALE + SCALE < pos.x
+				&& i / data->map_size.x * SCALE >= pos.y && i / data->map_size.x * SCALE + SCALE < pos.y)
+				status = true;
+		}
+		i++;
+	}
+	return (status);
+}
+
 void	ft_move(t_data *data, int val, float rotat)
 {
 	int		x;
@@ -22,10 +42,11 @@ void	ft_move(t_data *data, int val, float rotat)
 	rotat_pi = rotat * PI180;
 	x = (int)lround(val * -cos(rotat_pi));
 	y = (int)lround(val * sin(rotat_pi));
-	if (data->map[(data->player.y + y + SCALE) / SCALE][(data->player.x + SCALE) / SCALE] == true)
+	if (ft_is_hit(data, (t_vec){data->player.x + x, data->player.y + y, 0}))
+	{
 		y = 0;
-	if (data->map[(data->player.y + SCALE) / SCALE][(data->player.x + x + SCALE) / SCALE] == true)
 		x = 0;
+	}
 	data->player.x += x;
 	data->player.y += y;
 }

@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/29 15:36:41 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/29 19:26:39 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # define WINDOW_HIGHT 540
 # define WINDOW_WIDTH 960
+
+# define WALL 1
+# define FLOOR 0
 
 # define MAP_SIZE_OBJECT 50
 # define SCALE 40
