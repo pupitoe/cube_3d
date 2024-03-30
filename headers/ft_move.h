@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 23:14:22 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/28 23:14:56 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/30 17:33:32 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@ void	ft_key_hook_y(void *vdata);
 void	ft_key_hook_x(void *vdata);
 void	ft_key_hook_arrow(void *vdata);
 void	ft_move(t_data *data, int val, float rotat);
+bool	ft_is_hit(t_data *data, t_vec pos);
+bool	ft_is_hitbox(t_data *data, t_vec pos);
 
 #endif

@@ -6,43 +6,48 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 23:12:53 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/29 15:41:40y tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/30 17:31:44 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-bool	ft_collision(size_t box, size_t box2)
+int	ft_get_x(t_data *data, int x)
 {
-	size_t	box_pos;
-
-	box_pos = box2 * SCALE;
-	return (box >= box_pos && box < box_pos + SCALE);
+	if (x < 0)
+	{
+		x++;
+		while (x && ft_is_hitbox(data,
+				(t_vec){data->player.x + x, data->player.y, 0}))
+			x++;
+	}
+	else
+	{
+		x--;
+		while (x && ft_is_hitbox(data,
+				(t_vec){data->player.x + x, data->player.y, 0}))
+			x--;
+	}
+	return (x);
 }
 
-bool	ft_is_hit(t_data *data, t_vec pos)
+int	ft_get_y(t_data *data, int y)
 {
-	bool	status;
-	size_t	y;
-	size_t	x;
-
-	y = 0;
-	status = false;
-	while (y < data->map_size.y && status == false)
+	if (y < 0)
 	{
-		x = 0;
-		while (x < data->map_size.x && status == false)
-		{
-			if (data->map[y][x] == WALL)
-			{
-				if (ft_collision(pos.x, x) && ft_collision(pos.y, y))
-					status = true;
-			}
-			x++;
-		}
 		y++;
+		while (y && ft_is_hitbox(data,
+				(t_vec){data->player.x, data->player.y + y, 0}))
+			y++;
 	}
-	return (status);
+	else
+	{
+		y--;
+		while (y && ft_is_hitbox(data,
+				(t_vec){data->player.x, data->player.y + y, 0}))
+			y--;
+	}
+	return (y);
 }
 
 void	ft_move(t_data *data, int val, float rotat)
@@ -55,11 +60,10 @@ void	ft_move(t_data *data, int val, float rotat)
 	rotat_pi = rotat * PI180;
 	x = (int)lround(val * -cos(rotat_pi));
 	y = (int)lround(val * sin(rotat_pi));
-	if (ft_is_hit(data, (t_vec){data->player.x + x, data->player.y + y, 0}))
-	{
-		y = 0;
-		x = 0;
-	}
+	if (ft_is_hitbox(data, (t_vec){data->player.x + x, data->player.y, 0}))
+		x = ft_get_x(data, x);
+	if (ft_is_hitbox(data, (t_vec){data->player.x, data->player.y + y, 0}))
+		y = ft_get_y(data, y);
 	data->player.x += x;
 	data->player.y += y;
 }
