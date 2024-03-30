@@ -12,22 +12,35 @@
 
 #include "ft_cub.h"
 
+bool	ft_collision(size_t box, size_t box2)
+{
+	size_t	box_pos;
+
+	box_pos = box2 * SCALE;
+	return (box >= box_pos && box < box_pos + SCALE);
+}
+
 bool	ft_is_hit(t_data *data, t_vec pos)
 {
 	bool	status;
-	size_t	i;
+	size_t	y;
+	size_t	x;
 
-	i = 0;
+	y = 0;
 	status = false;
-	while (i / data->map_size.x < data->map_size.y)
+	while (y < data->map_size.y && status == false)
 	{
-		if (data->map[i  / data->map_size.x][i % data->map_size.x] == WALL)
+		x = 0;
+		while (x < data->map_size.x && status == false)
 		{
-			if (i % data->map_size.x * SCALE >= pos.x && i % data->map_size.x * SCALE + SCALE < pos.x
-				&& i / data->map_size.x * SCALE >= pos.y && i / data->map_size.x * SCALE + SCALE < pos.y)
-				status = true;
+			if (data->map[y][x] == WALL)
+			{
+				if (ft_collision(pos.x, x) && ft_collision(pos.y, y))
+					status = true;
+			}
+			x++;
 		}
-		i++;
+		y++;
 	}
 	return (status);
 }
