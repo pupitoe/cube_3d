@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 17:31:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/30 23:24:08 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/30 23:28:27 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,10 @@ bool	ft_is_hit(t_data *data, t_vec pos)
 
 	status = false;
 	i = 0;
-	while (i / data->map_size.x < data->map_size.y && status == false)
-	{
-		if (data->map[i / data->map_size.x][i % data->map_size.x] == WALL)
-		{
-			if (ft_collision(pos.x, i % data->map_size.x)
-				&& ft_collision(pos.y, i / data->map_size.x))
-				status = true;
-		}
-		i++;
-	}
+	if (data->map[pos.y / SCALE][pos.x / SCALE] == WALL
+		&& ft_collision(pos.x, pos.x / SCALE)
+		&& ft_collision(pos.y, pos.y / SCALE))
+		status = true;
 	return (status);
 }
 
