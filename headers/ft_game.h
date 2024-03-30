@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/28 16:34:29 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/30 17:27:23 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@
 # define WINDOW_HIGHT 540
 # define WINDOW_WIDTH 960
 
-# define MAP_SIZE_OBJECT 60
+# define WALL 1
+# define FLOOR 0
+
+# define MAP_SIZE_OBJECT 50
+# define SCALE 40
 
 # define PLAYER_SPEED 5
+# define ROT_SPEED 10.0f
+
 # define BLACK 0x000000FF
 # define WHITE 0xFFFFFFFF
 # define RED 0xFF0000FF
@@ -27,10 +33,6 @@
 int		ft_game_start(t_data *data);
 void	ft_put_block(mlx_image_t *img, t_vec pos, t_vec size, int color);
 void	ft_print_map_hook(void *vdata);
-
-void	ft_key_hook_y(void *vdata);
-void	ft_key_hook_x(void *vdata);
-void	ft_key_hook_arrow(void *vdata);
 
 void	ft_delet_images(t_data *data);
 int		ft_load_image(t_data *data);

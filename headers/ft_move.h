@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_math.h                                          :+:      :+:    :+:   */
+/*   ft_move.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 14:27:42 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/28 23:07:50 by tlassere         ###   ########.fr       */
+/*   Created: 2024/03/28 23:14:22 by tlassere          #+#    #+#             */
+/*   Updated: 2024/03/30 17:33:32 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MATH_H
-# define FT_MATH_H
+#ifndef FT_MOVE_H
+# define FT_MOVE_H
 
-# define PI 3.14159265359f
-# define PI180 0.017453292519943295f
+void	ft_key_hook_y(void *vdata);
+void	ft_key_hook_x(void *vdata);
+void	ft_key_hook_arrow(void *vdata);
+void	ft_move(t_data *data, int val, float rotat);
+bool	ft_is_hit(t_data *data, t_vec pos);
+bool	ft_is_hitbox(t_data *data, t_vec pos);
 
 #endif

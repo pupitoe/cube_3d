@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/28 14:29:11 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:15:29 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "ft_parser.h"
 # include "ft_game.h"
 # include "ft_math.h"
+# include "ft_move.h"
 # include <math.h>
 
 #endif
