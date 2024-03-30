@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 17:31:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/30 23:23:22 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/30 23:24:08 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ bool	ft_is_hitbox(t_data *data, t_vec pos)
 	bool	status;
 
 	status = false;
-	if ((data->map[pos.y / SCALE][pos.x / SCALE]
+	if ((data->map[pos.y / SCALE][pos.x / SCALE] == WALL
 		&& ft_collision_hitbox(pos.x, pos.x / SCALE, pos.y, pos.y / SCALE))
-		|| (data->map[pos.y / SCALE + 1][pos.x / SCALE]
+		|| (data->map[pos.y / SCALE + 1][pos.x / SCALE] == WALL
 		&& ft_collision_hitbox(pos.x, pos.x / SCALE, pos.y, pos.y / SCALE + 1))
-		|| (data->map[pos.y / SCALE][pos.x / SCALE + 1]
+		|| (data->map[pos.y / SCALE][pos.x / SCALE + 1] == WALL
 		&& ft_collision_hitbox(pos.x, pos.x / SCALE + 1, pos.y, pos.y / SCALE))
-		|| (data->map[pos.y / SCALE + 1][pos.x / SCALE + 1]
+		|| (data->map[pos.y / SCALE + 1][pos.x / SCALE + 1] == WALL
 		&& ft_collision_hitbox(pos.x, pos.x / SCALE + 1, pos.y,
 			pos.y / SCALE + 1)))
 	{
