@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/30 16:17:29 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/31 19:26:44 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,22 @@ void	ft_put_block(mlx_image_t *img, t_vec pos, t_vec size, int color)
 static void	ft_print_map(t_data *data)
 {
 	unsigned int	i;
-	unsigned int	j;
 	unsigned int	size_y;
 	unsigned int	size_x;
 
 	i = 0;
 	size_x = MAP_SIZE_OBJECT;
 	size_y = MAP_SIZE_OBJECT;
-	while (i < data->map_size.y)
+	while (i / data->map_size.x < data->map_size.y)
 	{
-		j = 0;
-		while (j < data->map_size.x)
-		{
-			if (data->map[i][j] == 1)
-				ft_put_block(data->img.map, (t_vec){j * size_x, i * size_y, 0},
-					(t_vec){size_x, size_y, 0}, RED);
-			else
-				ft_put_block(data->img.map, (t_vec){j * size_x, i * size_y, 0},
-					(t_vec){size_x, size_y, 0}, WHITE);
-			j++;
-		}
+		if (data->map[i / data->map_size.x][i % data->map_size.x] == 1)
+			ft_put_block(data->img.map, (t_vec){(i % data->map_size.x) * size_x,
+				(i / data->map_size.x) * size_y, 0},
+				(t_vec){size_x, size_y, 0}, RED);
+		else
+			ft_put_block(data->img.map, (t_vec){(i % data->map_size.x) * size_x,
+				(i / data->map_size.x) * size_y, 0},
+				(t_vec){size_x, size_y, 0}, WHITE);
 		i++;
 	}
 	data->img.player->instances[0].x = data->player.x * MAP_SIZE_OBJECT / SCALE;
