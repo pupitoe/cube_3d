@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/31 19:35:43 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/03/31 21:00:03 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define ROT_SPEED 10.0f
 
 # define FOV 60
-# define COUNT_RAY 1
+# define COUNT_RAY 5
 
 int		ft_game_start(t_data *data);
 void	ft_put_block(mlx_image_t *img, t_vec pos, t_vec size, int color);
