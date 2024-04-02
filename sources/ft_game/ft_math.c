@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dda.h                                           :+:      :+:    :+:   */
+/*   ft_math.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 13:23:52 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/02 17:12:11 by tlassere         ###   ########.fr       */
+/*   Created: 2024/04/02 17:11:31 by tlassere          #+#    #+#             */
+/*   Updated: 2024/04/02 17:14:06 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DDA_H
-# define FT_DDA_H
+#include "ft_cub.h"
 
-#define RAY_VIEW 5 * SCALE
-
-typedef struct s_ray_data
+t_fvec	ft_vector_norm(t_fvec fvec1, t_fvec fvec2)
 {
-	t_fvec	start;
-	t_fvec	end;
-	t_fvec	norm;
-	t_fvec	step_size;
-}t_ray_data;
+	return ((t_fvec){fvec2.x - fvec1.x, fvec2.y - fvec1.y});
+}
 
-#endif
+float	ft_pow(float nbr, int pow)
+{
+	float	result;
+
+	result = nbr;
+	pow--;
+	while (pow > 0)
+	{
+		pow--;
+		result *= nbr;
+	}
+	return (result);
+}
