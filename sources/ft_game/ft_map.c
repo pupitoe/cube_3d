@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/02 16:48:24 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/03 00:34:54 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	ft_print_ray(t_data *data)
 			mlx_put_pixel(data->img.map, pos_pixel.x, pos_pixel.y, PINK);
 		pos++;
 	}
+	ft_dda(data);
 }
 
 void	ft_print_map_hook(void *vdata)
