@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/01 14:15:53 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/02 14:08:21 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,22 @@ void	ft_print_ray(t_data *data)
 	int		pos;
 	double	retc;
 	double	rets;
+	t_ivec	c_player;
+	t_ivec	pos_pixel;
 
 	retc = cos(data->player.rotat * PI180);
 	rets = sin(data->player.rotat * PI180);
+	c_player.x = data->player.x * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
+	c_player.y = data->player.y * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
 	pos = 0;
 	while (pos < 100)
 	{
-		mlx_put_pixel(data->img.map, (int)lround(pos * retc) + data->player.x * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2,
-			-(int)lround(pos * rets) + data->player.y * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2, PINK);
+		pos_pixel.x = (int)lround(pos * retc) + c_player.x;
+		pos_pixel.y = -(int)lround(pos * rets) + c_player.y;
+		if (pos_pixel.x >= 0 && pos_pixel.y >= 0
+			&& (size_t)pos_pixel.x < data->map_size.x * MAP_SIZE_OBJECT
+			&& (size_t)pos_pixel.y < data->map_size.y * MAP_SIZE_OBJECT)
+			mlx_put_pixel(data->img.map, pos_pixel.x, pos_pixel.y, PINK);
 		pos++;
 	}
 }

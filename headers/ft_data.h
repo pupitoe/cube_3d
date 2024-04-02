@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/26 20:19:35 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/02 13:48:11 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@ typedef struct s_vec
 	size_t	y;
 	float	rotat;
 }t_vec;
+
+typedef struct s_ivec
+{
+	int	x;
+	int	y;
+}t_ivec;
+
+typedef struct s_fvec
+{
+	float	x;
+	float	y;
+}t_fvec;
 
 struct s_data_time
 {
