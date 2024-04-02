@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:59:49 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/28 22:39:23 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/02 17:48:50 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ void	ft_delet_images(t_data *data)
 		mlx_delete_image(data->mlx, data->img.player);
 	if (data->img.ray)
 		mlx_delete_image(data->mlx, data->img.ray);
+	data->img.ray = NULL;
+	data->img.player = NULL;
+	data->img.map = NULL;
+}
+
+void	ft_delet_textures(t_data *data)
+{
+	if (data->texture.icon)
+		mlx_delete_texture(data->texture.icon);
+	data->texture.icon = NULL;
 }
 
 int	ft_load_image(t_data *data)
