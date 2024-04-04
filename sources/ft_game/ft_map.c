@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/04 13:47:06 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:58:30 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,32 @@ void	ft_print_ray(t_data *data)
 	int		pos;
 	double	retc;
 	double	rets;
+	t_fvec	dist;
 	t_ivec	c_player;
 	t_ivec	pos_pixel;
 
-	ft_dda(data);
 	retc = cos(data->player.rotat * PI180);
-	rets = sin(data->player.rotat * PI180);
+	rets = -sin(data->player.rotat * PI180);
 	c_player.x = data->player.x * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
 	c_player.y = data->player.y * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
+	dist = ft_dda(data);
 	pos = 0;
 	while (pos < 10000)
 	{
 		pos_pixel.x = (int)lround(pos * retc) + c_player.x;
-		pos_pixel.y = -(int)lround(pos * rets) + c_player.y;
+		pos_pixel.y = (int)lround(pos * rets) + c_player.y;
 		if (pos_pixel.x >= 0 && pos_pixel.y >= 0
 			&& (size_t)pos_pixel.x < data->map_size.x * MAP_SIZE_OBJECT
 			&& (size_t)pos_pixel.y < data->map_size.y * MAP_SIZE_OBJECT)
 			mlx_put_pixel(data->img.map, pos_pixel.x, pos_pixel.y, PINK);
 		pos++;
 	}
+	printf("dist x: %f\n", dist.x);
+	printf("dist y: %f\n", dist.y);
+	mlx_put_pixel(data->img.map, (int)(dist.x * SCALE) * MAP_SIZE_OBJECT / SCALE, (int)(dist.y * SCALE) * MAP_SIZE_OBJECT / SCALE, BLACK);
+	mlx_put_pixel(data->img.map, 1 + (int)(dist.x * SCALE) * MAP_SIZE_OBJECT / SCALE, (int)(dist.y * SCALE) * MAP_SIZE_OBJECT / SCALE, BLACK);
+	mlx_put_pixel(data->img.map, 1 + (int)(dist.x * SCALE) * MAP_SIZE_OBJECT / SCALE, 1 + (int)(dist.y * SCALE) * MAP_SIZE_OBJECT / SCALE, BLACK);
+	mlx_put_pixel(data->img.map, 0 + (int)(dist.x * SCALE) * MAP_SIZE_OBJECT / SCALE, 1 + (int)(dist.y * SCALE) * MAP_SIZE_OBJECT / SCALE, BLACK);
 }
 
 void	ft_print_map_hook(void *vdata)
