@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:23:52 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/03 00:27:23 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/04 13:45:05 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ typedef struct s_ray_data
 	t_ivec	map_checker;
 }t_ray_data;
 
-void	ft_dda(t_data *data);
+float	ft_dda(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/03 00:34:54 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/04 13:47:06 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,13 @@ void	ft_print_ray(t_data *data)
 	t_ivec	c_player;
 	t_ivec	pos_pixel;
 
+	ft_dda(data);
 	retc = cos(data->player.rotat * PI180);
 	rets = sin(data->player.rotat * PI180);
 	c_player.x = data->player.x * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
 	c_player.y = data->player.y * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
 	pos = 0;
-	while (pos < 100)
+	while (pos < 10000)
 	{
 		pos_pixel.x = (int)lround(pos * retc) + c_player.x;
 		pos_pixel.y = -(int)lround(pos * rets) + c_player.y;
@@ -77,7 +78,6 @@ void	ft_print_ray(t_data *data)
 			mlx_put_pixel(data->img.map, pos_pixel.x, pos_pixel.y, PINK);
 		pos++;
 	}
-	ft_dda(data);
 }
 
 void	ft_print_map_hook(void *vdata)
