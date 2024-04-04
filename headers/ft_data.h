@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/02 17:43:08 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/04 22:11:05 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ struct s_img
 
 struct s_texture
 {
-	mlx_texture_t *icon;
+	mlx_texture_t	*icon;
 };
-
 
 typedef struct s_data
 {
