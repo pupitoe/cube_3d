@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:22:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/04 21:03:59 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:06:28 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	ft_set_step(t_ray_data *ray)
 	}
 }
 
+
 static t_fvec	ft_colide(t_ray_data ray, t_data *data)
 {
 	float	ray_dist;
@@ -43,7 +44,7 @@ static t_fvec	ft_colide(t_ray_data ray, t_data *data)
 
 	checker = 0;
 	ray_dist = 0.0f;
-	while (!checker && ray_dist < 10)
+	while (!checker && ray_dist < DISTANCE_RAY_VIEW)
 	{
 		if (ray.length.x < ray.length.y)	
 		{
