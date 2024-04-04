@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/04 20:58:30 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:22:21 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_print_ray(t_data *data)
 	rets = -sin(data->player.rotat * PI180);
 	c_player.x = data->player.x * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
 	c_player.y = data->player.y * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
-	dist = ft_dda(data);
+	dist = ft_dda(data, (t_fvec){(float)(data->player.x + SCALE / 2) / SCALE, (float)(data->player.y + SCALE / 2) / SCALE}, data->player.rotat);
 	pos = 0;
 	while (pos < 10000)
 	{

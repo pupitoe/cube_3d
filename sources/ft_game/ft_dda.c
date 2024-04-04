@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:22:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/04 21:06:28 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:19:42 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,15 @@ static t_fvec	ft_colide(t_ray_data ray, t_data *data)
 }
 
 // TODO make define for size of player
-t_fvec	ft_dda(t_data *data)
+t_fvec	ft_dda(t_data *data, t_fvec ray_start, float rotat)
 {
 	t_ray_data	ray;
 	t_fvec		ray_hit;
 
-	ray.start.y = ((float)data->player.y + SCALE / 2) / SCALE;
-	ray.start.x = ((float)data->player.x + SCALE / 2) / SCALE;
-	ray.end.x = ray.start.x + cos(data->player.rotat * PI180);
-	ray.end.y = ray.start.y + -sin(data->player.rotat * PI180);
+	ray.start.x = ray_start.x;
+	ray.start.y = ray_start.y;
+	ray.end.x = ray.start.x + cos(rotat * PI180);
+	ray.end.y = ray.start.y + -sin(rotat * PI180);
 	ray.norm = ft_vector_norm(ray.start, ray.end);
 	ray.step_size.x = sqrt(1 + ft_pow(ray.norm.y / ray.norm.x, 2));
 	ray.step_size.y = sqrt(1 + ft_pow(ray.norm.x / ray.norm.y, 2));
