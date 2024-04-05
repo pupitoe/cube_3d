@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cub.h                                           :+:      :+:    :+:   */
+/*   ft_color.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/02 13:24:39 by tlassere         ###   ########.fr       */
+/*   Created: 2024/03/31 19:34:30 by tlassere          #+#    #+#             */
+/*   Updated: 2024/04/03 00:24:56 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CUB_H
-# define FT_CUB_H
+#ifndef FT_COLOR_C
+# define FT_COLOR_C
 
-# include "libft.h"
-# include "MLX42/MLX42.h"
-# include "ft_data.h"
-# include "ft_parser.h"
-# include "ft_game.h"
-# include "ft_math.h"
-# include "ft_move.h"
-# include "ft_color.h"
-# include "ft_dda.h"
-# include <math.h>
+# define BLACK 0x000000FF
+# define WHITE 0xFFFFFFFF
+# define RED 0xFF0000FF
+# define PINK 0xFF00FFFF
+# define GREEN 0x008000FF 
 
 #endif

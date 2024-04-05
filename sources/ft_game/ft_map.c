@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/30 16:17:29 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/04 21:56:35 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,69 @@ void	ft_put_block(mlx_image_t *img, t_vec pos, t_vec size, int color)
 static void	ft_print_map(t_data *data)
 {
 	unsigned int	i;
-	unsigned int	j;
 	unsigned int	size_y;
 	unsigned int	size_x;
 
 	i = 0;
 	size_x = MAP_SIZE_OBJECT;
 	size_y = MAP_SIZE_OBJECT;
-	while (i < data->map_size.y)
+	while (i / data->map_size.x < data->map_size.y)
 	{
-		j = 0;
-		while (j < data->map_size.x)
-		{
-			if (data->map[i][j] == 1)
-				ft_put_block(data->img.map, (t_vec){j * size_x, i * size_y, 0},
-					(t_vec){size_x, size_y, 0}, RED);
-			else
-				ft_put_block(data->img.map, (t_vec){j * size_x, i * size_y, 0},
-					(t_vec){size_x, size_y, 0}, WHITE);
-			j++;
-		}
+		if (data->map[i / data->map_size.x][i % data->map_size.x] == 1)
+			ft_put_block(data->img.map, (t_vec){(i % data->map_size.x) * size_x,
+				(i / data->map_size.x) * size_y, 0},
+				(t_vec){size_x, size_y, 0}, RED);
+		else
+			ft_put_block(data->img.map, (t_vec){(i % data->map_size.x) * size_x,
+				(i / data->map_size.x) * size_y, 0},
+				(t_vec){size_x, size_y, 0}, WHITE);
 		i++;
 	}
 	data->img.player->instances[0].x = data->player.x * MAP_SIZE_OBJECT / SCALE;
 	data->img.player->instances[0].y = data->player.y * MAP_SIZE_OBJECT / SCALE;
+}
+
+void	ft_print_ray(t_data *data)
+{
+	int		pos;
+	double	retc;
+	double	rets;
+	t_ivec	c_player;
+	t_ivec	pos_pixel;
+
+	retc = cos(data->player.rotat * PI180);
+	rets = -sin(data->player.rotat * PI180);
+	c_player.x = data->player.x * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
+	c_player.y = data->player.y * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
+	pos = 0;
+	while (pos < 10000)
+	{
+		pos_pixel.x = (int)lround(pos * retc) + c_player.x;
+		pos_pixel.y = (int)lround(pos * rets) + c_player.y;
+		if (pos_pixel.x >= 0 && pos_pixel.y >= 0
+			&& (size_t)pos_pixel.x < data->map_size.x * MAP_SIZE_OBJECT
+			&& (size_t)pos_pixel.y < data->map_size.y * MAP_SIZE_OBJECT)
+			mlx_put_pixel(data->img.map, pos_pixel.x, pos_pixel.y, PINK);
+		pos++;
+	}
+}
+
+void	ft_use_dda(t_data *data)
+{
+	t_fvec	dist;
+
+	dist = ft_dda(data, (t_fvec){(float)(data->player.x + SCALE / 2) / SCALE,
+			(float)(data->player.y + SCALE / 2) / SCALE}, data->player.rotat);
+	printf("dist x: %f\n", dist.x);
+	printf("dist y: %f\n", dist.y);
+	mlx_put_pixel(data->img.map, (int)(dist.x * SCALE) *MAP_SIZE_OBJECT
+		/ SCALE, (int)(dist.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
+	mlx_put_pixel(data->img.map, 1 + (int)(dist.x * SCALE) *MAP_SIZE_OBJECT
+		/ SCALE, (int)(dist.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
+	mlx_put_pixel(data->img.map, 1 + (int)(dist.x * SCALE) *MAP_SIZE_OBJECT
+		/ SCALE, 1 + (int)(dist.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
+	mlx_put_pixel(data->img.map, 0 + (int)(dist.x * SCALE) *MAP_SIZE_OBJECT
+		/ SCALE, 1 + (int)(dist.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
 }
 
 void	ft_print_map_hook(void *vdata)
@@ -67,6 +106,8 @@ void	ft_print_map_hook(void *vdata)
 	if (data->time.time_passed >= data->time.framerate)
 	{
 		ft_print_map(data);
+		ft_print_ray(data);
+		ft_use_dda(data);
 		data->time.time_passed -= data->time.framerate;
 	}
 }

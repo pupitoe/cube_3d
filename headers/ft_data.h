@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/26 20:19:35 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/04 22:11:05 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@ typedef struct s_vec
 	size_t	y;
 	float	rotat;
 }t_vec;
+
+typedef struct s_ivec
+{
+	int	x;
+	int	y;
+}t_ivec;
+
+typedef struct s_fvec
+{
+	float	x;
+	float	y;
+}t_fvec;
 
 struct s_data_time
 {
@@ -33,6 +45,11 @@ struct s_img
 	mlx_image_t	*ray;
 };
 
+struct s_texture
+{
+	mlx_texture_t	*icon;
+};
+
 typedef struct s_data
 {
 	t_vec				player;
@@ -40,6 +57,7 @@ typedef struct s_data
 	t_vec				map_size;
 	struct s_data_time	time;
 	mlx_t				*mlx;
+	struct s_texture	texture;
 	struct s_img		img;
 }t_data;
 

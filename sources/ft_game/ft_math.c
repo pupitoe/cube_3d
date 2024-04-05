@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cub.h                                           :+:      :+:    :+:   */
+/*   ft_math.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/02 13:24:39 by tlassere         ###   ########.fr       */
+/*   Created: 2024/04/02 17:11:31 by tlassere          #+#    #+#             */
+/*   Updated: 2024/04/02 17:14:06 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CUB_H
-# define FT_CUB_H
+#include "ft_cub.h"
 
-# include "libft.h"
-# include "MLX42/MLX42.h"
-# include "ft_data.h"
-# include "ft_parser.h"
-# include "ft_game.h"
-# include "ft_math.h"
-# include "ft_move.h"
-# include "ft_color.h"
-# include "ft_dda.h"
-# include <math.h>
+t_fvec	ft_vector_norm(t_fvec fvec1, t_fvec fvec2)
+{
+	return ((t_fvec){fvec2.x - fvec1.x, fvec2.y - fvec1.y});
+}
 
-#endif
+float	ft_pow(float nbr, int pow)
+{
+	float	result;
+
+	result = nbr;
+	pow--;
+	while (pow > 0)
+	{
+		pow--;
+		result *= nbr;
+	}
+	return (result);
+}

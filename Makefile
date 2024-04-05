@@ -14,13 +14,14 @@ NAME			::= cub3D
 T_FT_PARSER		::=	ft_parser ft_map
 FT_PARSER		::= $(foreach buffer, $(T_FT_PARSER), ft_parser/$(buffer))
 T_FT_GAME		::= ft_game	ft_map ft_move ft_move_hook ft_images ft_ray \
-					ft_collision
+					ft_collision ft_dda ft_math
 FT_GAME			::= $(foreach buffer, $(T_FT_GAME), ft_game/$(buffer))
 SOURCES_CONTENT ::= ft_cube $(FT_PARSER) $(FT_GAME)
 SOURCES			::= $(foreach buffer, $(SOURCES_CONTENT), sources/$(buffer).c)
 OBJECTS			::= $(SOURCES:.c=.o)
 HEADER			::= headers
-T_HEADER_FILES	::= ft_cub ft_data ft_game ft_move ft_parser ft_math
+T_HEADER_FILES	::= ft_cub ft_data ft_game ft_move ft_parser ft_math ft_color \
+					ft_dda
 HEADER_FILES	::= $(foreach buffer, $(T_HEADER_FILES), $(HEADER)/$(buffer).h)
 LIBMLX			::= ./MLX42
 LIBFT_DIR		::= libft
