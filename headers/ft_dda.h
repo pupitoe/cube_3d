@@ -6,14 +6,14 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:23:52 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/04 21:18:47 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:32:56 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_DDA_H
 # define FT_DDA_H
 
-# define DISTANCE_RAY_VIEW 30
+# define DISTANCE_RAY_VIEW 5
 
 typedef struct s_ray_data
 {
@@ -26,6 +26,13 @@ typedef struct s_ray_data
 	t_ivec	map_checker;
 }t_ray_data;
 
-t_fvec	ft_dda(t_data *data, t_fvec ray_start, float rotat);
+typedef struct s_collide_data
+{
+	t_fvec	len;
+	int		checker;
+}t_collide_data;
+
+
+t_collide_data	ft_dda(t_data *data, t_fvec ray_start, float rotat);
 
 #endif
