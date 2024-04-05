@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 14:51:16 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:21:31 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 
 static void	ft_use_dda(t_data *data, float rotat)
 {
-	t_fvec	dist;
+	t_collide_data	dist;
 
 	dist = ft_dda(data, (t_fvec){(float)(data->player.x + SCALE / 2) / SCALE,
 			(float)(data->player.y + SCALE / 2) / SCALE},
 			data->player.rotat + rotat);
-	printf("dist x: %f\n", dist.x);
-	printf("dist y: %f\n", dist.y);
-	mlx_put_pixel(data->img.map, (int)(dist.x * SCALE) *MAP_SIZE_OBJECT
-		/ SCALE, (int)(dist.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
-	mlx_put_pixel(data->img.map, 1 + (int)(dist.x * SCALE) *MAP_SIZE_OBJECT
-		/ SCALE, (int)(dist.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
-	mlx_put_pixel(data->img.map, 1 + (int)(dist.x * SCALE) *MAP_SIZE_OBJECT
-		/ SCALE, 1 + (int)(dist.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
-	mlx_put_pixel(data->img.map, 0 + (int)(dist.x * SCALE) *MAP_SIZE_OBJECT
-		/ SCALE, 1 + (int)(dist.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
+	if (dist.checker)
+	{
+		printf("dist x: %f\n", dist.len.x);
+		printf("dist y: %f\n", dist.len.y);
+		mlx_put_pixel(data->img.map, (int)(dist.len.x * SCALE) *MAP_SIZE_OBJECT
+			/ SCALE, (int)(dist.len.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
+		mlx_put_pixel(data->img.map, 1 + (int)(dist.len.x * SCALE) *MAP_SIZE_OBJECT
+			/ SCALE, (int)(dist.len.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
+		mlx_put_pixel(data->img.map, 1 + (int)(dist.len.x * SCALE) *MAP_SIZE_OBJECT
+			/ SCALE, 1 + (int)(dist.len.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
+		mlx_put_pixel(data->img.map, 0 + (int)(dist.len.x * SCALE) *MAP_SIZE_OBJECT
+			/ SCALE, 1 + (int)(dist.len.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
+	}
 }
 
 void	ft_print_wall(t_data *data)

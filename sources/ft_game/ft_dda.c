@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:22:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 14:32:05 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:19:47 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@ static float	ft_collide_while(t_ray_data *ray)
 	return (ray_dist);
 }
 
-static t_fvec	ft_collide(t_ray_data ray, t_data *data)
+static t_collide_data	ft_collide(t_ray_data ray, t_data *data)
 {
-	float	ray_dist;
-	int		checker;
+	t_collide_data	ray_content;
+	float			ray_dist;
+	int				checker;
 
-	checker = 0;
+	checker = false;
 	ray_dist = 0.0f;
 	while (!checker && ray_dist < DISTANCE_RAY_VIEW)
 	{
@@ -75,18 +76,20 @@ static t_fvec	ft_collide(t_ray_data ray, t_data *data)
 			< (int)data->map_size.y)
 		{
 			if (data->map[ray.map_checker.y][ray.map_checker.x] == 1)
-				checker = 1;
+				checker = true;
 		}
 	}
-	return ((t_fvec){ray_dist * ray.norm.x, ray_dist * ray.norm.y});
+	ray_content.len.x = ray_dist * ray.norm.x;
+	ray_content.len.y = ray_dist * ray.norm.y;
+	ray_content.checker = checker;
+	return (ray_content);
 }
 
-// TODO make define for size of player
-t_fvec	ft_dda(t_data *data, t_fvec ray_start, float rotat)
+t_collide_data	ft_dda(t_data *data, t_fvec ray_start, float rotat)
 {
-	t_ray_data	ray;
-	t_fvec		ray_hit;
-	double		rotat_op;
+	double			rotat_op;
+	t_ray_data		ray;
+	t_collide_data	ray_hit;
 
 	rotat_op = rotat * PI180;
 	ray.start.x = ray_start.x;
@@ -100,7 +103,7 @@ t_fvec	ft_dda(t_data *data, t_fvec ray_start, float rotat)
 	ray.map_checker.y = ray.start.y;
 	ft_set_step(&ray);
 	ray_hit = ft_collide(ray, data);
-	ray_hit.x += ray.start.x;
-	ray_hit.y += ray.start.y;
+	ray_hit.len.x += ray.start.x;
+	ray_hit.len.y += ray.start.y;
 	return (ray_hit);
 }
