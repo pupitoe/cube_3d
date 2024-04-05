@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 12:52:08 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:09:10 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,16 @@ void	ft_use_dda(t_data *data)
 		printf("dist y: %f\n", dist.len.y);
 		mlx_put_pixel(data->img.map, (int)(dist.len.x * SCALE)
 			*MAP_SIZE_OBJECT / SCALE, (int)(dist.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, BLACK);
+			*MAP_SIZE_OBJECT / SCALE, GREEN);
 		mlx_put_pixel(data->img.map, 1 + (int)(dist.len.x * SCALE)
 			*MAP_SIZE_OBJECT / SCALE, (int)(dist.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, BLACK);
+			*MAP_SIZE_OBJECT / SCALE, GREEN);
 		mlx_put_pixel(data->img.map, 1 + (int)(dist.len.x * SCALE)
 			*MAP_SIZE_OBJECT / SCALE, 1 + (int)(dist.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, BLACK);
+			*MAP_SIZE_OBJECT / SCALE, GREEN);
 		mlx_put_pixel(data->img.map, 0 + (int)(dist.len.x * SCALE)
 			*MAP_SIZE_OBJECT / SCALE, 1 + (int)(dist.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, BLACK);
+			*MAP_SIZE_OBJECT / SCALE, GREEN);
 	}
 }
 
