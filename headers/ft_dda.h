@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:23:52 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 12:32:56 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:30:46 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_ray_data
 typedef struct s_collide_data
 {
 	t_fvec	len;
+	float	dist;
 	int		checker;
 }t_collide_data;
 

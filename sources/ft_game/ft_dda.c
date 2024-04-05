@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:22:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 22:23:20 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:32:05 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,13 @@ static float	ft_collide_while(t_ray_data *ray)
 static t_collide_data	ft_collide(t_ray_data ray, t_data *data)
 {
 	t_collide_data	ray_content;
-	float			ray_dist;
 	int				checker;
 
 	checker = false;
-	ray_dist = 0.0f;
-	while (!checker && ray_dist < DISTANCE_RAY_VIEW)
+	ray_content.dist = 0.0f;
+	while (!checker && ray_content.dist < DISTANCE_RAY_VIEW)
 	{
-		ray_dist = ft_collide_while(&ray);
+		ray_content.dist = ft_collide_while(&ray);
 		if (ray.map_checker.x >= 0 && ray.map_checker.x < (int)data->map_size.x
 			&& ray.map_checker.y >= 0 && ray.map_checker.y
 			< (int)data->map_size.y)
@@ -79,8 +78,8 @@ static t_collide_data	ft_collide(t_ray_data ray, t_data *data)
 				checker = true;
 		}
 	}
-	ray_content.len.x = ray_dist * ray.norm.x;
-	ray_content.len.y = ray_dist * ray.norm.y;
+	ray_content.len.x = ray_content.dist * ray.norm.x;
+	ray_content.len.y = ray_content.dist * ray.norm.y;
 	ray_content.checker = checker;
 	return (ray_content);
 }
