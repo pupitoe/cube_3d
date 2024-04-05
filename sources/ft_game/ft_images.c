@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:59:49 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 23:10:10 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/05 23:54:38 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_load_image(t_data *data, uint32_t width, uint32_t height)
 		ft_put_block(data->img.player, (t_vec){0, 0, 0},
 			(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, BLACK);
 	if (data->img.player == NULL || data->img.map == NULL
-		|| data->img.ray == NULL)
+		|| data->img.ray == NULL || data->img.game == NULL)
 	{
 		status = FAIL;
 		ft_delet_images(data);
@@ -67,6 +67,8 @@ int	ft_put_img(t_data *data)
 	int	status;
 
 	status = SUCCESS;
+	if (mlx_image_to_window(data->mlx, data->img.game, 0, 0) == -1)
+		status = FAIL;
 	if (mlx_image_to_window(data->mlx, data->img.map, 0, 0) == -1)
 		status = FAIL;
 	if (mlx_image_to_window(data->mlx, data->img.player, data->player.x
@@ -75,7 +77,5 @@ int	ft_put_img(t_data *data)
 	if (mlx_image_to_window(data->mlx, data->img.ray, data->player.x
 			* MAP_SIZE_OBJECT, data->player.y * MAP_SIZE_OBJECT) == -1)
 		status = FAIL;
-	if (status == FAIL)
-		ft_delet_images(data);
 	return (status);
 }

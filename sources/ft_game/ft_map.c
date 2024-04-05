@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 23:17:39 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/05 23:56:33 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	ft_print_map(t_data *data)
 	data->img.player->instances[0].y = data->player.y * MAP_SIZE_OBJECT / SCALE;
 }
 
-void	ft_print_map_hook(void *vdata)
+void	ft_print_hook(void *vdata)
 {
 	t_data	*data;
 
@@ -66,4 +66,5 @@ void	ft_print_map_hook(void *vdata)
 		ft_print_many_ray(data);
 		data->time.time_passed -= data->time.framerate;
 	}
+	ft_print_game(data);
 }

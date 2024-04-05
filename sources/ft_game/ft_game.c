@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 23:15:54 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/05 23:53:25 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ static int	ft_set_icon(t_data *data)
 
 static int	ft_set_hook(t_data *data)
 {
-	if (!mlx_loop_hook(data->mlx, &ft_print_map_hook, data))
-		return (FAIL);
-	if (!mlx_loop_hook(data->mlx, &ft_print_game, data))
+	if (!mlx_loop_hook(data->mlx, &ft_print_hook, data))
 		return (FAIL);
 	if (!mlx_loop_hook(data->mlx, &ft_key_hook_y, data))
 		return (FAIL);

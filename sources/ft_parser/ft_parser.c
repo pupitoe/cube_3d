@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:45:32 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 22:54:03 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/05 23:51:17 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	ft_parser(const char *path_file, t_data *data)
 	data->map_size.y = 24;
 	data->player.x = 4 * SCALE;
 	data->player.y = 4 * SCALE;
-	data->texture.ceiling_rgba = ft_get_rgba(0, 255, 0, 0);
-	data->texture.floor_rgba = ft_get_rgba(0, 0, 255, 0);
+	data->texture.ceiling_rgba = ft_get_rgba(0, 255, 0, 255);
+	data->texture.floor_rgba = ft_get_rgba(0, 0, 255, 255);
 	data->player.rotat = 0.0f;
 	data->map = malloc(sizeof(int *) * data->map_size.y);
 	for (size_t i = 0; i < data->map_size.y; i++)
