@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 13:09:10 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/05 22:22:58 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,56 +54,6 @@ static void	ft_print_map(t_data *data)
 	data->img.player->instances[0].y = data->player.y * MAP_SIZE_OBJECT / SCALE;
 }
 
-void	ft_print_ray(t_data *data)
-{
-	int		pos;
-	double	retc;
-	double	rets;
-	t_ivec	c_player;
-	t_ivec	pos_pixel;
-
-	retc = cos(data->player.rotat * PI180);
-	rets = -sin(data->player.rotat * PI180);
-	c_player.x = data->player.x * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
-	c_player.y = data->player.y * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
-	pos = 0;
-	while (pos < 10000)
-	{
-		pos_pixel.x = (int)lround(pos * retc) + c_player.x;
-		pos_pixel.y = (int)lround(pos * rets) + c_player.y;
-		if (pos_pixel.x >= 0 && pos_pixel.y >= 0
-			&& (size_t)pos_pixel.x < data->map_size.x * MAP_SIZE_OBJECT
-			&& (size_t)pos_pixel.y < data->map_size.y * MAP_SIZE_OBJECT)
-			mlx_put_pixel(data->img.map, pos_pixel.x, pos_pixel.y, PINK);
-		pos++;
-	}
-}
-
-void	ft_use_dda(t_data *data)
-{
-	t_collide_data	dist;
-
-	dist = ft_dda(data, (t_fvec){(float)(data->player.x + SCALE / 2) / SCALE,
-			(float)(data->player.y + SCALE / 2) / SCALE}, data->player.rotat);
-	if (dist.checker)
-	{
-		printf("dist x: %f\n", dist.len.x);
-		printf("dist y: %f\n", dist.len.y);
-		mlx_put_pixel(data->img.map, (int)(dist.len.x * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, (int)(dist.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, GREEN);
-		mlx_put_pixel(data->img.map, 1 + (int)(dist.len.x * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, (int)(dist.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, GREEN);
-		mlx_put_pixel(data->img.map, 1 + (int)(dist.len.x * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, 1 + (int)(dist.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, GREEN);
-		mlx_put_pixel(data->img.map, 0 + (int)(dist.len.x * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, 1 + (int)(dist.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, GREEN);
-	}
-}
-
 void	ft_print_map_hook(void *vdata)
 {
 	t_data	*data;
@@ -113,8 +63,8 @@ void	ft_print_map_hook(void *vdata)
 	if (data->time.time_passed >= data->time.framerate)
 	{
 		ft_print_map(data);
-		ft_print_ray(data);
-		ft_use_dda(data);
+		ft_print_many_ray(data);
+		ft_print_wall(data);
 		data->time.time_passed -= data->time.framerate;
 	}
 }
