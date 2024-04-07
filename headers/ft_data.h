@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 23:00:09 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/07 22:04:56 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,13 @@ struct s_texture
 	int				ceiling_rgba;
 };
 
+struct s_middle
+{
+	t_ivec	screen;
+	int		player_size;
+};
+
+
 typedef struct s_data
 {
 	t_vec				player;
@@ -62,6 +69,7 @@ typedef struct s_data
 	mlx_t				*mlx;
 	struct s_texture	texture;
 	struct s_img		img;
+	struct s_middle		middle;
 }t_data;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:14:00 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/07 12:58:58 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/07 22:21:06 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,4 @@ void	ft_print_many_ray(t_data *data)
 		ft_print_ray(data, (float)i * rad - fov_tmp);
 		i++;
 	}
-	//ft_print_ray(data, 0);
 }

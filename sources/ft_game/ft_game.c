@@ -6,15 +6,15 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 23:53:25 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/07 22:09:15 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-static float	ft_get_frame(int fps)
+static void	ft_set_data(t_data *data)
 {
-	return (1.0f / (float)fps);
+	data->middle.player_size = SCALE / 2;
 }
 
 static void	ft_escape(mlx_key_data_t key, void *vdata)
@@ -61,9 +61,10 @@ int	ft_game_start(t_data *data)
 	int32_t	height;
 
 	status = FAIL;
-	data->time.framerate = ft_get_frame(30);
+	data->time.framerate = 1.0f / 30.0f;
 	data->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HIGHT, "cub3D", true);
 	mlx_get_monitor_size(0, &width, &height);
+	ft_set_data(data);
 	if (data->mlx)
 	{
 		status = SUCCESS;
