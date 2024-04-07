@@ -6,14 +6,14 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:23:52 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 22:30:46 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/06 16:43:53 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_DDA_H
 # define FT_DDA_H
 
-# define DISTANCE_RAY_VIEW 5
+# define DISTANCE_RAY_VIEW 20
 
 typedef struct s_ray_data
 {

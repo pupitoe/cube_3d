@@ -6,32 +6,25 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 23:59:19 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/07 14:25:36 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-static void	ft_use_dda(t_data *data, float rotat)
+static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
 {
-	t_collide_data	dist;
+	t_collide_data	collide;
+	int				height_dist;
 
-	dist = ft_dda(data, (t_fvec){(float)(data->player.x + SCALE / 2) / SCALE,
+	collide = ft_dda(data, (t_fvec){(float)(data->player.x + SCALE / 2) / SCALE,
 			(float)(data->player.y + SCALE / 2) / SCALE},
 			data->player.rotat + rotat);
-	if (dist.checker)
+	height_dist = (float)(data->mlx->height) / (collide.dist + 0.5f);
+	if (collide.checker)
 	{
-		mlx_put_pixel(data->img.map, (int)(dist.len.x * SCALE) *MAP_SIZE_OBJECT
-			/ SCALE, (int)(dist.len.y * SCALE) *MAP_SIZE_OBJECT / SCALE, BLACK);
-		mlx_put_pixel(data->img.map, 1 + (int)(dist.len.x * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, (int)(dist.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, BLACK);
-		mlx_put_pixel(data->img.map, 1 + (int)(dist.len.x * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, 1 + (int)(dist.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, BLACK);
-		mlx_put_pixel(data->img.map, 0 + (int)(dist.len.x * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, 1 + (int)(dist.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, BLACK);
+		ft_put_block(data->img.game, (t_vec){ray_start, data->mlx->height
+			/ 2 - height_dist / 2, 0}, (t_vec){size, height_dist, 0}, RED);
 	}
 }
 
@@ -39,14 +32,22 @@ void	ft_print_wall(t_data *data)
 {
 	int		ray_number;
 	float	rad;
+	int		size_ray;
+	int		i;
 
-	ray_number = COUNT_RAY;
-	rad = FOV / COUNT_RAY;
-	while (ray_number)
+	i = 0;
+	//ray_number = COUNT_RAY;
+	//rad = FOV / COUNT_RAY;
+	ray_number = data->mlx->width;
+	rad = FOV / ray_number;
+	size_ray = data->mlx->width / ray_number;
+	while (i < ray_number)
 	{
-		ft_use_dda(data, (float)ray_number * rad);
-		ft_use_dda(data, -((float)ray_number * rad));
-		ray_number--;
+		if (i != 0)
+			ft_use_dda(data, (float)(i) *rad - FOV / 2.0f, size_ray,
+				(ray_number - i) * size_ray);
+		else
+			ft_use_dda(data, (FOV / 2.0f), size_ray, 0);
+		i++;
 	}
-	ft_use_dda(data, 0);
 }
