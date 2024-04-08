@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   memset.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abareux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:02:50 by abareux           #+#    #+#             */
-/*   Updated: 2024/01/08 10:16:46 by abareux          ###   ########.fr       */
+/*   Updated: 2024/04/08 19:14:51 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_cub.h>
-
-void	*ft_memset(void *s, int c, size_t n)
-{
-	unsigned int	cursor;
-
-	cursor = 0;
-	while (cursor < n)
-	{
-		*((unsigned char *) s + cursor) = c;
-		cursor++;
-	}
-	return (s);
-}
 
 void	*ft_intset(void *s, int c, size_t n)
 {
