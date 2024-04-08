@@ -12,18 +12,14 @@
 
 #include <ft_cub.h>
 
-int	ft_parser(char *path_file, t_data *data)
+int	get_rgba(t_rgb *rgb)
 {
-	t_map		*map;
-	t_pov		*player;
+	int	result;
 
-	if (check_extension(path_file))
-		return (FAIL);
-	map = load_file(path_file);
-	validate_map(map);
-	validate_data(map);
-	player = load_player(map);
-	data->map_parser = map;
-	data->player_parser = player;
-	return (SUCCESS);
+	result = 0;
+	result |= rgb->red;
+	result |= rgb->green << 8;
+	result |= rgb->blue << 16;
+	result |= 255 << 24;
+	return (result);
 }

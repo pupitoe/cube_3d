@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   strdup.c                                           :+:      :+:    :+:   */
 /*                                                :#:  :#::#     #::#:  :#:   */
 /*   By: an asshole who like to break thing       :#:  :#::#: # :#::#:  :#:   */
 /*                                                :##::##: :#:#:#: :##::##:   */
 /*   Created: the-day-it-was created by UwU        :####:  :##:##:  :####:    */
-/*   Updated: 2024/02/08 12:15:55 by abareux          ###   ########.fr       */
+/*   Updated: 2023/12/07 11:27:54 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_cub.h>
 
-int	ft_parser(char *path_file, t_data *data)
+char	*ft_strdup_parser(char *s)
 {
-	t_map		*map;
-	t_pov		*player;
+	char	*rptr;
+	int		size;
 
-	if (check_extension(path_file))
-		return (FAIL);
-	map = load_file(path_file);
-	validate_map(map);
-	validate_data(map);
-	player = load_player(map);
-	data->map_parser = map;
-	data->player_parser = player;
-	return (SUCCESS);
+	size = ft_strlen(s);
+	rptr = malloc(size + 1);
+	if (!rptr)
+		return ((char *) 1);
+	while (size >= 0)
+	{
+		*(rptr + size) = *(s + size);
+		size--;
+	}
+	return (rptr);
 }

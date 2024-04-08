@@ -59,9 +59,43 @@ struct s_middle
 	int		player_size;
 };
 
+typedef struct s_point {
+	int	x;
+	int	y;
+}	t_point;
+
+typedef struct s_rgb {
+	int	red;
+	int	green;
+	int	blue;
+}	t_rgb;
+
+typedef struct s_map {
+	char		*north_texture;
+	char		*south_texture;
+	char		*west_texture;
+	char		*east_texture;
+	mlx_image_t	*north_image;
+	mlx_image_t	*south_image;
+	mlx_image_t	*west_image;
+	mlx_image_t	*east_image;
+	t_rgb		*floor;
+	t_rgb		*celling;
+	char		*map;
+}	t_map;
+
+typedef struct s_pov {
+	double	position_x;
+	double	position_y;
+	int		angle;
+	mlx_t	*mlx;
+}	t_pov;
+
 
 typedef struct s_data
 {
+	t_map				*map_parser;
+	t_pov				*player_parser;
 	t_vec				player;
 	int					**map;
 	t_vec				map_size;
@@ -70,6 +104,6 @@ typedef struct s_data
 	struct s_texture	texture;
 	struct s_img		img;
 	struct s_middle		middle;
-}t_data;
+}	t_data;
 
 #endif

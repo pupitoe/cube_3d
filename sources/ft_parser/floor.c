@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   floor.c                                            :+:      :+:    :+:   */
 /*                                                :#:  :#::#     #::#:  :#:   */
 /*   By: an asshole who like to break thing       :#:  :#::#: # :#::#:  :#:   */
 /*                                                :##::##: :#:#:#: :##::##:   */
 /*   Created: the-day-it-was created by UwU        :####:  :##:##:  :####:    */
-/*   Updated: 2024/02/08 12:15:55 by abareux          ###   ########.fr       */
+/*   Updated: 2024/02/01 13:28:31 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_cub.h>
 
-int	ft_parser(char *path_file, t_data *data)
+int	is_floor(char *line, t_map *map)
 {
-	t_map		*map;
-	t_pov		*player;
+	if (*(line + 0) == 'F' && *(line + 1) == ' ' && *(line + 2) != '\0')
+		return (!map->floor);
+	return (0);
+}
 
-	if (check_extension(path_file))
-		return (FAIL);
-	map = load_file(path_file);
-	validate_map(map);
-	validate_data(map);
-	player = load_player(map);
-	data->map_parser = map;
-	data->player_parser = player;
-	return (SUCCESS);
+void	set_floor(char *line, t_map *map)
+{
+	t_rgb	*result;
+
+	result = malloc(sizeof(t_rgb));
+	if (!result)
+	{
+		map->floor = (void *) 1;
+		return ;
+	}
+	result->red = ft_atoi(line + 2);
+	while (*line != ',' && *line)
+		line++;
+	result->green = ft_atoi(line++);
+	while (*line != ',' && *line)
+		line++;
+	result->blue = ft_atoi(line);
+	map->floor = result;
 }

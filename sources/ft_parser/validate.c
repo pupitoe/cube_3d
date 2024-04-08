@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                :#:  :#::#     #::#:  :#:   */
 /*   By: an asshole who like to break thing       :#:  :#::#: # :#::#:  :#:   */
 /*                                                :##::##: :#:#:#: :##::##:   */
 /*   Created: the-day-it-was created by UwU        :####:  :##:##:  :####:    */
-/*   Updated: 2024/02/08 12:15:55 by abareux          ###   ########.fr       */
+/*   Updated: 2024/01/08 10:06:06 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_cub.h>
 
-int	ft_parser(char *path_file, t_data *data)
+void	validate_map(t_map *map)
 {
-	t_map		*map;
-	t_pov		*player;
+	char	*buffer;
 
-	if (check_extension(path_file))
-		return (FAIL);
-	map = load_file(path_file);
-	validate_map(map);
-	validate_data(map);
-	player = load_player(map);
-	data->map_parser = map;
-	data->player_parser = player;
-	return (SUCCESS);
+	buffer = ft_strdup(map->map);
+	if (!buffer)
+		malloc_error(map);
+	if (flood(buffer))
+		map_error(map);
+}
+
+void	validate_data(t_map *map)
+{
+	if (map->celling->blue > 255)
+		map_error(map);
+	if (map->celling->red > 255)
+		map_error(map);
+	if (map->celling->green > 255)
+		map_error(map);
+	if (map->celling->blue < 0)
+		map_error(map);
+	if (map->celling->red < 0)
+		map_error(map);
+	if (map->celling->green < 0)
+		map_error(map);
 }

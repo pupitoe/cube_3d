@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                                            */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   NOOT NOOT MOTHER FUCKER                      :#:  :#:         :#:  :#:   */
 /*                                                :#:  :#::#     #::#:  :#:   */
 /*   By: an asshole who like to break thing       :#:  :#::#: # :#::#:  :#:   */
 /*                                                :##::##: :#:#:#: :##::##:   */
 /*   Created: the-day-it-was created by UwU        :####:  :##:##:  :####:    */
-/*   Updated: 2024/02/08 12:15:55 by abareux          ###   ########.fr       */
+/*   Updated: the-day-it-was updated by UwU                                   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_cub.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_parser(char *path_file, t_data *data)
-{
-	t_map		*map;
-	t_pov		*player;
+//define if not specified in the compiler command
 
-	if (check_extension(path_file))
-		return (FAIL);
-	map = load_file(path_file);
-	validate_map(map);
-	validate_data(map);
-	player = load_player(map);
-	data->map_parser = map;
-	data->player_parser = player;
-	return (SUCCESS);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
+
+# include <stdlib.h>
+# include <unistd.h>
+
+char	*get_next_line(int fd);
+char	*get_from_buffer(char buffer[BUFFER_SIZE + 1], char *result);
+
+#endif

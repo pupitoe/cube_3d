@@ -13,6 +13,12 @@
 #ifndef FT_CUB_H
 # define FT_CUB_H
 
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <stddef.h>
+
+# include "get_next_line.h"
 # include "libft.h"
 # include "MLX42/MLX42.h"
 # include "ft_data.h"
