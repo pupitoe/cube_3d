@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dda.h                                           :+:      :+:    :+:   */
+/*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 13:23:52 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/06 16:43:53 by tlassere         ###   ########.fr       */
+/*   Created: 2024/04/07 22:18:29 by tlassere          #+#    #+#             */
+/*   Updated: 2024/04/07 22:18:48 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DDA_H
-# define FT_DDA_H
+#include "ft_cub.h"
 
-# define DISTANCE_RAY_VIEW 20
-
-typedef struct s_ray_data
+void	ft_print_hook(void *vdata)
 {
-	t_fvec	start;
-	t_fvec	end;
-	t_fvec	norm;
-	t_fvec	step_size;
-	t_ivec	step_unit;
-	t_fvec	length;
-	t_ivec	map_checker;
-}t_ray_data;
+	t_data	*data;
 
-typedef struct s_collide_data
-{
-	t_fvec	len;
-	float	dist;
-	int		checker;
-}t_collide_data;
-
-
-t_collide_data	ft_dda(t_data *data, t_fvec ray_start, float rotat);
-
-#endif
+	data = vdata;
+	data->time.time_passed += data->mlx->delta_time;
+	if (data->time.time_passed >= data->time.framerate)
+	{
+		ft_print_map(data);
+		ft_print_many_ray(data);
+		data->time.time_passed -= data->time.framerate;
+	}
+	ft_print_game(data);
+}

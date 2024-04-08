@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/04 22:11:05 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/07 22:04:56 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,22 @@ struct s_img
 	mlx_image_t	*map;
 	mlx_image_t	*player;
 	mlx_image_t	*ray;
+	mlx_image_t	*game;
 };
 
 struct s_texture
 {
 	mlx_texture_t	*icon;
+	int				floor_rgba;
+	int				ceiling_rgba;
 };
+
+struct s_middle
+{
+	t_ivec	screen;
+	int		player_size;
+};
+
 
 typedef struct s_data
 {
@@ -59,6 +69,7 @@ typedef struct s_data
 	mlx_t				*mlx;
 	struct s_texture	texture;
 	struct s_img		img;
+	struct s_middle		middle;
 }t_data;
 
 #endif

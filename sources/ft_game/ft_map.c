@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 22:22:58 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/07 22:18:53 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_put_block(mlx_image_t *img, t_vec pos, t_vec size, int color)
 }
 
 // TODO check if devisor is 0 (segfault belike)
-static void	ft_print_map(t_data *data)
+void	ft_print_map(t_data *data)
 {
 	unsigned int	i;
 	unsigned int	size_y;
@@ -52,19 +52,4 @@ static void	ft_print_map(t_data *data)
 	}
 	data->img.player->instances[0].x = data->player.x * MAP_SIZE_OBJECT / SCALE;
 	data->img.player->instances[0].y = data->player.y * MAP_SIZE_OBJECT / SCALE;
-}
-
-void	ft_print_map_hook(void *vdata)
-{
-	t_data	*data;
-
-	data = vdata;
-	data->time.time_passed += data->mlx->delta_time;
-	if (data->time.time_passed >= data->time.framerate)
-	{
-		ft_print_map(data);
-		ft_print_many_ray(data);
-		ft_print_wall(data);
-		data->time.time_passed -= data->time.framerate;
-	}
 }

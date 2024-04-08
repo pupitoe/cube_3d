@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:14:00 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 14:47:31 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/07 22:21:06 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,16 @@ void	ft_print_many_ray(t_data *data)
 {
 	int		ray_number;
 	float	rad;
+	float	fov_tmp;
+	int		i;
 
 	ray_number = COUNT_RAY_MAP;
 	rad = FOV / COUNT_RAY_MAP;
-	while (ray_number)
+	fov_tmp = FOV / 2.0f;
+	i = 0;
+	while (i < ray_number)
 	{
-		ft_print_ray(data, (float)ray_number * rad);
-		ft_print_ray(data, -((float)ray_number * rad));
-		ray_number--;
+		ft_print_ray(data, (float)i * rad - fov_tmp);
+		i++;
 	}
-	ft_print_ray(data, 0);
 }
