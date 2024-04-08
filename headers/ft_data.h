@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/08 20:30:12 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/08 20:34:09 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ struct s_img
 struct s_texture
 {
 	mlx_texture_t	*icon;
+	mlx_image_t		*north_image;
+	mlx_image_t		*south_image;
+	mlx_image_t		*west_image;
+	mlx_image_t		*east_image;
 	int				floor_rgba;
 	int				ceiling_rgba;
 };
@@ -75,10 +79,6 @@ typedef struct s_map {
 	char		*south_texture;
 	char		*west_texture;
 	char		*east_texture;
-	mlx_image_t	*north_image;
-	mlx_image_t	*south_image;
-	mlx_image_t	*west_image;
-	mlx_image_t	*east_image;
 	t_rgb		*floor;
 	t_rgb		*celling;
 	char		*map;
