@@ -6,14 +6,12 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:51:44 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/25 21:56:24 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/08 19:26:01 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PARSER_H
 # define FT_PARSER_H
-
-# define EOF_MAP 256
 
 # define LEFT 1
 # define RIGHT 2
