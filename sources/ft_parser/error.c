@@ -12,7 +12,7 @@
 
 #include <ft_cub.h>
 
-void	map_error(t_map *map)
+int	map_error(t_map *map, char *reason)
 {
 	if (map->north_texture > (char *) 1)
 		free(map->north_texture);
@@ -29,10 +29,11 @@ void	map_error(t_map *map)
 	if (map->map > (char *) 1)
 		free(map->map);
 	write(1, "Error\n", 6);
-	exit(1);
+	write(1, reason, ft_strlen(reason));
+	return (FAIL);
 }
 
-void	malloc_error(t_map *map)
+int	malloc_error(t_map *map)
 {
 	if (map)
 	{
@@ -46,5 +47,5 @@ void	malloc_error(t_map *map)
 	}
 	write(1, "Error\n", 6);
 	write(1, "a malloc f*** up\n", 18);
-	exit(1);
+	return (FAIL);
 }

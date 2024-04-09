@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_parser/cube3D.h"
+#include <ft_cub.h>
 
 int	image_not_open(t_map *map)
 {
@@ -58,6 +58,7 @@ int	open_image(t_map *map, mlx_t *mlx)
 	return (1);
 }
 
+/*
 void	load_image(t_data *data, t_map *map)
 {
 	mlx_image_t	*img;
@@ -76,3 +77,4 @@ void	load_image(t_data *data, t_map *map)
 		map_error(map);
 	}
 }
+*/

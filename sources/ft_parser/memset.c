@@ -12,19 +12,6 @@
 
 #include <ft_cub.h>
 
-void	*ft_memset(void *s, int c, size_t n)
-{
-	unsigned int	cursor;
-
-	cursor = 0;
-	while (cursor < n)
-	{
-		*((unsigned char *) s + cursor) = c;
-		cursor++;
-	}
-	return (s);
-}
-
 void	*ft_intset(void *s, int c, size_t n)
 {
 	size_t	cursor;

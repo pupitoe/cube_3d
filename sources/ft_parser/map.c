@@ -42,16 +42,17 @@ int	is_valid(char *line)
 	return (1);
 }
 
-void	add_line_map(char *line, t_map *map)
+int	add_line_map(char *line, t_map *map)
 {
 	if (!is_valid(line))
-		map_error(map);
+		return (FAIL);
 	if (!map->map)
 		map->map = ft_strdup(line);
 	else
 		map->map = ft_strjoin_parser(map->map, line, LEFT);
 	if (!map->map)
-		malloc_error(map);
+		return (FAIL);
+	return (SUCCESS);
 }
 
 char	get_cell(char *map, int x, int y)

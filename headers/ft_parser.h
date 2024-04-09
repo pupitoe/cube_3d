@@ -39,15 +39,15 @@ int		is_celling(char *line, t_map *map);
 void	set_celling(char *line, t_map *map);
 
 int		is_map(t_map *map);
-void	add_line_map(char *line, t_map *map);
+int		add_line_map(char *line, t_map *map);
 char	get_cell(char *map, int x, int y);
 int		is_leak(char *map, t_point pos, int buffer, int i);
 
-void	map_error(t_map *map);
-void	malloc_error(t_map *map);
+int		map_error(t_map *map, char *reason);
+int		malloc_error(t_map *map);
 
-void	validate_map(t_map *map);
-void	validate_data(t_map *map);
+int		validate_map(t_map *map);
+int		validate_data(t_map *map);
 
 int		flood(char *map);
 
@@ -63,7 +63,6 @@ char	*ft_strdup_parser(char *s);
 
 char	*ft_strjoin_parser(char *string_a, char *string_b, int mode);
 
-void	*ft_memset(void *s, int c, size_t n);
 void	*ft_intset(void *s, int c, size_t n);
 
 int		ft_atoi(const char *nptr);

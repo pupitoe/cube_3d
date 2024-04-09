@@ -1,5 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abareux <abareux@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/09 08:32:26 by abareux           #+#    #+#             */
+/*   Updated: 2024/04/09 08:32:26 by abareux          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                                            */
 /*   load.c                                             :+:      :+:    :+:   */
 /*                                                :#:  :#::#     #::#:  :#:   */
@@ -21,7 +33,7 @@ int	is_player(char map)
 }
 
 static
-void	parse_line(char *line, t_map *map)
+int	parse_line(char *line, t_map *map)
 {
 	if (is_texture(line, map))
 		set_texture(line, map);
@@ -30,9 +42,10 @@ void	parse_line(char *line, t_map *map)
 	else if (is_celling(line, map))
 		set_celling(line, map);
 	else if (is_map(map))
-		add_line_map(line, map);
+		return (add_line_map(line, map));
 	else
-		map_error(map);
+		return (FAIL);
+	return (SUCCESS);
 }
 
 static
@@ -59,12 +72,12 @@ t_map	*load_file(char *location)
 	init_map(map);
 	fd = open(location, O_RDONLY);
 	if (fd == -1)
-		map_error(map);
+		return (map_error(map, "Can't open file"), NULL);
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (*line != '\n')
-			parse_line(line, map);
+		if (*line != '\n' && parse_line(line, map) == FAIL)
+			return (map_error(map, "Error while parsing"), NULL);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -90,7 +103,7 @@ t_pov	*load_player(t_map *map)
 		position_x++;
 	}
 	if (!is_player(map->map[iteration]))
-		map_error(map);
+		return (map_error(map, "No player found"), NULL);
 	player = malloc(sizeof(t_pov));
 	if (!player)
 		malloc_error(map);

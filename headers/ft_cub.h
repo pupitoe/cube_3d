@@ -29,4 +29,9 @@
 # include "ft_dda.h"
 # include <math.h>
 
+# define HEIGHT 1080
+# define WIDTH 1920
+
+static const int	g_pxl = HEIGHT * WIDTH;
+
 #endif
