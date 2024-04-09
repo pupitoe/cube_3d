@@ -12,6 +12,7 @@
 
 #include <ft_cub.h>
 
+/*
 int	image_not_open(t_map *map)
 {
 	if (!map->north_image)
@@ -58,7 +59,6 @@ int	open_image(t_map *map, mlx_t *mlx)
 	return (1);
 }
 
-/*
 void	load_image(t_data *data, t_map *map)
 {
 	mlx_image_t	*img;
