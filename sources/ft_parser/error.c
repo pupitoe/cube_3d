@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
-/*                                                :#:  :#::#     #::#:  :#:   */
-/*   By: an asshole who like to break thing       :#:  :#::#: # :#::#:  :#:   */
-/*                                                :##::##: :#:#:#: :##::##:   */
-/*   Created: the-day-it-was created by UwU        :####:  :##:##:  :####:    */
-/*   Updated: 2023/12/07 12:07:37 by abareux          ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/08 20:11:10 by tlassere          #+#    #+#             */
+/*   Updated: 2024/04/08 20:11:12 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	map_error(t_map *map, char *reason)
 		free(map->celling);
 	if (map->map > (char *) 1)
 		free(map->map);
+	free(map);
 	write(1, "Error\n", 6);
 	write(1, reason, ft_strlen(reason));
 	return (FAIL);
@@ -35,16 +36,7 @@ int	map_error(t_map *map, char *reason)
 
 int	malloc_error(t_map *map)
 {
-	if (map)
-	{
-		free(map->north_texture);
-		free(map->south_texture);
-		free(map->west_texture);
-		free(map->east_texture);
-		free(map->floor);
-		free(map->celling);
-		free(map->map);
-	}
+	purge_map(map);
 	write(1, "Error\n", 6);
 	write(1, "a malloc f*** up\n", 18);
 	return (FAIL);

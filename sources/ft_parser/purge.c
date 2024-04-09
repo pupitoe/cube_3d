@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   purge.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abareux <abareux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 20:09:25 by abareux           #+#    #+#             */
-/*   Updated: 2024/02/04 20:17:38 by abareux          ###   ########.fr       */
+/*   Updated: 2024/04/08 21:06:42 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	purge_map(t_map *map)
 {
-	free(map->north_texture);
-	free(map->south_texture);
-	free(map->east_texture);
-	free(map->west_texture);
-	free(map->celling);
-	free(map->floor);
-	free(map->map);
-	free(map);
+	if (map)
+	{
+		free(map->north_texture);
+		free(map->south_texture);
+		free(map->east_texture);
+		free(map->west_texture);
+		free(map->celling);
+		free(map->floor);
+		free(map->map);
+		free(map);
+	}
 }

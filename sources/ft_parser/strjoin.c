@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   strjoin.c                                          :+:      :+:    :+:   */
-/*                                                :#:  :#::#     #::#:  :#:   */
-/*   By: an asshole who like to break thing       :#:  :#::#: # :#::#:  :#:   */
-/*                                                :##::##: :#:#:#: :##::##:   */
-/*   Created: the-day-it-was created by UwU        :####:  :##:##:  :####:    */
-/*   Updated: 2023/12/07 12:53:38 by abareux          ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/08 20:12:30 by tlassere          #+#    #+#             */
+/*   Updated: 2024/04/08 22:36:13 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_cub.h>
+
+// TODO: fix leak if malloc of result fail string_a is not freed
 
 char	*ft_strjoin_parser(char *string_a, char *string_b, int mode)
 {
