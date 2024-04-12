@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 08:32:26 by abareux           #+#    #+#             */
-/*   Updated: 2024/04/12 16:31:30 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 19:13:21 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	init_map(t_map *map)
 	map->map = NULL;
 }
 
+// TODO: Fix leaks FD and line, in line 18 because of return 
 t_map	*load_file(char *location)
 {
 	int		fd;
@@ -60,12 +61,12 @@ t_map	*load_file(char *location)
 	init_map(map);
 	fd = open(location, O_RDONLY);
 	if (fd == -1)
-		return (map_error(map, "Can't open file"), NULL);
+		return (map_error(map, "Can't open file\n"), NULL);
 	line = get_next_line(fd);
 	while (line)
 	{
 		if (*line != '\n' && parse_line(line, map) == FAIL)
-			return (map_error(map, "Error while parsing"), NULL);
+			return (map_error(map, "Error while parsing\n"), NULL);
 		free(line);
 		line = get_next_line(fd);
 	}

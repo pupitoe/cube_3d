@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:51:44 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/08 20:16:41 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 19:20:26 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,9 @@ void	set_angle(t_pov *player, char angle);
 
 void	purge_map(t_map *map);
 
-int		get_rgba(t_rgb *rgb);
-
 int		convert(t_data *data);
 
-char	*ft_strdup_parser(char *s);
-
 char	*ft_strjoin_parser(char *string_a, char *string_b, int mode);
-
-void	*ft_intset(void *s, int c, size_t n);
 
 int		ft_atoi(const char *nptr);
 
