@@ -3,8 +3,8 @@ SO ./asset/debug.png
 WE ./asset/debug.png
 EA ./asset/debug.png
 
-F 0, 0, 0
-C 0, 0, 100
+F 0, 255, 0 
+C 255, 255, 0
 
 
 111111111111111111

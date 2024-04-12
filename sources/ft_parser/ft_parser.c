@@ -6,11 +6,30 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:37 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 21:35:50 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 22:20:22 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_cub.h>
+
+static int	ft_get_rgba(int r, int g, int b, int a)
+{
+	return (r << 24 | g << 16 | b << 8 | a);
+}
+
+static void	ft_set_data(t_data *data, t_pov *player, t_map *map)
+{
+	data->map_parser = map;
+	data->player.x = player->position_x * SCALE;
+	data->player.y = player->position_y * SCALE;
+	data->player.rotat = player->angle;
+	data->texture.floor_rgba = ft_get_rgba(map->floor->red,
+		map->floor->green, map->floor->blue, 255);
+	printf("%d\n", map->celling->blue);
+	printf("%d\n", map->floor->blue);
+	data->texture.ceiling_rgba = ft_get_rgba(map->celling->red,
+		map->celling->green, map->celling->blue, 255);
+}
 
 int	ft_parser(char *path_file, t_data *data)
 {
@@ -32,10 +51,7 @@ int	ft_parser(char *path_file, t_data *data)
 	player = load_player(map);
 	if (!player)
 		return (MALLOC_FAIL);
-	data->map_parser = map;
-	data->player.x = player->position_x * SCALE;
-	data->player.y = player->position_y * SCALE;
-	data->player.rotat = player->angle;
+	ft_set_data(data, player, map);
 	free(player);
 	return (convert(data));
 }

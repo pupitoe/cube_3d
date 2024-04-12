@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:26 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/08 20:11:28 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 22:28:12 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	set_floor(char *line, t_map *map)
 	result->red = ft_atoi(line + 2);
 	while (*line != ',' && *line)
 		line++;
-	result->green = ft_atoi(line++);
+	result->green = ft_atoi(++line);
 	while (*line != ',' && *line)
 		line++;
-	result->blue = ft_atoi(line);
+	result->blue = ft_atoi(++line);
 	map->floor = result;
 }
