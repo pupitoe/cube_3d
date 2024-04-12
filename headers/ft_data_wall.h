@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cub.h                                           :+:      :+:    :+:   */
+/*   ft_data_wall.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 15:01:29 by tlassere         ###   ########.fr       */
+/*   Created: 2024/04/12 14:49:51 by tlassere          #+#    #+#             */
+/*   Updated: 2024/04/12 15:03:13 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CUB_H
-# define FT_CUB_H
+#ifndef FT_DATA_WALL_H
+# define FT_DATA_WALL_H
 
-# include "libft.h"
-# include "MLX42/MLX42.h"
-# include "ft_data.h"
-# include "ft_parser.h"
-# include "ft_game.h"
-# include "ft_math.h"
-# include "ft_move.h"
-# include "ft_color.h"
-# include "ft_dda.h"
-# include "ft_data_wall.h"
-# include <math.h>
+typedef struct s_data_wall
+{
+	int				height;
+	int				width;
+	int				start;
+	t_collide_data	collide;
+}t_data_wall;
 
 #endif

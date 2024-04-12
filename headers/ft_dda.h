@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:23:52 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/06 16:43:53 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 15:05:49 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_collide_data
 	float	dist;
 	int		checker;
 }t_collide_data;
-
 
 t_collide_data	ft_dda(t_data *data, t_fvec ray_start, float rotat);
 

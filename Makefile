@@ -22,7 +22,7 @@ SOURCES			::= $(foreach buffer, $(SOURCES_CONTENT), sources/$(buffer).c)
 OBJECTS			::= $(SOURCES:.c=.o)
 HEADER			::= headers
 T_HEADER_FILES	::= ft_cub ft_data ft_game ft_move ft_parser ft_math ft_color \
-					ft_dda
+					ft_dda ft_data_wall
 HEADER_FILES	::= $(foreach buffer, $(T_HEADER_FILES), $(HEADER)/$(buffer).h)
 LIBMLX			::= ./MLX42
 LIBFT_DIR		::= libft
