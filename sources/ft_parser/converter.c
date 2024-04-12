@@ -6,20 +6,21 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:37 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/08 20:11:39 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 15:50:43 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_cub.h>
 
-int find_width(char *map)
+int	find_width(char *map)
 {
-	int width_max;
-	int width;
+	int	width_max;
+	int	width;
 
 	width_max = 0;
 	width = 0;
-	while (*map) {
+	while (*map)
+	{
 		if (*map == '\n' && width > width_max)
 			width_max = width;
 		if (*map == '\n')
@@ -33,9 +34,9 @@ int find_width(char *map)
 	return (width_max);
 }
 
-int find_height(char *map)
+int	find_height(char *map)
 {
-	int height;
+	int	height;
 
 	height = 0;
 	while (*map)
@@ -49,9 +50,9 @@ int find_height(char *map)
 	return (height);
 }
 
-int clear_map(int **map, size_t line_to_clear)
+int	clear_map(int **map, size_t line_to_clear)
 {
-	size_t line_cleared;
+	size_t	line_cleared;
 
 	line_cleared = 0;
 	while (line_cleared < line_to_clear)
@@ -83,19 +84,16 @@ void	copy_line(t_data *data, size_t line)
 	while (cursor < data->map_size.x && src[cursor] != '\n')
 	{
 		if (src[cursor] == ' ')
-			dst[line - 1][cursor] = 0;
+			dst[line][cursor] = 0;
 		else
-			dst[line - 1][cursor] = (int) src[cursor] - '0';
+			dst[line][cursor] = (int) src[cursor] - '0';
 		cursor++;
 	}
 	while (cursor < data->map_size.x)
-	{
-		dst[line - 1][cursor] = 0;
-		cursor++;
-	}
+		dst[line][cursor++] = 0;
 }
 
-int convert(t_data *data)
+int	convert(t_data *data)
 {
 	size_t	line;
 
@@ -110,7 +108,7 @@ int convert(t_data *data)
 		data->map[line] = malloc(data->map_size.x * sizeof(int));
 		if (!data->map[line])
 			return (clear_map(data->map, line + 1));
-		copy_line(data, line + 1);
+		copy_line(data, line);
 		line++;
 	}
 	return (SUCCESS);
