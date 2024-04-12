@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:37 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 15:50:43 by abareux          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:15:17 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	convert(t_data *data)
 
 	data->map_size.y = find_height(data->map_parser->map);
 	data->map_size.x = find_width(data->map_parser->map);
-	data->map = malloc(data->map_size.y * sizeof(int));
+	data->map = malloc(data->map_size.y * sizeof(int *));
 	if (!data->map)
 		return (MALLOC_FAIL);
 	line = 0;
