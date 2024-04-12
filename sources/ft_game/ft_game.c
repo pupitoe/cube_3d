@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/08 22:22:07 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:37:36 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_set_icon(t_data *data)
 	int	status;
 
 	status = FAIL;
-	data->texture.icon = mlx_load_png("./asset/icon.png");
+	data->texture.icon = mlx_load_png("./asset/debug.png");
 	if (data->texture.icon)
 	{
 		status = SUCCESS;
