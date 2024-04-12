@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 08:32:26 by abareux           #+#    #+#             */
-/*   Updated: 2024/04/12 19:13:21 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 20:32:03 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static
 int	is_player(char map)
 {
-	if (map == 'N' || map == 'S' || map == 'E' || map == 'O')
+	if (map == 'N' || map == 'S' || map == 'E' || map == 'W')
 		return (1);
 	return (0);
 }

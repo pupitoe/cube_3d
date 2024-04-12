@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:12:02 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/08 20:12:03 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 20:32:21 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	is_valid(char *line)
 	while (*line)
 	{
 		if (*line != '1' && *line != '0' && *line != ' ' && *line != '\n' && \
-			*line != 'N' && *line != 'S' && *line != 'E' && *line != 'O')
+			*line != 'N' && *line != 'S' && *line != 'E' && *line != 'W')
 			return (0);
 		line++;
 	}

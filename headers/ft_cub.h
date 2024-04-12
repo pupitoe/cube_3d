@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/02 13:24:39 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 20:45:34 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stddef.h>
+# include <math.h>
 
 # include "libft.h"
 # include "MLX42/MLX42.h"
@@ -27,11 +28,8 @@
 # include "ft_move.h"
 # include "ft_color.h"
 # include "ft_dda.h"
-# include <math.h>
 
 # define HEIGHT 1080
 # define WIDTH 1920
-
-static const int	g_pxl = HEIGHT * WIDTH;
 
 #endif
