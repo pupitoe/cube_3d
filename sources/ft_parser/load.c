@@ -6,7 +6,7 @@
 /*   By: abareux <abareux@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 08:32:26 by abareux           #+#    #+#             */
-/*   Updated: 2024/04/09 08:32:26 by abareux          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:30:34 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_map	*load_file(char *location)
 
 	map = malloc(sizeof(t_map));
 	if (!map)
-		malloc_error(map);
+		return (malloc_error(map));
 	init_map(map);
 	fd = open(location, O_RDONLY);
 	if (fd == -1)
