@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:37 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 16:23:47 by abareux          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:26:54 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ int	ft_parser(char *path_file, t_data *data)
 		return (map_error(map, "Invalid map"));
 	validate_data(map);
 	player = load_player(map);
+	if (!player)
+		return (MALLOC_FAIL);
 	data->map_parser = map;
 	data->player.x = player->position_x * SCALE;
 	data->player.y = player->position_y * SCALE;
 	data->player.rotat = player->angle;
-	data->player_parser = player;
+	free(player);
 	return (convert(data));
 }
