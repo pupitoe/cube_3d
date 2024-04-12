@@ -6,11 +6,29 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/07 22:20:40 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/11 14:34:20by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+
+void	ft_print_line_screen(t_data *data, int height, int start, int size, t_collide_data collide)
+{
+	//height = data->mlx->height;
+	if (height < data->mlx->height)
+	{
+		if ((int)(collide.len.x * SCALE) % SCALE == 0)
+		{
+			ft_put_block(data->img.game, (t_vec){start, data->middle.screen.y
+				- height / 2, 0}, (t_vec){size, height, 0}, BLACK);
+		}
+		else 
+		{
+			ft_put_block(data->img.game, (t_vec){start, data->middle.screen.y
+				- height / 2, 0}, (t_vec){size, height, 0}, RED);
+		}
+	}
+}
 
 static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
 {
@@ -21,11 +39,14 @@ static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
 				+ data->middle.player_size) / SCALE, (float)(data->player.y
 				+ data->middle.player_size) / SCALE},
 			data->player.rotat + rotat);
-	height_dist = (float)(data->mlx->height) / (collide.dist + 0.5f);
+	height_dist = 0;
 	if (collide.checker)
 	{
-		ft_put_block(data->img.game, (t_vec){ray_start, data->middle.screen.y
-			- height_dist / 2, 0}, (t_vec){size, height_dist, 0}, RED);
+		height_dist = (float)(data->mlx->height) / ((collide.dist) * cos(rotat * PI180));
+		printf("toma: %d\n", height_dist);
+		printf("collide: %f\n", collide.dist);
+		ft_print_line_screen(data, height_dist, ray_start, size, collide);
+		mlx_put_pixel(data->img.map, (collide.len.x * SCALE) * MAP_SIZE_OBJECT / SCALE, (collide.len.y * SCALE) * MAP_SIZE_OBJECT / SCALE, PINK);
 	}
 }
 
