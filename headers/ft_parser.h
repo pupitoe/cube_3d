@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:51:44 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 19:20:26 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 19:23:15 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 int		ft_parser(char *path_file, t_data *data);
 void	ft_map_free(int ***map, int heigth);
-int		**ft_map_dup(int **map, t_vec size);
 
 int		check_extension(char *location);
 
