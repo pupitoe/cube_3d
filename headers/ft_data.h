@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/08 20:34:09 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:33:20 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ typedef struct s_pov {
 	double	position_x;
 	double	position_y;
 	int		angle;
-	mlx_t	*mlx;
 }	t_pov;
 
 

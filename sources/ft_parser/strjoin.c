@@ -6,13 +6,11 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:12:30 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/08 22:36:13 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:43:59 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_cub.h>
-
-// TODO: fix leak if malloc of result fail string_a is not freed
 
 char	*ft_strjoin_parser(char *string_a, char *string_b, int mode)
 {
@@ -23,14 +21,15 @@ char	*ft_strjoin_parser(char *string_a, char *string_b, int mode)
 	cursor = 0;
 	cursor_string = 0;
 	result = malloc(ft_strlen(string_a) + ft_strlen(string_b) + 1);
-	if (!result)
-		return (NULL);
-	while (*(string_a + cursor_string))
-		*(result + cursor++) = *(string_a + cursor_string++);
-	cursor_string = 0;
-	while (*(string_b + cursor_string))
-		*(result + cursor++) = *(string_b + cursor_string++);
-	*(result + cursor) = 0;
+	if (result)
+	{
+		while (*(string_a + cursor_string))
+			*(result + cursor++) = *(string_a + cursor_string++);
+		cursor_string = 0;
+		while (*(string_b + cursor_string))
+			*(result + cursor++) = *(string_b + cursor_string++);
+		*(result + cursor) = 0;
+	}
 	if (mode == LEFT || mode == BOTH)
 		free(string_a);
 	if (mode == RIGHT || mode == BOTH)
