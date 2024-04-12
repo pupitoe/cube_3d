@@ -57,6 +57,8 @@ void	purge_map(t_map *map);
 
 int		get_rgba(t_rgb *rgb);
 
+int		convert(t_data *data);
+
 char	*ft_strdup_parser(char *s);
 
 char	*ft_strjoin_parser(char *string_a, char *string_b, int mode);
