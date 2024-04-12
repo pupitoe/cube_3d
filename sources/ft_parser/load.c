@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 08:32:26 by abareux           #+#    #+#             */
-/*   Updated: 2024/04/12 20:32:03 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 21:37:04 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ t_pov	*load_player(t_map *map)
 	iteration = 0;
 	while (!is_player(map->map[iteration]) && map->map[iteration])
 	{
-		if (map->map[iteration++] == '\n')
-		{
+		if (map->map[iteration] == '\n')
 			position_x = 0;
+		if (map->map[iteration++] == '\n')
 			position_y++;
-		}
-		position_x++;
+		else
+			position_x++;
 	}
 	if (!is_player(map->map[iteration]))
 		return (map_error(map, "No player found"), NULL);
