@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 NAME			::= cub3D
-T_FT_PARSER		::=	ft_map ft_parser celling check_extension error flood floor \
-					load map purge set_angle strdup strjoin \
+T_FT_PARSER		::=	ft_map_free ft_parser celling check_extension error flood floor \
+					load map purge set_angle strdup_parser strjoin_parser \
 					texture utils validate converter
 FT_PARSER		::= $(foreach buffer, $(T_FT_PARSER), ft_parser/$(buffer))
 T_FT_GAME		::= ft_game	ft_map ft_move ft_move_hook ft_images ft_ray \
