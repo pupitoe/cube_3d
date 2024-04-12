@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abareux <abareux@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 08:32:26 by abareux           #+#    #+#             */
-/*   Updated: 2024/04/12 16:30:34 by abareux          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:31:30 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_map	*load_file(char *location)
 
 	map = malloc(sizeof(t_map));
 	if (!map)
-		return (malloc_error(map));
+		return (malloc_error(map), NULL);
 	init_map(map);
 	fd = open(location, O_RDONLY);
 	if (fd == -1)
