@@ -31,6 +31,8 @@ int	ft_parser(char *path_file, t_data *data)
 	validate_data(map);
 	player = load_player(map);
 	data->map_parser = map;
-	data->player_parser = player;
-	return (SUCCESS);
+	data->player.x = player->position_x * SCALE;
+	data->player.y = player->position_y * SCALE;
+	data->player.rotat = player->angle;
+	return (convert(data));
 }

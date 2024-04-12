@@ -13,7 +13,7 @@
 NAME			::= cub3D
 T_FT_PARSER		::=	ft_map ft_parser celling check_extension error flood floor \
 					get_rgba load map memset purge set_angle strdup strjoin \
-					texture utils validate
+					texture utils validate converter
 FT_PARSER		::= $(foreach buffer, $(T_FT_PARSER), ft_parser/$(buffer))
 T_FT_GAME		::= ft_game	ft_map ft_move ft_move_hook ft_images ft_ray \
 					ft_collision ft_dda ft_math ft_map_wall ft_game_print \
