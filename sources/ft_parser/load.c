@@ -66,7 +66,7 @@ t_map	*load_file(char *location)
 	while (line)
 	{
 		if (*line != '\n' && parse_line(line, map) == FAIL)
-			return (map_error(map, "Error while parsing\n"), NULL);
+			return (map_error(map, "Error while parsing\n"), close(fd), NULL);
 		free(line);
 		line = get_next_line(fd);
 	}
