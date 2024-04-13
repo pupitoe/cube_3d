@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 15:12:29 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/13 21:58:07 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 void	ft_print_line_screen(t_data *data, t_data_wall wall)
 {
+	int	color;
+
+	color = GREEN;
+	if (wall.collide.wall_dir == W_NORTH)
+		color = BLACK;
+	else if (wall.collide.wall_dir == W_SOUTH)
+		color = RED;
+	else if (wall.collide.wall_dir == W_EAST)
+		color = PINK;
+	else if (wall.collide.wall_dir == W_WEST)
+		color = WHITE;
 	if (wall.height < data->mlx->height)
 	{
-		if ((int)(wall.collide.len.x * SCALE) % SCALE == 0)
-		{
-			ft_put_block(data->img.game, (t_vec){wall.start,
-				data->middle.screen.y - wall.height / 2, 0},
-				(t_vec){wall.width, wall.height, 0}, BLACK);
-		}
-		else
-		{
-			ft_put_block(data->img.game, (t_vec){wall.start,
-				data->middle.screen.y - wall.height / 2, 0},
-				(t_vec){wall.width, wall.height, 0}, WHITE);
-		}
+		ft_put_block(data->img.game, (t_vec){wall.start,
+			data->middle.screen.y - wall.height / 2, 0},
+			(t_vec){wall.width, wall.height, 0}, color);
 	}
 }
 
