@@ -58,6 +58,8 @@ int		convert(t_data *data);
 
 char	*ft_strjoin_parser(char *string_a, char *string_b, int mode);
 
+char	*ft_strdup_parser(char *s);
+
 int		ft_atoi(const char *nptr);
 
 #endif

@@ -31,25 +31,25 @@ void	set_texture(char *line, t_map *map)
 {
 	if (*(line + 0) == 'N' && *(line + 1) == 'O' && *(line + 2) == ' ')
 	{
-		map->north_texture = ft_strdup(line + 3);
+		map->north_texture = ft_strdup_parser(line + 3);
 		if (map->north_texture > (char *) 1)
 			map->north_texture[ft_strlen(map->north_texture) - 1] = 0;
 	}
 	if (*(line + 0) == 'S' && *(line + 1) == 'O' && *(line + 2) == ' ')
 	{
-		map->south_texture = ft_strdup(line + 3);
+		map->south_texture = ft_strdup_parser(line + 3);
 		if (map->south_texture > (char *) 1)
 			map->south_texture[ft_strlen(map->south_texture) - 1] = 0;
 	}
 	if (*(line + 0) == 'W' && *(line + 1) == 'E' && *(line + 2) == ' ')
 	{
-		map->west_texture = ft_strdup(line + 3);
+		map->west_texture = ft_strdup_parser(line + 3);
 		if (map->west_texture > (char *) 1)
 			map->west_texture[ft_strlen(map->west_texture) - 1] = 0;
 	}
 	if (*(line + 0) == 'E' && *(line + 1) == 'A' && *(line + 2) == ' ')
 	{
-		map->east_texture = ft_strdup(line + 3);
+		map->east_texture = ft_strdup_parser(line + 3);
 		if (map->east_texture > (char *) 1)
 			map->east_texture[ft_strlen(map->east_texture) - 1] = 0;
 	}

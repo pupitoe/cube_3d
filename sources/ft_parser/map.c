@@ -47,7 +47,7 @@ int	add_line_map(char *line, t_map *map)
 	if (!is_valid(line))
 		return (FAIL);
 	if (!map->map)
-		map->map = ft_strdup(line);
+		map->map = ft_strdup_parser(line);
 	else
 		map->map = ft_strjoin_parser(map->map, line, LEFT);
 	if (!map->map)
