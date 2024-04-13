@@ -95,7 +95,7 @@ t_pov	*load_player(t_map *map)
 		return (map_error(map, "No player found"), NULL);
 	player = malloc(sizeof(t_pov));
 	if (!player)
-		malloc_error(map);
+		return (malloc_error(map), NULL);
 	player->position_x = position_x;
 	player->position_y = position_y;
 	set_angle(player, map->map[iteration]);
