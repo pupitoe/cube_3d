@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/13 21:58:07 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/14 23:40:30 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ void	ft_print_line_screen(t_data *data, t_data_wall wall)
 		color = PINK;
 	else if (wall.collide.wall_dir == W_WEST)
 		color = WHITE;
-	if (wall.height < data->mlx->height)
-	{
-		ft_put_block(data->img.game, (t_vec){wall.start,
-			data->middle.screen.y - wall.height / 2, 0},
-			(t_vec){wall.width, wall.height, 0}, color);
-	}
+	if (wall.height > data->mlx->height)
+		wall.height = data->mlx->height;
+	ft_put_block(data->img.game, (t_vec){wall.start,
+		data->middle.screen.y - wall.height / 2, 0},
+		(t_vec){wall.width, wall.height, 0}, color);
 }
 
 static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
