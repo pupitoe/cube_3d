@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 16:33:20 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:20:33 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ typedef struct s_pov {
 typedef struct s_data
 {
 	t_map				*map_parser;
-	t_pov				*player_parser;
 	t_vec				player;
 	int					**map;
 	t_vec				map_size;
