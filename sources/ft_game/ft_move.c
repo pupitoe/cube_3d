@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 23:12:53 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/02 17:30:25 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 16:46:27 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	ft_get_x(t_data *data, int x)
 	}
 	else
 	{
-		x--;
+		if (x)
+			x--;
 		while (x && ft_is_hitbox(data,
 				(t_vec){data->player.x + x, data->player.y, 0}))
 			x--;
@@ -42,7 +43,8 @@ int	ft_get_y(t_data *data, int y)
 	}
 	else
 	{
-		y--;
+		if (y)
+			y--;
 		while (y && ft_is_hitbox(data,
 				(t_vec){data->player.x, data->player.y + y, 0}))
 			y--;
