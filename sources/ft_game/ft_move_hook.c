@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:58:19 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/30 17:36:12 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/13 16:15:48 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	ft_key_hook_x(void *vdata)
 	data->img.ray->instances[0].x = data->img.player->instances[0].x;
 }
 
-// TODO uncatch KEY_Q is for test
 void	ft_key_hook_arrow(void *vdata)
 {
 	t_data	*data;
@@ -63,12 +62,6 @@ void	ft_key_hook_arrow(void *vdata)
 	{
 		if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) == 0)
 			data->player.rotat += ROT_SPEED;
-	}
-	if (mlx_is_key_down(data->mlx, MLX_KEY_Q))
-	{
-		data->player.x = 1 * SCALE;
-		data->player.y = 1 * SCALE;
-		data->player.rotat = 0.0f;
 	}
 	ft_put_block(data->img.ray, (t_vec){0, 0, 0},
 		(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, 0);
