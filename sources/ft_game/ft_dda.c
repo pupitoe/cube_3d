@@ -6,11 +6,32 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:22:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/05 22:32:05 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/13 21:58:41 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+
+static int	ft_get_wall_dir(int last_dir, t_ivec step_unit)
+{
+	int	dir;
+
+	if (last_dir == X_LAST)
+	{
+		if (step_unit.x == 1)
+			dir = W_EAST;
+		else
+			dir = W_WEST;
+	}
+	else
+	{
+		if (step_unit.y == 1)
+			dir = W_NORTH;
+		else
+			dir = W_SOUTH;
+	}
+	return (dir);
+}
 
 static void	ft_set_step(t_ray_data *ray)
 {
@@ -40,7 +61,7 @@ static void	ft_set_step(t_ray_data *ray)
 	}
 }
 
-static float	ft_collide_while(t_ray_data *ray)
+static float	ft_collide_while(t_ray_data *ray, int *buffer_dir)
 {
 	float	ray_dist;
 
@@ -50,12 +71,14 @@ static float	ft_collide_while(t_ray_data *ray)
 		ray->map_checker.x += ray->step_unit.x;
 		ray_dist = ray->length.x;
 		ray->length.x += ray->step_size.x;
+		*buffer_dir = X_LAST;
 	}
 	else
 	{
 		ray->map_checker.y += ray->step_unit.y;
 		ray_dist = ray->length.y;
 		ray->length.y += ray->step_size.y;
+		*buffer_dir = Y_LAST;
 	}
 	return (ray_dist);
 }
@@ -67,9 +90,10 @@ static t_collide_data	ft_collide(t_ray_data ray, t_data *data)
 
 	checker = false;
 	ray_content.dist = 0.0f;
+	ray_content.wall_dir = W_NO_DIR;
 	while (!checker && ray_content.dist < DISTANCE_RAY_VIEW)
 	{
-		ray_content.dist = ft_collide_while(&ray);
+		ray_content.dist = ft_collide_while(&ray, &ray_content.wall_dir);
 		if (ray.map_checker.x >= 0 && ray.map_checker.x < (int)data->map_size.x
 			&& ray.map_checker.y >= 0 && ray.map_checker.y
 			< (int)data->map_size.y)
@@ -78,6 +102,8 @@ static t_collide_data	ft_collide(t_ray_data ray, t_data *data)
 				checker = true;
 		}
 	}
+	ray_content.wall_dir = ft_get_wall_dir(ray_content.wall_dir,
+			ray.step_unit);
 	ray_content.len.x = ray_content.dist * ray.norm.x;
 	ray_content.len.y = ray_content.dist * ray.norm.y;
 	ray_content.checker = checker;

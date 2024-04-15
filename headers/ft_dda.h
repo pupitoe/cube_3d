@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:23:52 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 15:05:49 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/13 21:58:46 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FT_DDA_H
 
 # define DISTANCE_RAY_VIEW 20
+# define X_LAST 1
+# define Y_LAST 2
 
 typedef struct s_ray_data
 {
@@ -31,6 +33,7 @@ typedef struct s_collide_data
 	t_fvec	len;
 	float	dist;
 	int		checker;
+	int		wall_dir;
 }t_collide_data;
 
 t_collide_data	ft_dda(t_data *data, t_fvec ray_start, float rotat);
