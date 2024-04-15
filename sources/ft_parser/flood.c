@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:19 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 20:31:18 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:23:18 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,10 @@ int	flood(char *map)
 		}
 	}
 	if (is_player(map[iteration]))
+	{
+		map[iteration] = '2';
 		set_around(map, pos_x, pos_y);
+	}
 	else
 		return (free(map), 1);
 	return (check_map(map));

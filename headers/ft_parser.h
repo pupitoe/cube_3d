@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:51:44 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 19:23:15 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 16:59:14 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		validate_data(t_map *map);
 int		flood(char *map);
 
 int		empty(char c);
+int		check_duplicate(char *map, int cursor);
 
 void	set_angle(t_pov *player, char angle);
 
