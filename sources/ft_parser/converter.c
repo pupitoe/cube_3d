@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:37 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 16:15:17 by abareux          ###   ########.fr       */
+/*   Updated: 2024/04/15 14:36:39 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	clear_map(int **map, size_t line_to_clear)
 	return (MALLOC_FAIL);
 }
 
-void	copy_line(t_data *data, size_t line)
+void	copy_line(t_data *data, int **map, size_t line)
 {
 	char	*src;
 	int		**dst;
@@ -72,7 +72,7 @@ void	copy_line(t_data *data, size_t line)
 	size_t	line_src;
 
 	src = data->map_parser->map;
-	dst = data->map;
+	dst = map;
 	cursor = 0;
 	line_src = 0;
 	while (*src && line_src < line)
@@ -96,20 +96,22 @@ void	copy_line(t_data *data, size_t line)
 int	convert(t_data *data)
 {
 	size_t	line;
+	int		**map;
 
 	data->map_size.y = find_height(data->map_parser->map);
 	data->map_size.x = find_width(data->map_parser->map);
-	data->map = malloc(data->map_size.y * sizeof(int *));
-	if (!data->map)
+	map = malloc(data->map_size.y * sizeof(int *));
+	if (!map)
 		return (MALLOC_FAIL);
 	line = 0;
 	while (line < data->map_size.y)
 	{
-		data->map[line] = malloc(data->map_size.x * sizeof(int));
-		if (!data->map[line])
-			return (clear_map(data->map, line + 1));
-		copy_line(data, line);
+		map[line] = malloc(data->map_size.x * sizeof(int));
+		if (!map[line])
+			return (clear_map(map, line));
+		copy_line(data, map, line);
 		line++;
 	}
+	data->map = map;
 	return (SUCCESS);
 }
