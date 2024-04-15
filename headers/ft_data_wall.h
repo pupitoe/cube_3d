@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dda.h                                           :+:      :+:    :+:   */
+/*   ft_data_wall.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 13:23:52 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 15:05:49 by tlassere         ###   ########.fr       */
+/*   Created: 2024/04/12 14:49:51 by tlassere          #+#    #+#             */
+/*   Updated: 2024/04/12 15:03:13 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DDA_H
-# define FT_DDA_H
+#ifndef FT_DATA_WALL_H
+# define FT_DATA_WALL_H
 
-# define DISTANCE_RAY_VIEW 20
-
-typedef struct s_ray_data
+typedef struct s_data_wall
 {
-	t_fvec	start;
-	t_fvec	end;
-	t_fvec	norm;
-	t_fvec	step_size;
-	t_ivec	step_unit;
-	t_fvec	length;
-	t_ivec	map_checker;
-}t_ray_data;
-
-typedef struct s_collide_data
-{
-	t_fvec	len;
-	float	dist;
-	int		checker;
-}t_collide_data;
-
-t_collide_data	ft_dda(t_data *data, t_fvec ray_start, float rotat);
+	int				height;
+	int				width;
+	int				start;
+	t_collide_data	collide;
+}t_data_wall;
 
 #endif

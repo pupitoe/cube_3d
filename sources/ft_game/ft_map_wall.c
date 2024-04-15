@@ -6,26 +6,52 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/07 22:20:40 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/12 15:12:29 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
+void	ft_print_line_screen(t_data *data, t_data_wall wall)
+{
+	if (wall.height < data->mlx->height)
+	{
+		if ((int)(wall.collide.len.x * SCALE) % SCALE == 0)
+		{
+			ft_put_block(data->img.game, (t_vec){wall.start,
+				data->middle.screen.y - wall.height / 2, 0},
+				(t_vec){wall.width, wall.height, 0}, BLACK);
+		}
+		else
+		{
+			ft_put_block(data->img.game, (t_vec){wall.start,
+				data->middle.screen.y - wall.height / 2, 0},
+				(t_vec){wall.width, wall.height, 0}, WHITE);
+		}
+	}
+}
+
 static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
 {
-	t_collide_data	collide;
+	t_data_wall		wall;
 	int				height_dist;
 
-	collide = ft_dda(data, (t_fvec){(float)(data->player.x
+	wall.collide = ft_dda(data, (t_fvec){(float)(data->player.x
 				+ data->middle.player_size) / SCALE, (float)(data->player.y
 				+ data->middle.player_size) / SCALE},
 			data->player.rotat + rotat);
-	height_dist = (float)(data->mlx->height) / (collide.dist + 0.5f);
-	if (collide.checker)
+	height_dist = 0;
+	if (wall.collide.checker)
 	{
-		ft_put_block(data->img.game, (t_vec){ray_start, data->middle.screen.y
-			- height_dist / 2, 0}, (t_vec){size, height_dist, 0}, RED);
+		height_dist = (float)(data->mlx->height)
+			/ ((wall.collide.dist) * cos(rotat * PI180));
+		wall.height = height_dist;
+		wall.start = ray_start;
+		wall.width = size;
+		ft_print_line_screen(data, wall);
+		mlx_put_pixel(data->img.map, (wall.collide.len.x * SCALE)
+			*MAP_SIZE_OBJECT / SCALE, (wall.collide.len.y * SCALE)
+			*MAP_SIZE_OBJECT / SCALE, PINK);
 	}
 }
 
