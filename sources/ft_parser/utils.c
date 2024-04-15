@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:12:44 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/08 20:12:45 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 16:58:53 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,23 @@ int	empty(char c)
 {
 	if (c == '0' || c == ' ')
 		return (1);
+	return (0);
+}
+
+int	check_duplicate(char *map, int cursor)
+{
+	cursor++;
+	while (map[cursor])
+	{
+		if (map[cursor] == 'N')
+			return (1);
+		if (map[cursor] == 'S')
+			return (1);
+		if (map[cursor] == 'W')
+			return (1);
+		if (map[cursor] == 'E')
+			return (1);
+		cursor++;
+	}
 	return (0);
 }

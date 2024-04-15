@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:37 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/15 14:16:39 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:09:28 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_parser(char *path_file, t_data *data)
 	validate_data(map);
 	player = load_player(map);
 	if (!player)
-		return (malloc_error(map), MALLOC_FAIL);
+		return (MALLOC_FAIL);
 	ft_set_data(data, player, map);
 	free(player);
 	return (convert(data));
