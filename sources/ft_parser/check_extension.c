@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cub.h                                           :+:      :+:    :+:   */
+/*   check_extension.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/15 14:19:04 by tlassere         ###   ########.fr       */
+/*   Created: 2024/01/08 09:19:54 by abareux           #+#    #+#             */
+/*   Updated: 2024/04/08 20:10:39 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CUB_H
-# define FT_CUB_H
+#include <ft_cub.h>
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <stddef.h>
-# include <math.h>
+int	check_extension(char *location)
+{
+	size_t	len;
 
-# include "libft.h"
-# include "MLX42/MLX42.h"
-# include "ft_data.h"
-# include "ft_parser.h"
-# include "ft_game.h"
-# include "ft_math.h"
-# include "ft_move.h"
-# include "ft_color.h"
-# include "ft_dda.h"
-
-#endif
+	len = ft_strlen(location);
+	if (len < 5)
+		return (1);
+	if (location[len - 1] != 'b')
+		return (1);
+	if (location[len - 2] != 'u')
+		return (1);
+	if (location[len - 3] != 'c')
+		return (1);
+	if (location[len - 4] != '.')
+		return (1);
+	return (0);
+}

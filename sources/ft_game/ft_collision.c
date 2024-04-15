@@ -23,10 +23,8 @@ static bool	ft_collision(size_t box, size_t box2)
 bool	ft_is_hit(t_data *data, t_vec pos)
 {
 	bool	status;
-	size_t	i;
 
 	status = false;
-	i = 0;
 	if (data->map[pos.y / SCALE][pos.x / SCALE] == WALL
 		&& ft_collision(pos.x, pos.x / SCALE)
 		&& ft_collision(pos.y, pos.y / SCALE))

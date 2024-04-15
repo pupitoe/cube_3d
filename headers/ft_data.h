@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/07 22:04:56 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:20:33 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ struct s_img
 struct s_texture
 {
 	mlx_texture_t	*icon;
+	mlx_image_t		*north_image;
+	mlx_image_t		*south_image;
+	mlx_image_t		*west_image;
+	mlx_image_t		*east_image;
 	int				floor_rgba;
 	int				ceiling_rgba;
 };
@@ -59,9 +63,37 @@ struct s_middle
 	int		player_size;
 };
 
+typedef struct s_point {
+	int	x;
+	int	y;
+}	t_point;
+
+typedef struct s_rgb {
+	int	red;
+	int	green;
+	int	blue;
+}	t_rgb;
+
+typedef struct s_map {
+	char		*north_texture;
+	char		*south_texture;
+	char		*west_texture;
+	char		*east_texture;
+	t_rgb		*floor;
+	t_rgb		*celling;
+	char		*map;
+}	t_map;
+
+typedef struct s_pov {
+	double	position_x;
+	double	position_y;
+	int		angle;
+}	t_pov;
+
 
 typedef struct s_data
 {
+	t_map				*map_parser;
 	t_vec				player;
 	int					**map;
 	t_vec				map_size;
@@ -70,6 +102,6 @@ typedef struct s_data
 	struct s_texture	texture;
 	struct s_img		img;
 	struct s_middle		middle;
-}t_data;
+}	t_data;
 
 #endif

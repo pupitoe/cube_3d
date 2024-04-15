@@ -11,7 +11,9 @@
 # **************************************************************************** #
 
 NAME			::= cub3D
-T_FT_PARSER		::=	ft_parser ft_map
+T_FT_PARSER		::=	ft_map_free ft_parser celling check_extension error flood floor \
+					load map purge set_angle strdup_parser strjoin_parser \
+					texture utils validate converter
 FT_PARSER		::= $(foreach buffer, $(T_FT_PARSER), ft_parser/$(buffer))
 T_FT_GAME		::= ft_game	ft_map ft_move ft_move_hook ft_images ft_ray \
 					ft_collision ft_dda ft_math ft_map_wall ft_game_print \
@@ -27,7 +29,7 @@ HEADER_FILES	::= $(foreach buffer, $(T_HEADER_FILES), $(HEADER)/$(buffer).h)
 LIBMLX			::= ./MLX42
 LIBFT_DIR		::= libft
 LIBFT			::= $(LIBFT_DIR)/libft.a
-CFLAGS			::= -Wall -Wextra -Werror
+CFLAGS			::= -Wall -Wextra -Werror -g3
 MLX_C			::= $(LIBMLX)/build/libmlx42.a
 LDFLAGS			::= $(MLX_C) -lm -ldl -lglfw -pthread
 

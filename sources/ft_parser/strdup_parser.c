@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cub.h                                           :+:      :+:    :+:   */
+/*   strdup_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/15 14:19:04 by tlassere         ###   ########.fr       */
+/*   Created: 2024/04/08 20:12:22 by tlassere          #+#    #+#             */
+/*   Updated: 2024/04/15 15:11:19 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CUB_H
-# define FT_CUB_H
+#include <ft_cub.h>
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <stddef.h>
-# include <math.h>
+char	*ft_strdup_parser(char *s)
+{
+	char	*rptr;
+	size_t	size;
 
-# include "libft.h"
-# include "MLX42/MLX42.h"
-# include "ft_data.h"
-# include "ft_parser.h"
-# include "ft_game.h"
-# include "ft_math.h"
-# include "ft_move.h"
-# include "ft_color.h"
-# include "ft_dda.h"
-
-#endif
+	size = ft_strlen(s) + 1;
+	rptr = malloc(size * sizeof(char));
+	if (!rptr)
+		return ((char *) 1);
+	while (size)
+	{
+		size--;
+		*(rptr + size) = *(s + size);
+	}
+	return (rptr);
+}
