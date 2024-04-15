@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 20:45:34 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:19:04 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,5 @@
 # include "ft_move.h"
 # include "ft_color.h"
 # include "ft_dda.h"
-
-# define HEIGHT 1080
-# define WIDTH 1920
 
 #endif
