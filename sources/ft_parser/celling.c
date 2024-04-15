@@ -23,7 +23,9 @@ void	set_celling(char *line, t_map *map)
 {
 	t_rgb	*result;
 
-	result = malloc(sizeof(t_rgb));
+	result = (t_rgb *) 0;
+	if (validate_line(line))
+		result = malloc(sizeof(t_rgb));
 	if (!result)
 	{
 		map->floor = (void *) 1;
