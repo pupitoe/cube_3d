@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/07 22:19:06 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:34:58 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	ft_print_hook(void *vdata);
 
 void	ft_delet_images(t_data *data);
 int		ft_load_image(t_data *data, uint32_t width, uint32_t height);
+int		ft_set_textures(t_data *data);
 void	ft_delet_textures(t_data *data);
+int		ft_set_icon(t_data *data);
 int		ft_put_img(t_data *data);
 void	ft_put_ray(mlx_image_t *image, float corner, t_vec size);
 void	ft_print_many_ray(t_data *data);
