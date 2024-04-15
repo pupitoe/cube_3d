@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strdup.c                                           :+:      :+:    :+:   */
+/*   strdup_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:12:22 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/08 20:12:24 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:11:19 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 char	*ft_strdup_parser(char *s)
 {
 	char	*rptr;
-	int		size;
+	size_t	size;
 
-	size = ft_strlen(s);
-	rptr = malloc(size + 1);
+	size = ft_strlen(s) + 1;
+	rptr = malloc(size * sizeof(char));
 	if (!rptr)
 		return ((char *) 1);
-	while (size >= 0)
+	while (size)
 	{
-		*(rptr + size) = *(s + size);
 		size--;
+		*(rptr + size) = *(s + size);
 	}
 	return (rptr);
 }
