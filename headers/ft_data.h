@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/15 16:47:07 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:41:21 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ struct s_img
 struct s_texture
 {
 	mlx_texture_t	*icon;
-	mlx_image_t		*north_image;
-	mlx_image_t		*south_image;
-	mlx_image_t		*west_image;
-	mlx_image_t		*east_image;
+	mlx_texture_t	*north;
+	mlx_texture_t	*south;
+	mlx_texture_t	*west;
+	mlx_texture_t	*east;
 	int				floor_rgba;
 	int				ceiling_rgba;
 };
