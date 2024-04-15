@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:10 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/08 20:11:12 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:42:18 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int	malloc_error(t_map *map)
 {
 	purge_map(map);
 	write(1, "Error\n", 6);
-	write(1, "a malloc f*** up\n", 18);
+	write(1, "Malloc error !\n", 15);
 	return (FAIL);
 }
