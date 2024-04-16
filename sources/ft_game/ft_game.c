@@ -29,20 +29,6 @@ static void	ft_key_hook_other_key(mlx_key_data_t key, void *vdata)
 		ft_key_hook_tab(key, vdata);
 }
 
-static int	ft_set_icon(t_data *data)
-{
-	int	status;
-
-	status = FAIL;
-	data->texture.icon = mlx_load_png("./asset/debug.png");
-	if (data->texture.icon)
-	{
-		status = SUCCESS;
-		mlx_set_icon(data->mlx, data->texture.icon);
-	}
-	return (status);
-}
-
 static int	ft_set_hook(t_data *data)
 {
 	if (!mlx_loop_hook(data->mlx, &ft_print_hook, data))
