@@ -6,56 +6,27 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 17:31:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/30 23:28:27 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/16 20:16:45 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-static bool	ft_collision(size_t box, size_t box2)
+bool	ft_is_hitbox(int **map, t_vec pos)
 {
-	size_t	box_pos;
+	t_hitbox_point	hit;
+	t_vec			hit_basic;
+	t_vec			hit_size;
 
-	box_pos = box2 * SCALE;
-	return (box >= box_pos && box < box_pos + SCALE);
-}
-
-bool	ft_is_hit(t_data *data, t_vec pos)
-{
-	bool	status;
-
-	status = false;
-	if (data->map[pos.y / SCALE][pos.x / SCALE] == WALL
-		&& ft_collision(pos.x, pos.x / SCALE)
-		&& ft_collision(pos.y, pos.y / SCALE))
-		status = true;
-	return (status);
-}
-
-int	ft_collision_hitbox(size_t valx1, size_t valx2, size_t valy1, size_t valy2)
-{
-	return ((ft_collision(valx1, valx2)
-			|| ft_collision(valx1 + SCALE - 1, valx2))
-		&& (ft_collision(valy1, valy2)
-			|| ft_collision(valy1 + SCALE - 1, valy2)));
-}
-
-bool	ft_is_hitbox(t_data *data, t_vec pos)
-{
-	bool	status;
-
-	status = false;
-	if ((data->map[pos.y / SCALE][pos.x / SCALE] == WALL
-		&& ft_collision_hitbox(pos.x, pos.x / SCALE, pos.y, pos.y / SCALE))
-		|| (data->map[pos.y / SCALE + 1][pos.x / SCALE] == WALL
-		&& ft_collision_hitbox(pos.x, pos.x / SCALE, pos.y, pos.y / SCALE + 1))
-		|| (data->map[pos.y / SCALE][pos.x / SCALE + 1] == WALL
-		&& ft_collision_hitbox(pos.x, pos.x / SCALE + 1, pos.y, pos.y / SCALE))
-		|| (data->map[pos.y / SCALE + 1][pos.x / SCALE + 1] == WALL
-		&& ft_collision_hitbox(pos.x, pos.x / SCALE + 1, pos.y,
-			pos.y / SCALE + 1)))
-	{
-		status = true;
-	}
-	return (status);
+	hit_basic = (t_vec){pos.x / SCALE, pos.y / SCALE, 0};
+	hit_size = (t_vec){(pos.x + PLAYER_SIZE - 1) / SCALE,
+		(pos.y + PLAYER_SIZE - 1) / SCALE, 0};
+	hit.top_left = (t_vec){hit_basic.x, hit_basic.y, 0};
+	hit.top_right = (t_vec){hit_size.x, hit_basic.y, 0};
+	hit.bottum_left = (t_vec){hit_basic.x, hit_size.y, 0};
+	hit.bottum_right = (t_vec){hit_size.x, hit_size.y, 0};
+	return (map[hit.top_left.y][hit.top_left.x] == WALL
+		|| map[hit.top_right.y][hit.top_right.x] == WALL
+		|| map[hit.bottum_left.y][hit.bottum_left.x] == WALL
+		|| map[hit.bottum_right.y][hit.bottum_right.x] == WALL);
 }

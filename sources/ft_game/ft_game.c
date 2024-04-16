@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 16:37:36 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/16 20:23:11 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_set_data(t_data *data)
 {
-	data->middle.player_size = SCALE / 2;
+	data->middle.player_size = PLAYER_SIZE / 2;
 }
 
 static void	ft_escape(mlx_key_data_t key, void *vdata)

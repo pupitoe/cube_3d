@@ -6,29 +6,11 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 20:14:00 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/07 22:21:06 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/16 20:30:47 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
-
-void	ft_put_ray(mlx_image_t *image, float corner, t_vec size)
-{
-	int		pos;
-	double	retc;
-	double	rets;
-
-	size.y /= 2;
-	retc = cos(corner * PI180);
-	rets = sin(corner * PI180);
-	pos = 0;
-	while (pos < (int)size.y)
-	{
-		mlx_put_pixel(image, (int)lround(pos * retc) + MAP_SIZE_OBJECT / 2,
-			-(int)lround(pos * rets) + MAP_SIZE_OBJECT / 2, PINK);
-		pos++;
-	}
-}
 
 static void	ft_print_ray(t_data *data, float rad)
 {
@@ -40,8 +22,8 @@ static void	ft_print_ray(t_data *data, float rad)
 
 	retc = cos((data->player.rotat + rad) * PI180);
 	rets = -sin((data->player.rotat + rad) * PI180);
-	c_player.x = data->player.x * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
-	c_player.y = data->player.y * MAP_SIZE_OBJECT / SCALE + MAP_SIZE_OBJECT / 2;
+	c_player.x = data->player.x * MAP_SIZE_OBJECT / SCALE + PLAYER_SIZE * MAP_SIZE_OBJECT / SCALE / 2;
+	c_player.y = data->player.y * MAP_SIZE_OBJECT / SCALE + PLAYER_SIZE * MAP_SIZE_OBJECT / SCALE / 2;
 	pos = 0;
 	while (pos < 100)
 	{
