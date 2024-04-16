@@ -21,7 +21,7 @@
 
 # define MAP_SIZE_OBJECT 50
 # define SCALE 40
-# define PLAYER_SIZE 20
+# define PLAYER_SIZE 10
 
 # define PLAYER_SPEED 1
 # define ROT_SPEED 1.0f

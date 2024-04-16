@@ -15,6 +15,7 @@
 static void	ft_set_data(t_data *data)
 {
 	data->middle.player_size = PLAYER_SIZE / 2;
+	data->print_map = false;
 }
 
 static void	ft_escape(mlx_key_data_t key, void *vdata)
@@ -24,6 +25,8 @@ static void	ft_escape(mlx_key_data_t key, void *vdata)
 	data = vdata;
 	if (key.key == MLX_KEY_ESCAPE)
 		mlx_close_window(data->mlx);
+	else
+		ft_key_hook_tab(key, vdata);
 }
 
 static int	ft_set_icon(t_data *data)

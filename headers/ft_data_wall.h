@@ -19,7 +19,7 @@ typedef struct s_data_wall
 	int				width;
 	int				start;
 	t_collide_data	collide;
-}t_data_wall;
+}	t_data_wall;
 
 enum	e_wall_dir
 {

@@ -62,3 +62,12 @@ void	ft_key_hook_arrow(void *vdata)
 			data->player.rotat += ROT_SPEED;
 	}
 }
+
+void	ft_key_hook_tab(mlx_key_data_t key, void *vdata)
+{
+	t_data	*data;
+
+	data = vdata;
+	if (key.key == MLX_KEY_TAB && key.action == MLX_PRESS)
+		data->print_map = !data->print_map;
+}

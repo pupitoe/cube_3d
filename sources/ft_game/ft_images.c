@@ -46,7 +46,7 @@ int	ft_load_image(t_data *data, uint32_t width, uint32_t height)
 	if (data->img.player)
 		ft_put_block(data->img.player, (t_vec){0, 0, 0},
 			(t_vec){PLAYER_SIZE * MAP_SIZE_OBJECT / SCALE, PLAYER_SIZE
-			*MAP_SIZE_OBJECT / SCALE, 0}, BLACK);
+			*MAP_SIZE_OBJECT / SCALE, 0}, RED | ALPHA_64);
 	if (data->img.player == NULL || data->img.map == NULL
 		|| data->img.game == NULL)
 	{

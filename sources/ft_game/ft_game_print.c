@@ -24,6 +24,7 @@ static void	ft_print_horizon(t_data *data)
 void	ft_print_game(t_data *data)
 {
 	data->middle.screen.y = data->mlx->height / 2;
+	data->middle.screen.x = data->mlx->width / 2;
 	ft_print_horizon(data);
 	ft_print_wall(data);
 }
