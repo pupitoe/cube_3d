@@ -45,7 +45,7 @@ $(NAME): $(LIBFT) $(MLX_C) $(OBJECTS) $(HEADER_FILES)
 clean:
 	make -C libft clean
 	rm -rf $(LIBMLX)/build
-	rm -f $(OBJECTS)
+	rm -rf $(OBJECTS) objects
 
 fclean: clean
 	make -C libft fclean
