@@ -21,7 +21,7 @@ T_FT_GAME		::= ft_game	ft_map ft_move ft_move_hook ft_images ft_ray \
 FT_GAME			::= $(foreach buffer, $(T_FT_GAME), ft_game/$(buffer))
 SOURCES_CONTENT ::= ft_cube $(FT_PARSER) $(FT_GAME)
 SOURCES			::= $(foreach buffer, $(SOURCES_CONTENT), sources/$(buffer).c)
-OBJECTS			::= $(SOURCES:.c=.o)
+OBJECTS			::= $(foreach buffer, $(SOURCES_CONTENT), objects/$(buffer).o)
 HEADER			::= headers
 T_HEADER_FILES	::= ft_cub ft_data ft_game ft_move ft_parser ft_math ft_color \
 					ft_dda ft_data_wall
@@ -33,7 +33,8 @@ CFLAGS			::= -Wall -Wextra -Werror -g3
 MLX_C			::= $(LIBMLX)/build/libmlx42.a
 LDFLAGS			::= $(MLX_C) -lm -ldl -lglfw -pthread
 
-.c.o:
+objects/%.o: sources/%.c
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT_DIR) -I$(LIBMLX)/include -c -o $@ $<
 
 all: $(NAME)
