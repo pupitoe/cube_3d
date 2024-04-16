@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:59:49 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/16 20:10:58 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/16 20:27:38 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_load_image(t_data *data, uint32_t width, uint32_t height)
 	data->img.game = mlx_new_image(data->mlx, width, height);
 	if (data->img.ray)
 		ft_put_ray(data->img.ray, data->player.rotat,
-			(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0});
+			(t_vec){PLAYER_SIZE, MAP_SIZE_OBJECT, 0});
 	if (data->img.player)
 		ft_put_block(data->img.player, (t_vec){0, 0, 0},
 			(t_vec){PLAYER_SIZE * MAP_SIZE_OBJECT / SCALE, PLAYER_SIZE
