@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/16 22:41:32 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/16 22:43:06 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ int	ft_game_start(t_data *data)
 		mlx_set_window_limit(data->mlx, 480, 270, 1920, 1080);
 		ft_set_icon(data);
 		if (ft_load_image(data, width, height) == SUCCESS
-			&& ft_put_img(data) == SUCCESS && ft_set_hook(data) == SUCCESS)
+			&& ft_set_textures(data) == SUCCESS
+			&& ft_put_img(data) == SUCCESS
+			&& ft_set_hook(data) == SUCCESS)
 			mlx_loop(data->mlx);
 		ft_delet_images(data);
 		ft_delet_textures(data);

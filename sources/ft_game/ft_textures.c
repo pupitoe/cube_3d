@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:28:39 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/15 18:35:20 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 20:09:09 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,36 @@
 
 int	ft_set_textures(t_data *data)
 {
-	(void)data;
-	return (SUCCESS);
+	int	status;
+
+	status = FAIL;
+	data->texture.north = mlx_load_png(data->map_parser->north_texture);
+	data->texture.south = mlx_load_png(data->map_parser->south_texture);
+	data->texture.west = mlx_load_png(data->map_parser->west_texture);
+	data->texture.east = mlx_load_png(data->map_parser->east_texture);
+	if (data->texture.north && data->texture.south
+		&& data->texture.west && data->texture.east)
+		status = SUCCESS;
+	return (status);
 }
 
 void	ft_delet_textures(t_data *data)
 {
 	if (data->texture.icon)
 		mlx_delete_texture(data->texture.icon);
+	if (data->texture.north)
+		mlx_delete_texture(data->texture.north);
+	if (data->texture.east)
+		mlx_delete_texture(data->texture.east);
+	if (data->texture.south)
+		mlx_delete_texture(data->texture.south);
+	if (data->texture.west)
+		mlx_delete_texture(data->texture.west);
 	data->texture.icon = NULL;
+	data->texture.north = NULL;
+	data->texture.east = NULL;
+	data->texture.south = NULL;
+	data->texture.west = NULL;
 }
 
 int	ft_set_icon(t_data *data)
