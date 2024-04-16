@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:37 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/16 18:40:33 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:07:34 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	ft_set_data(t_data *data, t_pov *player, t_map *map)
 	int	meedle_player;
 
 	meedle_player = SCALE / 2 - PLAYER_SIZE / 2;
+	meedle_player = 0;
 	data->map_parser = map;
 	data->player.x = player->position_x * SCALE + meedle_player;
 	data->player.y = player->position_y * SCALE + meedle_player;
