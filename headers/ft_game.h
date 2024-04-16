@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/07 22:19:06 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:05:57 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # define MAP_SIZE_OBJECT 50
 # define SCALE 40
+# define PLAYER_SIZE 10
 
 # define PLAYER_SPEED 1
 # define ROT_SPEED 1.0f
