@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:26 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/12 22:28:12 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:22:42 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	set_floor(char *line, t_map *map)
 {
 	t_rgb	*result;
 
-	result = malloc(sizeof(t_rgb));
+	result = (t_rgb *) 0;
+	if (validate_line(line))
+		result = malloc(sizeof(t_rgb));
 	if (!result)
 	{
 		map->floor = (void *) 1;

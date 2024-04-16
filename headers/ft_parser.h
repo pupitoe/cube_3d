@@ -45,11 +45,13 @@ int		malloc_error(t_map *map);
 
 int		validate_map(t_map *map);
 int		validate_data(t_map *map);
+int		validate_line(char *line);
 
 int		flood(char *map);
 
 int		empty(char c);
 int		check_duplicate(char *map, int cursor);
+int		intlen(char *str);
 
 void	set_angle(t_pov *player, char angle);
 

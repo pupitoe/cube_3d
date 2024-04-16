@@ -40,3 +40,30 @@ int	validate_data(t_map *map)
 		return (map_error(map, "Green floor color invalid\n"));
 	return (SUCCESS);
 }
+
+int	validate_line(char *line)
+{
+	int	cursor;
+
+	cursor = 2;
+	while (line[cursor] && line[cursor] == ' ')
+		cursor++;
+	if (intlen(line + cursor) > 3)
+		return (0);
+	while (line[cursor] && line[cursor] != ',')
+		cursor++;
+	if (intlen(++line + cursor) > 3)
+		return (0);
+	while (line[cursor] && line[cursor] != ',')
+		cursor++;
+	if (intlen(++line + cursor) > 3)
+		return (0);
+	line += 2;
+	while (*line)
+	{
+		if (!ft_isdigit(*line) && *line != ' ' && *line != ',' && *line != '\n')
+			return (0);
+		line++;
+	}
+	return (1);
+}

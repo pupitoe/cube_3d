@@ -36,3 +36,19 @@ int	check_duplicate(char *map, int cursor)
 	}
 	return (0);
 }
+
+int	intlen(char *str)
+{
+	int	len;
+
+	len = 0;
+	while (*str == ' ')
+		str++;
+	if (*str == '+' || *str == '-')
+		str++;
+	while (*str == '0')
+		str++;
+	while (ft_isdigit(*(str + len)))
+		len++;
+	return (len);
+}

@@ -45,7 +45,8 @@ int	ft_parser(char *path_file, t_data *data)
 		return (malloc_error(map));
 	if (return_code == FAIL)
 		return (map_error(map, "Invalid map\n"));
-	validate_data(map);
+	if (validate_data(map) == FAIL)
+		return (FAIL);
 	player = load_player(map);
 	if (!player)
 		return (MALLOC_FAIL);
