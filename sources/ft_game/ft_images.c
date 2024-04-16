@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:59:49 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/16 20:29:46 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/16 22:41:55 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@ void	ft_delet_images(t_data *data)
 	data->img.map = NULL;
 	data->img.player = NULL;
 	data->img.game = NULL;
-}
-
-void	ft_delet_textures(t_data *data)
-{
-	if (data->texture.icon)
-		mlx_delete_texture(data->texture.icon);
-	data->texture.icon = NULL;
 }
 
 int	ft_load_image(t_data *data, uint32_t width, uint32_t height)
