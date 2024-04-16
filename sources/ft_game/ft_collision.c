@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 17:31:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/03/30 23:28:27 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:55:57 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,8 @@ static bool	ft_collision(size_t box, size_t box2)
 	return (box >= box_pos && box < box_pos + SCALE);
 }
 
-bool	ft_is_hit(t_data *data, t_vec pos)
-{
-	bool	status;
-
-	status = false;
-	if (data->map[pos.y / SCALE][pos.x / SCALE] == WALL
-		&& ft_collision(pos.x, pos.x / SCALE)
-		&& ft_collision(pos.y, pos.y / SCALE))
-		status = true;
-	return (status);
-}
-
-int	ft_collision_hitbox(size_t valx1, size_t valx2, size_t valy1, size_t valy2)
+static int	ft_collision_hitbox(size_t valx1, size_t valx2,
+	size_t valy1, size_t valy2)
 {
 	return ((ft_collision(valx1, valx2)
 			|| ft_collision(valx1 + SCALE - 1, valx2))
