@@ -36,7 +36,7 @@ int	ft_parser(char *path_file, t_data *data)
 	t_pov		*player;
 
 	if (check_extension(path_file))
-		return (FAIL);
+		return (ft_putstr_fd("Wrong file extension\n", 1), FAIL);
 	map = load_file(path_file);
 	if (!map)
 		return (FAIL);
