@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 17:31:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/16 19:24:59 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/16 20:09:33 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,19 @@
 
 bool	ft_is_hitbox(int **map, t_vec pos)
 {
-	bool	status;
+	t_hitbox_point	hit;
+	t_vec			hit_basic;
+	t_vec			hit_size;
 
-	status = false;
-	(void)map;
-	(void)pos;
-	return (status);
+	hit_basic = (t_vec){pos.x / SCALE, pos.y / SCALE, 0};
+	hit_size = (t_vec){(pos.x + PLAYER_SIZE - 1) / SCALE,
+		(pos.y + PLAYER_SIZE - 1) / SCALE, 0};
+	hit.top_left = (t_vec){hit_basic.x, hit_basic.y, 0};
+	hit.top_right = (t_vec){hit_size.x, hit_basic.y, 0};
+	hit.bottum_left = (t_vec){hit_basic.x, hit_size.y, 0};
+	hit.bottum_right = (t_vec){hit_size.x, hit_size.y, 0};
+	return (map[hit.top_left.y][hit.top_left.x] == WALL
+		|| map[hit.top_right.y][hit.top_left.x] == WALL
+		|| map[hit.bottum_left.y][hit.bottum_left.x] == WALL
+		|| map[hit.bottum_right.y][hit.bottum_right.x] == WALL);
 }

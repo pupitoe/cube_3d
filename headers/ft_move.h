@@ -6,12 +6,20 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 23:14:22 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/16 19:23:46 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/16 20:11:39 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MOVE_H
 # define FT_MOVE_H
+
+typedef struct s_hitbox_point
+{
+	t_vec	top_left;
+	t_vec	top_right;
+	t_vec	bottum_left;
+	t_vec	bottum_right;
+}t_hitbox_point;
 
 void	ft_key_hook_y(void *vdata);
 void	ft_key_hook_x(void *vdata);
