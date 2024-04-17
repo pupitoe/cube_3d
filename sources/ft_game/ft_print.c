@@ -14,26 +14,13 @@
 
 void	ft_clear_map(t_data *data)
 {
-	int		pos_y;
-	int		pos_x;
-	t_vec	block_position;
+	t_vec	img_size;
 
+	img_size.y = data->img.map->height;
+	img_size.x = data->img.map->width;
+	img_size.rotat = 0;
+	ft_put_block(data->img.map, (t_vec){0, 0, 0}, img_size, 0);
 	data->img.player->instances[0].enabled = false;
-	pos_y = -4;
-	while (pos_y < 5)
-	{
-		pos_x = -4;
-		while (pos_x < 5)
-		{
-			block_position.y = data->middle.screen.y + pos_y * MAP_SIZE_OBJECT;
-			block_position.x = data->middle.screen.x + pos_x * MAP_SIZE_OBJECT;
-			block_position.rotat = 0;
-			ft_put_block(data->img.map, block_position,
-				(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, 0);
-			pos_x++;
-		}
-		pos_y++;
-	}
 }
 
 void	ft_print_hook(void *vdata)
@@ -45,10 +32,9 @@ void	ft_print_hook(void *vdata)
 	data->time.time_passed += data->mlx->delta_time;
 	if (data->time.time_passed >= data->time.framerate)
 	{
+		ft_clear_map(data);
 		if (data->print_map)
 			ft_print_map(data);
-		else
-			ft_clear_map(data);
 		data->time.time_passed -= data->time.framerate;
 	}
 }

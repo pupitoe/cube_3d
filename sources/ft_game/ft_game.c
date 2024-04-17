@@ -71,7 +71,7 @@ int	ft_game_start(t_data *data)
 	if (data->mlx)
 	{
 		status = SUCCESS;
-		mlx_set_window_limit(data->mlx, 480, 270, 1920, 1080);
+		mlx_set_window_limit(data->mlx, 960, 540, 1920, 1080);
 		ft_set_icon(data);
 		if (ft_load_image(data, width, height) == SUCCESS
 			&& ft_put_img(data) == SUCCESS && ft_set_hook(data) == SUCCESS)
