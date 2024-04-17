@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/07 22:18:53 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:29:31 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,27 @@ void	choose_block(t_data *data, int pos_y, int pos_x)
 			(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, BLACK | ALPHA_128);
 }
 
+void	ft_print_border(t_data *data)
+{
+	t_vec	block_position;
+
+	block_position.y = data->middle.screen.y + -3 * MAP_SIZE_OBJECT;
+	block_position.x = data->middle.screen.x + -3 * MAP_SIZE_OBJECT;
+	block_position.rotat = 0;
+
+	ft_put_block(data->img.map, block_position,
+		(t_vec){5, MAP_SIZE_OBJECT * 7, 0}, BLACK | ALPHA_192);
+	ft_put_block(data->img.map, block_position,
+		(t_vec){MAP_SIZE_OBJECT * 7, 5, 0}, BLACK | ALPHA_192);
+	block_position.x = data->middle.screen.x + 4 * MAP_SIZE_OBJECT;
+	ft_put_block(data->img.map, block_position,
+		(t_vec){5, MAP_SIZE_OBJECT * 7, 0}, BLACK | ALPHA_192);
+	block_position.x = data->middle.screen.x + -3 * MAP_SIZE_OBJECT;
+	block_position.y = data->middle.screen.y + 4 * MAP_SIZE_OBJECT;
+	ft_put_block(data->img.map, block_position,
+		(t_vec){MAP_SIZE_OBJECT * 7 + 5, 5, 0}, BLACK | ALPHA_192);
+}
+
 void	ft_print_map(t_data *data)
 {
 	int	pos_y;
@@ -79,4 +100,5 @@ void	ft_print_map(t_data *data)
 		}
 		pos_y++;
 	}
+	ft_print_border(data);
 }
