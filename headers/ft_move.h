@@ -19,11 +19,12 @@ typedef struct s_hitbox_point
 	t_vec	top_right;
 	t_vec	bottum_left;
 	t_vec	bottum_right;
-}t_hitbox_point;
+}	t_hitbox_point;
 
 void	ft_key_hook_y(void *vdata);
 void	ft_key_hook_x(void *vdata);
 void	ft_key_hook_arrow(void *vdata);
+void	ft_key_hook_tab(mlx_key_data_t key, void *vdata);
 void	ft_move(t_data *data, int val, float rotat);
 bool	ft_is_hitbox(int **map, t_vec pos);
 

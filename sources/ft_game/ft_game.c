@@ -15,6 +15,7 @@
 static void	ft_set_data(t_data *data)
 {
 	data->middle.player_size = PLAYER_SIZE / 2;
+	data->print_map = false;
 }
 
 static void	ft_escape(mlx_key_data_t key, void *vdata)
@@ -24,6 +25,8 @@ static void	ft_escape(mlx_key_data_t key, void *vdata)
 	data = vdata;
 	if (key.key == MLX_KEY_ESCAPE)
 		mlx_close_window(data->mlx);
+	else
+		ft_key_hook_tab(key, vdata);
 }
 
 static int	ft_set_icon(t_data *data)
@@ -68,7 +71,7 @@ int	ft_game_start(t_data *data)
 	if (data->mlx)
 	{
 		status = SUCCESS;
-		mlx_set_window_limit(data->mlx, 480, 270, 1920, 1080);
+		mlx_set_window_limit(data->mlx, 960, 540, 1920, 1080);
 		ft_set_icon(data);
 		if (ft_load_image(data, width, height) == SUCCESS
 			&& ft_put_img(data) == SUCCESS && ft_set_hook(data) == SUCCESS)

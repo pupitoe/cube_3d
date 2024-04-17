@@ -18,13 +18,13 @@ void	ft_print_line_screen(t_data *data, t_data_wall wall)
 
 	color = GREEN;
 	if (wall.collide.wall_dir == W_NORTH)
-		color = BLACK;
+		color = BLACK | ALPHA_255;
 	else if (wall.collide.wall_dir == W_SOUTH)
-		color = RED;
+		color = RED | ALPHA_255;
 	else if (wall.collide.wall_dir == W_EAST)
-		color = PINK;
+		color = PINK | ALPHA_255;
 	else if (wall.collide.wall_dir == W_WEST)
-		color = WHITE;
+		color = WHITE | ALPHA_255;
 	if (wall.height < 0 || wall.height > data->mlx->height)
 		wall.height = data->mlx->height;
 	ft_put_block(data->img.game, (t_vec){wall.start,
@@ -50,9 +50,6 @@ static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
 		wall.start = ray_start;
 		wall.width = size;
 		ft_print_line_screen(data, wall);
-		mlx_put_pixel(data->img.map, (wall.collide.len.x * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, (wall.collide.len.y * SCALE)
-			*MAP_SIZE_OBJECT / SCALE, PINK);
 	}
 }
 

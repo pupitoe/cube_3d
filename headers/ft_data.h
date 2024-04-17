@@ -18,19 +18,19 @@ typedef struct s_vec
 	size_t	x;
 	size_t	y;
 	float	rotat;
-}t_vec;
+}	t_vec;
 
 typedef struct s_ivec
 {
 	int	x;
 	int	y;
-}t_ivec;
+}	t_ivec;
 
 typedef struct s_fvec
 {
 	float	x;
 	float	y;
-}t_fvec;
+}	t_fvec;
 
 struct s_data_time
 {
@@ -62,18 +62,21 @@ struct s_middle
 	int		player_size;
 };
 
-typedef struct s_point {
+typedef struct s_point
+{
 	int	x;
 	int	y;
 }	t_point;
 
-typedef struct s_rgb {
+typedef struct s_rgb
+{
 	int	red;
 	int	green;
 	int	blue;
 }	t_rgb;
 
-typedef struct s_map {
+typedef struct s_map
+{
 	char		*north_texture;
 	char		*south_texture;
 	char		*west_texture;
@@ -83,7 +86,8 @@ typedef struct s_map {
 	char		*map;
 }	t_map;
 
-typedef struct s_pov {
+typedef struct s_pov
+{
 	double	position_x;
 	double	position_y;
 	int		angle;
@@ -95,6 +99,7 @@ typedef struct s_data
 	t_vec				player;
 	int					**map;
 	t_vec				map_size;
+	int					print_map;
 	struct s_data_time	time;
 	mlx_t				*mlx;
 	struct s_texture	texture;

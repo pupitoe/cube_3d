@@ -13,10 +13,15 @@
 #ifndef FT_COLOR_H
 # define FT_COLOR_H
 
-# define BLACK 0x000000FF
-# define WHITE 0xFFFFFFFF
-# define RED 0xFF0000FF
-# define PINK 0xFF00FFFF
-# define GREEN 0x008000FF 
+# define BLACK 0x00000000
+# define WHITE 0xFFFFFF00
+# define RED 0xFF000000
+# define PINK 0x0000FF00
+# define GREEN 0x00800000
+
+# define ALPHA_255 0x000000FF
+# define ALPHA_192 0x000000C0
+# define ALPHA_128 0x00000080
+# define ALPHA_64 0x00000040
 
 #endif
