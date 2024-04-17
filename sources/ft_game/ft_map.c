@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/17 16:29:31 by abareux          ###   ########.fr       */
+/*   Updated: 2024/04/17 18:43:42 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	ft_print_border(t_data *data)
 	block_position.y = data->middle.screen.y + -3 * MAP_SIZE_OBJECT;
 	block_position.x = data->middle.screen.x + -3 * MAP_SIZE_OBJECT;
 	block_position.rotat = 0;
-
 	ft_put_block(data->img.map, block_position,
 		(t_vec){5, MAP_SIZE_OBJECT * 7, 0}, BLACK | ALPHA_192);
 	ft_put_block(data->img.map, block_position,
