@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/16 20:23:11 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:36:14 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_set_data(t_data *data)
 	data->print_map = false;
 }
 
-static void	ft_escape(mlx_key_data_t key, void *vdata)
+static void	ft_key_hook_other_key(mlx_key_data_t key, void *vdata)
 {
 	t_data	*data;
 
@@ -53,7 +53,7 @@ static int	ft_set_hook(t_data *data)
 		return (FAIL);
 	if (!mlx_loop_hook(data->mlx, &ft_key_hook_arrow, data))
 		return (FAIL);
-	mlx_key_hook(data->mlx, &ft_escape, data);
+	mlx_key_hook(data->mlx, &ft_key_hook_other_key, data);
 	return (SUCCESS);
 }
 
