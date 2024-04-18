@@ -6,25 +6,36 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/18 18:31:05 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/18 21:30:16 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-static void	ft_print_line_texture(mlx_image_t *game, mlx_texture_t *texture,
+static void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 	int height, int start_x , float pos_x)
 {
-	
-	if (texture && height >= 0 && (unsigned int)height < game->height
-		&& start_x >= 0 && (unsigned)start_x < game->width && pos_x < 1)
+	int				color;
+	uint8_t			*texture_x;
+	int 			mid;
+	float			ratio_height;
+	float			pos;
+	unsigned int	ft_get_y;
+
+	if (texture && height >= 0 && (unsigned int)height < data->img.game->height
+		&& start_x >= 0 && (unsigned)start_x < data->img.game->width && pos_x < 1)
 	{
+		ratio_height = (long double)height / (long double)texture->height;
+		mid = (data->mlx->height - height) / 2;
+		texture_x = texture->pixels + (unsigned int)(texture->width * pos_x) * sizeof(int);
+		pos = 0;
 		while (height)
 		{
-			if (start_x == 0)
-				printf("%i\n", (unsigned) (pos_x * texture->width));
 			height--;
-			mlx_put_pixel(game, start_x, height, texture->pixels[(unsigned )(texture->width * height + pos_x)]);
+			ft_get_y = (unsigned )(height * texture->width) * sizeof(int);
+			color = ft_get_rgba(*(texture_x + ft_get_y), *(texture_x + 1 + ft_get_y), *(texture_x + 2 + ft_get_y), *(texture_x + 3 + ft_get_y));
+			mlx_put_pixel(data->img.game, start_x, height + mid, color);
+			pos += ratio_height;
 		}
 		
 	}
@@ -48,11 +59,11 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 	if (wall.height < 0 || wall.height > data->mlx->height)
 		wall.height = data->mlx->height;
 	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_SOUTH)
-		pos_x = wall.collide.len.x *= SCALE;
+		pos_x = wall.collide.len.x;
 	else
-		pos_x = wall.collide.len.y *= SCALE;
+		pos_x = wall.collide.len.y;
 	pos_x = pos_x - (int)pos_x;
-	ft_print_line_texture(data->img.game, texture, wall.height, wall.start, pos_x);
+	ft_print_line_texture(data, texture, wall.height, wall.start, pos_x);
 }
 
 static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
