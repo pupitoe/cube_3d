@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/18 21:30:16 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/18 23:33:16 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,18 @@ static void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 	if (texture && height >= 0 && (unsigned int)height < data->img.game->height
 		&& start_x >= 0 && (unsigned)start_x < data->img.game->width && pos_x < 1)
 	{
-		ratio_height = (long double)height / (long double)texture->height;
+		if ((unsigned int)height > texture->height)
+			ratio_height = (long double)height / (long double)texture->height;
+		else
+			ratio_height = (long double)texture->height / (long double)height;
 		mid = (data->mlx->height - height) / 2;
 		texture_x = texture->pixels + (unsigned int)(texture->width * pos_x) * sizeof(int);
 		pos = 0;
 		while (height)
 		{
 			height--;
-			ft_get_y = (unsigned )(height * texture->width) * sizeof(int);
+			ft_get_y = (unsigned )((unsigned )(pos - ((int)pos - pos)) * texture->width) * sizeof(int);
+			ft_get_y = 0;
 			color = ft_get_rgba(*(texture_x + ft_get_y), *(texture_x + 1 + ft_get_y), *(texture_x + 2 + ft_get_y), *(texture_x + 3 + ft_get_y));
 			mlx_put_pixel(data->img.game, start_x, height + mid, color);
 			pos += ratio_height;
@@ -79,7 +83,7 @@ static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
 	if (wall.collide.checker)
 	{
 		height_dist = (float)(data->mlx->height)
-			/ ((wall.collide.dist) * cos(rotat * PI180));
+			/ ((wall.collide.dist) * cos((rotat) * PI180));
 		wall.height = height_dist;
 		wall.start = ray_start;
 		wall.width = size;
