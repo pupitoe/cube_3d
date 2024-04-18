@@ -6,30 +6,53 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/15 16:42:53 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:31:05 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-void	ft_print_line_screen(t_data *data, t_data_wall wall)
+static void	ft_print_line_texture(mlx_image_t *game, mlx_texture_t *texture,
+	int height, int start_x , float pos_x)
 {
-	int	color;
+	
+	if (texture && height >= 0 && (unsigned int)height < game->height
+		&& start_x >= 0 && (unsigned)start_x < game->width && pos_x < 1)
+	{
+		while (height)
+		{
+			if (start_x == 0)
+				printf("%i\n", (unsigned) (pos_x * texture->width));
+			height--;
+			mlx_put_pixel(game, start_x, height, texture->pixels[(unsigned )(texture->width * height + pos_x)]);
+		}
+		
+	}
+}
 
-	color = GREEN;
+static void	ft_print_line_screen(t_data *data, t_data_wall wall)
+{
+	mlx_texture_t	*texture;
+	float			pos_x;
+
+	texture = NULL;
+	pos_x = 0;
 	if (wall.collide.wall_dir == W_NORTH)
-		color = BLACK | ALPHA_255;
+		texture = data->texture.north;
 	else if (wall.collide.wall_dir == W_SOUTH)
-		color = RED | ALPHA_255;
+		texture = data->texture.south;
 	else if (wall.collide.wall_dir == W_EAST)
-		color = PINK | ALPHA_255;
+		texture = data->texture.east;
 	else if (wall.collide.wall_dir == W_WEST)
-		color = WHITE | ALPHA_255;
+		texture = data->texture.west;
 	if (wall.height < 0 || wall.height > data->mlx->height)
 		wall.height = data->mlx->height;
-	ft_put_block(data->img.game, (t_vec){wall.start,
-		data->middle.screen.y - wall.height / 2, 0},
-		(t_vec){wall.width, wall.height, 0}, color);
+	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_SOUTH)
+		pos_x = wall.collide.len.x *= SCALE;
+	else
+		pos_x = wall.collide.len.y *= SCALE;
+	pos_x = pos_x - (int)pos_x;
+	ft_print_line_texture(data->img.game, texture, wall.height, wall.start, pos_x);
 }
 
 static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
