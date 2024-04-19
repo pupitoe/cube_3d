@@ -6,11 +6,16 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/19 19:59:12 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/19 20:16:29 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+
+//static void	ft_put_pixel_line(t_data *data, mlx_texture_t *texture, int height, long double ratio, uint8_t *pixel_start)
+//{
+
+//}
 
 static void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 	int height, int start_x , float pos_x)
@@ -22,26 +27,22 @@ static void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 	unsigned int	ft_get_y;
 
 	int	step;
-	int	test;
+	int	start_at;
 
 	step = 0;
-	test = 0;
+	start_at = 0;
+	mid	= 0;
 	if (texture && height >= 0 && (unsigned)start_x < data->img.game->width && pos_x < 1)
 	{
 		ratio_height = (long double)texture->height / (long double)height;
 		if (height > data->mlx->height)
-		{
-			mid = 0;
-			test = (height - data->mlx->height) / 2;
-		}
+			start_at = (height - data->mlx->height) / 2;
 		else
 			mid = (data->mlx->height - height) / 2;
 		texture_x = texture->pixels + (unsigned int)(texture->width * pos_x) * sizeof(int);
 		while (step < data->mlx->height && step < height)
 		{
-			ft_get_y = ((unsigned )(ratio_height * (float)(step + test)) * texture->width) * sizeof(int);
-			if (ft_get_y >= texture->height * texture->width * 4)
-				ft_get_y = 0;
+			ft_get_y = ((unsigned )(ratio_height * (float)(step + start_at)) * texture->width) * sizeof(int);
 			color = ft_get_rgba(*(texture_x + ft_get_y), *(texture_x + 1 + ft_get_y), *(texture_x + 2 + ft_get_y), *(texture_x + 3 + ft_get_y));
 			mlx_put_pixel(data->img.game, start_x, step + mid, color);
 			step++;
