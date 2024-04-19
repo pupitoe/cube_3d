@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:49:51 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/13 19:41:01 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/19 23:10:59 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,13 @@ enum	e_wall_dir
 	W_SOUTH,
 	W_WEST
 };
+
+typedef struct s_texture_pos
+{
+	uint8_t			*ptr_texutre_x;
+	long double		ratio_height;
+	unsigned int	start_pixel;
+	unsigned int	middle;
+}t_texture_pos;
 
 #endif
