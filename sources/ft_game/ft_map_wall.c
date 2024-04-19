@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/19 15:51:40 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:59:12 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,30 @@ static void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 	long double		ratio_height;
 	unsigned int	ft_get_y;
 
-	if (texture && height >= 0 && (unsigned int)height < data->img.game->height
-		&& start_x >= 0 && (unsigned)start_x < data->img.game->width && pos_x < 1)
+	int	step;
+	int	test;
+
+	step = 0;
+	test = 0;
+	if (texture && height >= 0 && (unsigned)start_x < data->img.game->width && pos_x < 1)
 	{
-		if ((unsigned int)height > texture->height)
-			ratio_height = (long double)height / (long double)texture->height;
-		else
-			ratio_height = (long double)texture->height / (long double)height;
-		mid = (data->mlx->height - height) / 2;
-		texture_x = texture->pixels + (unsigned int)(texture->width * pos_x) * sizeof(int);
-		while (height)
+		ratio_height = (long double)texture->height / (long double)height;
+		if (height > data->mlx->height)
 		{
-			ft_get_y = ((unsigned )(ratio_height * (long double)height) * texture->width) * sizeof(int);
-			height--;
+			mid = 0;
+			test = (height - data->mlx->height) / 2;
+		}
+		else
+			mid = (data->mlx->height - height) / 2;
+		texture_x = texture->pixels + (unsigned int)(texture->width * pos_x) * sizeof(int);
+		while (step < data->mlx->height && step < height)
+		{
+			ft_get_y = ((unsigned )(ratio_height * (float)(step + test)) * texture->width) * sizeof(int);
+			if (ft_get_y >= texture->height * texture->width * 4)
+				ft_get_y = 0;
 			color = ft_get_rgba(*(texture_x + ft_get_y), *(texture_x + 1 + ft_get_y), *(texture_x + 2 + ft_get_y), *(texture_x + 3 + ft_get_y));
-			mlx_put_pixel(data->img.game, start_x, height + mid, color);
+			mlx_put_pixel(data->img.game, start_x, step + mid, color);
+			step++;
 		}
 	}
 }
@@ -55,7 +64,7 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 		texture = data->texture.east;
 	else if (wall.collide.wall_dir == W_WEST)
 		texture = data->texture.west;
-	if (wall.height < 0 || wall.height > data->mlx->height)
+	if (wall.height < 0)
 		wall.height = data->mlx->height;
 	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_SOUTH)
 		pos_x = wall.collide.len.x;
