@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/15 15:24:27 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/19 22:11:30 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # include "MLX42/MLX42.h"
 # include "ft_data.h"
 # include "ft_parser.h"
+# include "ft_dda.h"
+# include "ft_data_wall.h"
 # include "ft_game.h"
 # include "ft_math.h"
 # include "ft_move.h"
 # include "ft_color.h"
-# include "ft_dda.h"
-# include "ft_data_wall.h"
 
 #endif

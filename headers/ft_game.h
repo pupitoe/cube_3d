@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/19 15:22:49 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/19 22:10:23 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ void	ft_print_many_ray(t_data *data);
 void	ft_print_map(t_data *data);
 void	ft_print_wall(t_data *data);
 void	ft_print_game(t_data *data);
+void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
+			t_data_wall wall, float pos_x);
 
 #endif
