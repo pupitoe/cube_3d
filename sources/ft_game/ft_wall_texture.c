@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:13 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/19 22:52:25 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/19 23:10:20 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 static int	ft_get_pixel_color(uint8_t *texture_pixel)
 {
 	return (ft_get_rgba(texture_pixel[0], texture_pixel[1], texture_pixel[2],
-		texture_pixel[3]));
+			texture_pixel[3]));
 }
 
-static unsigned int	ft_get_y_pos(long double ratio, float pos, unsigned int width)
+static unsigned int	ft_get_y_pos(long double ratio, float pos,
+	unsigned int width)
 {
-	return ((unsigned int)(ratio * pos) * width * sizeof(int));
+	return ((unsigned int)(ratio * pos) *width * sizeof(int));
 }
 
 static uint8_t	*ft_get_x_pos(mlx_texture_t *texture, float pos_x)
@@ -29,32 +30,36 @@ static uint8_t	*ft_get_x_pos(mlx_texture_t *texture, float pos_x)
 		* sizeof(int));
 }
 
+static void	ft_init_texture(t_texture_pos *texture_pos,
+	mlx_texture_t *texture, t_data_wall wall, int screen_height)
+{
+	ft_bzero(texture_pos, sizeof(t_texture_pos));
+	texture_pos->ratio_height = (long double)texture->height
+		/ (long double)wall.height;
+	if (wall.height > screen_height)
+		texture_pos->start_pixel = (wall.height - screen_height) / 2;
+	else
+		texture_pos->middle = (screen_height - wall.height) / 2;
+}
+
 void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 	t_data_wall wall, float pos_x)
 {
-	uint8_t			*texture_x;
-	int 			mid;
-	long double		ratio_height;
-	int				start_at;
+	t_texture_pos	texture_pos;
 	int				step;
 
 	step = 0;
-	start_at = 0;
-	mid	= 0;
 	if (texture && wall.height >= 0
 		&& (unsigned int)wall.start < data->img.game->width && pos_x < 1)
 	{
-		ratio_height = (long double)texture->height / (long double)wall.height;
-		if (wall.height > data->mlx->height)
-			start_at = (wall.height - data->mlx->height) / 2;
-		else
-			mid = (data->mlx->height - wall.height) / 2;
-		texture_x = ft_get_x_pos(texture, pos_x);
+		ft_init_texture(&texture_pos, texture, wall, data->mlx->height);
+		texture_pos.ptr_texutre_x = ft_get_x_pos(texture, pos_x);
 		while (step < data->mlx->height && step < wall.height)
 		{
-			mlx_put_pixel(data->img.game, wall.start, step + mid,
-				ft_get_pixel_color(texture_x + ft_get_y_pos(ratio_height,
-				step + start_at, texture->width)));
+			mlx_put_pixel(data->img.game, wall.start, step + texture_pos.middle,
+				ft_get_pixel_color(texture_pos.ptr_texutre_x
+					+ ft_get_y_pos(texture_pos.ratio_height,
+						step + texture_pos.start_pixel, texture->width)));
 			step++;
 		}
 	}
