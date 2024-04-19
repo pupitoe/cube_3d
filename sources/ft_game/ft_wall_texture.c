@@ -6,24 +6,38 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:13 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/19 23:10:20 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/20 00:28:57 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
+/**
+ * @param texture_pixel is position of pixel to get color;
+ * @return color of pixel pos;
+*/
 static int	ft_get_pixel_color(uint8_t *texture_pixel)
 {
 	return (ft_get_rgba(texture_pixel[0], texture_pixel[1], texture_pixel[2],
 			texture_pixel[3]));
 }
 
-static unsigned int	ft_get_y_pos(long double ratio, float pos,
+/**
+ * @param ratio is texture height / wall height (to make proportion of image)
+ * @param pos_y is pos in Y of Wall pixel
+ * @param width is with of texture
+ * @return Y position of image 
+*/
+static unsigned int	ft_get_y_pos(long double ratio, float pos_y,
 	unsigned int width)
 {
-	return ((unsigned int)(ratio * pos) *width * sizeof(int));
+	return ((unsigned int)(ratio * pos_y) *width * sizeof(int));
 }
 
+/**
+ * @param pos_x value 0 >= && .9999... <= value; to get X of image
+ * @return ptr of pixel in X
+*/
 static uint8_t	*ft_get_x_pos(mlx_texture_t *texture, float pos_x)
 {
 	return (texture->pixels + (unsigned int)(texture->width * pos_x)
