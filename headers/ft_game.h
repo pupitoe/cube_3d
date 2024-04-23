@@ -44,5 +44,7 @@ void	ft_print_many_ray(t_data *data);
 void	ft_print_map(t_data *data);
 void	ft_print_wall(t_data *data);
 void	ft_print_game(t_data *data);
+void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
+			t_data_wall wall, float pos_x);
 
 #endif
