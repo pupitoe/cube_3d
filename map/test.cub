@@ -1,11 +1,15 @@
 NO ./asset/debug.png
 SO ./asset/debug.png
 WE ./asset/debug.png
-EA ./asset/debug.png
+EA ./asset/brick.png
 
 F 0, 0, 0
 C 0, 0, 100
 
- 1111
-1 W1
- 1111
+11111111
+10000001
+10000001
+10010001
+100N0001
+10000001
+11111111
