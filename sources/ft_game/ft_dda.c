@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:22:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/13 21:58:41 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:42:37 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static int	ft_get_wall_dir(int last_dir, t_ivec step_unit)
 	if (last_dir == X_LAST)
 	{
 		if (step_unit.x == 1)
-			dir = W_EAST;
-		else
 			dir = W_WEST;
+		else
+			dir = W_EAST;
 	}
 	else
 	{
