@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/18 23:33:16 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/19 15:51:40 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ static void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 	int				color;
 	uint8_t			*texture_x;
 	int 			mid;
-	float			ratio_height;
-	float			pos;
+	long double		ratio_height;
 	unsigned int	ft_get_y;
 
 	if (texture && height >= 0 && (unsigned int)height < data->img.game->height
@@ -31,17 +30,13 @@ static void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 			ratio_height = (long double)texture->height / (long double)height;
 		mid = (data->mlx->height - height) / 2;
 		texture_x = texture->pixels + (unsigned int)(texture->width * pos_x) * sizeof(int);
-		pos = 0;
 		while (height)
 		{
+			ft_get_y = ((unsigned )(ratio_height * (long double)height) * texture->width) * sizeof(int);
 			height--;
-			ft_get_y = (unsigned )((unsigned )(pos - ((int)pos - pos)) * texture->width) * sizeof(int);
-			ft_get_y = 0;
 			color = ft_get_rgba(*(texture_x + ft_get_y), *(texture_x + 1 + ft_get_y), *(texture_x + 2 + ft_get_y), *(texture_x + 3 + ft_get_y));
 			mlx_put_pixel(data->img.game, start_x, height + mid, color);
-			pos += ratio_height;
 		}
-		
 	}
 }
 

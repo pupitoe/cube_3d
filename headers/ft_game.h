@@ -24,7 +24,7 @@
 # define PLAYER_SIZE 10
 
 # define PLAYER_SPEED 1
-# define ROT_SPEED 1.0f
+# define ROT_SPEED 2.0f
 
 # define FOV 60.0f
 # define COUNT_RAY 200.0f
