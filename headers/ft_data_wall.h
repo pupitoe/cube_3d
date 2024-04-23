@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:49:51 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/19 23:10:59 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/20 00:10:24 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ enum	e_wall_dir
 
 typedef struct s_texture_pos
 {
-	uint8_t			*ptr_texutre_x;
-	long double		ratio_height;
-	unsigned int	start_pixel;
-	unsigned int	middle;
+	uint8_t		*ptr_texutre_x;
+	long double	ratio_height;
+	int			start_pixel;
+	int			middle;
 }t_texture_pos;
 
 #endif

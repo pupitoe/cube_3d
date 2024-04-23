@@ -23,7 +23,7 @@
 # define SCALE 40
 # define PLAYER_SIZE 10
 
-# define PLAYER_SPEED 1
+# define PLAYER_SPEED 2
 # define ROT_SPEED 2.0f
 
 # define FOV 60.0f
