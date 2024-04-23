@@ -6,12 +6,17 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/19 22:09:17 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:38:13 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
+/**
+ * MAX_PRECISION is a limit for X position.
+ * texture NORTH and WEST are reversed, so the pos_x is reverse
+ * to get the right feel
+*/
 static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 {
 	mlx_texture_t	*texture;
@@ -34,6 +39,10 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 	else
 		pos_x = wall.collide.len.y;
 	pos_x = pos_x - (int)pos_x;
+	if (pos_x > MAX_PRECISION)
+		pos_x = MAX_PRECISION;
+	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_WEST)
+		pos_x = MAX_PRECISION - pos_x;
 	ft_print_line_texture(data, texture, wall, pos_x);
 }
 
