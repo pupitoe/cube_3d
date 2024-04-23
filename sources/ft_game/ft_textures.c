@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:28:39 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/18 12:23:59 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:26:26 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	ft_delet_textures(t_data *data)
 	data->texture.east = NULL;
 	data->texture.south = NULL;
 	data->texture.west = NULL;
-	data->texture.icon = NULL;
 }
 
 int	ft_set_icon(t_data *data)
