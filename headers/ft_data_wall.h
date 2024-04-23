@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:49:51 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/20 00:10:24 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/23 00:56:51 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ typedef struct s_texture_pos
 	long double	ratio_height;
 	int			start_pixel;
 	int			middle;
-}t_texture_pos;
+}	t_texture_pos;
 
 #endif
