@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/23 15:38:13 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:10:23 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * MAX_PRECISION is a limit for X position.
- * texture NORTH and WEST are reversed, so the pos_x is reverse
+ * texture NORTH and EAST are reversed, so the pos_x is reverse
  * to get the right feel
 */
 static void	ft_print_line_screen(t_data *data, t_data_wall wall)
@@ -41,7 +41,7 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 	pos_x = pos_x - (int)pos_x;
 	if (pos_x > MAX_PRECISION)
 		pos_x = MAX_PRECISION;
-	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_WEST)
+	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_EAST)
 		pos_x = MAX_PRECISION - pos_x;
 	ft_print_line_texture(data, texture, wall, pos_x);
 }
