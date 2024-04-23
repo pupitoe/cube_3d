@@ -60,7 +60,9 @@ int	ft_game_start(t_data *data)
 		mlx_set_window_limit(data->mlx, 960, 540, 1920, 1080);
 		ft_set_icon(data);
 		if (ft_load_image(data, width, height) == SUCCESS
-			&& ft_put_img(data) == SUCCESS && ft_set_hook(data) == SUCCESS)
+			&& ft_set_textures(data) == SUCCESS
+			&& ft_put_img(data) == SUCCESS
+			&& ft_set_hook(data) == SUCCESS)
 			mlx_loop(data->mlx);
 		ft_delet_images(data);
 		ft_delet_textures(data);
