@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/18 12:36:14 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/24 21:25:12 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ static void	ft_key_hook_other_key(mlx_key_data_t key, void *vdata)
 	data = vdata;
 	if (key.key == MLX_KEY_ESCAPE)
 		mlx_close_window(data->mlx);
-	else
+	else if (key.key == MLX_KEY_TAB)
 		ft_key_hook_tab(key, vdata);
+	else if (key.key == MLX_KEY_E)
+		ft_key_hook_interact(data);
 }
 
 static int	ft_set_icon(t_data *data)

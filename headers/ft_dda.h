@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:23:52 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/24 20:58:58 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/24 21:29:46 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_collide_data
 	int		checker;
 	int		wall_dir;
 	int		block_touch;
+	t_ivec	block_cheked;
 }	t_collide_data;
 
 t_collide_data	ft_dda(t_data *data, t_fvec ray_start, float rotat);

@@ -19,6 +19,9 @@
 # define WALL 1
 # define FLOOR 0
 # define DOOR_OP 2
+# define DOOR_CL 3
+
+# define DIST_INTERACT 2.0f
 
 # define MAP_SIZE_OBJECT 50
 # define SCALE 40
@@ -43,5 +46,6 @@ void	ft_print_many_ray(t_data *data);
 void	ft_print_map(t_data *data);
 void	ft_print_wall(t_data *data);
 void	ft_print_game(t_data *data);
+void    ft_key_hook_interact(t_data *data);
 
 #endif
