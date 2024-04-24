@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 17:31:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/24 20:49:32 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:51:30 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_is_collide(int block)
 {
-	return (block == WALL || block == DOOR);
+	return (block == WALL || block == DOOR_OP);
 }
 
 bool	ft_is_hitbox(int **map, t_vec pos)
