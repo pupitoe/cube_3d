@@ -35,7 +35,8 @@ int	is_valid(char *line)
 	while (*line)
 	{
 		if (*line != '1' && *line != '0' && *line != ' ' && *line != '\n' && \
-			*line != 'N' && *line != 'S' && *line != 'E' && *line != 'W')
+			*line != 'N' && *line != 'S' && *line != 'E' && *line != 'W' && \
+			*line != 'D')
 			return (0);
 		line++;
 	}
