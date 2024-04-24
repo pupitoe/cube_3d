@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:22:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/13 21:58:41 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/24 21:01:25 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static t_collide_data	ft_collide(t_ray_data ray, t_data *data)
 			&& ray.map_checker.y >= 0 && ray.map_checker.y
 			< (int)data->map_size.y)
 		{
-			if (data->map[ray.map_checker.y][ray.map_checker.x] == 1)
+			if (ft_is_collide(data->map[ray.map_checker.y][ray.map_checker.x]))
 				checker = true;
 		}
 	}
@@ -107,6 +107,7 @@ static t_collide_data	ft_collide(t_ray_data ray, t_data *data)
 	ray_content.len.x = ray_content.dist * ray.norm.x;
 	ray_content.len.y = ray_content.dist * ray.norm.y;
 	ray_content.checker = checker;
+	ray_content.block_touch = data->map[ray.map_checker.y][ray.map_checker.x];
 	return (ray_content);
 }
 
