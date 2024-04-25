@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/25 13:08:02 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/25 13:10:03 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # define WALL 1
 # define FLOOR 0
 # define DOOR_OP 2
+# define DOOR_CL 3
+
+# define DIST_INTERACT 2.0f
 
 # define MAP_SIZE_OBJECT 50
 # define SCALE 40
@@ -47,5 +50,6 @@ void	ft_print_wall(t_data *data);
 void	ft_print_game(t_data *data);
 void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 			t_data_wall wall, float pos_x);
+void    ft_key_hook_interact(t_data *data);
 
 #endif
