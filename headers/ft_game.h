@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/25 14:01:13 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:50:27 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # define DOOR_OP 2
 # define DOOR_CL 3
 
-# define DIST_INTERACT 2.0f
-
 # define MAP_SIZE_OBJECT 50
 # define SCALE 40
 # define PLAYER_SIZE 10
@@ -34,7 +32,8 @@
 # define COUNT_RAY 200.0f
 # define COUNT_RAY_MAP 30.0f
 
-# define ROTATE_INTERACT 15.0f
+# define DIST_INTERACT 2.0f
+# define ROTATE_INTERACT 10.0f
 
 int		ft_game_start(t_data *data);
 void	ft_put_block(mlx_image_t *img, t_vec pos, t_vec size, int color);
@@ -53,5 +52,6 @@ void	ft_print_game(t_data *data);
 void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 			t_data_wall wall, float pos_x);
 void	ft_key_hook_interact(t_data *data);
+int		ft_interact_block(int block);
 
 #endif

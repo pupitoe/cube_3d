@@ -6,18 +6,26 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:25:46 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/25 14:00:56 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:49:16 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
+int	ft_interact_block(int block)
+{
+	return (block == DOOR_OP || block == DOOR_CL);
+}
+
 static void	ft_interact(t_collide_data collide, t_data *data)
 {
-	if (collide.block_touch == DOOR_OP && collide.dist < DIST_INTERACT)
+	if (collide.checker && collide.block_touch == DOOR_OP
+		&& collide.dist < DIST_INTERACT)
 		data->map[collide.block_cheked.y][collide.block_cheked.x] = DOOR_CL;
-	else if (collide.block_touch == DOOR_CL && collide.dist < DIST_INTERACT)
+	else if (collide.checker && collide.block_touch == DOOR_CL
+		&& collide.dist < DIST_INTERACT)
 		data->map[collide.block_cheked.y][collide.block_cheked.x] = DOOR_OP;
+	return ;
 }
 
 void	ft_key_hook_interact(t_data *data)
@@ -30,10 +38,10 @@ void	ft_key_hook_interact(t_data *data)
 	player_pos = (t_fvec){(float)(data->player.x
 			+ data->middle.player_size) / SCALE, (float)(data->player.y
 			+ data->middle.player_size) / SCALE};
-	collide_center = ft_dda(data, player_pos, data->player.rotat);
-	collide_right = ft_dda(data, player_pos, data->player.rotat
+	collide_center = ft_dda_interact(data, player_pos, data->player.rotat);
+	collide_right = ft_dda_interact(data, player_pos, data->player.rotat
 			- ROTATE_INTERACT);
-	collide_left = ft_dda(data, player_pos, data->player.rotat
+	collide_left = ft_dda_interact(data, player_pos, data->player.rotat
 			+ ROTATE_INTERACT);
 	ft_interact(collide_center, data);
 	ft_interact(collide_left, data);

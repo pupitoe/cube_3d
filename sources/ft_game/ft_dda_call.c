@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:22:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/25 14:10:40 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:48:54 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,7 @@ static t_collide_data	ft_collide(t_ray_data ray, t_data *data,
 	int				checker;
 
 	checker = false;
-	ray_content.dist = 0.0f;
-	ray_content.wall_dir = W_NO_DIR;
+	ft_bzero(&ray_content, sizeof(t_collide_data));
 	while (!checker && ray_content.dist < DISTANCE_RAY_VIEW)
 	{
 		ray_content.dist = ft_collide_while(&ray, &ray_content.wall_dir);
@@ -101,6 +100,8 @@ static t_collide_data	ft_collide(t_ray_data ray, t_data *data,
 		{
 			if ((*check_block)(data->map[ray.map_checker.y][ray.map_checker.x]))
 				checker = true;
+			ray_content.block_touch = data->map[ray.map_checker.y]
+			[ray.map_checker.x];
 		}
 	}
 	ray_content.wall_dir = ft_get_wall_dir(ray_content.wall_dir,
@@ -108,7 +109,6 @@ static t_collide_data	ft_collide(t_ray_data ray, t_data *data,
 	ray_content.len.x = ray_content.dist * ray.norm.x;
 	ray_content.len.y = ray_content.dist * ray.norm.y;
 	ray_content.checker = checker;
-	ray_content.block_touch = data->map[ray.map_checker.y][ray.map_checker.x];
 	ray_content.block_cheked = ray.map_checker;
 	return (ray_content);
 }
