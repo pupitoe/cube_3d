@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/18 12:21:40 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/25 13:06:49 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define WALL 1
 # define FLOOR 0
+# define DOOR 2
 
 # define MAP_SIZE_OBJECT 50
 # define SCALE 40
