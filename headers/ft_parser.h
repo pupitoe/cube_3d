@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:51:44 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/15 16:59:14 by abareux          ###   ########.fr       */
+/*   Updated: 2024/04/18 18:39:08 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@ char	*ft_strjoin_parser(char *string_a, char *string_b, int mode);
 char	*ft_strdup_parser(char *s);
 
 int		ft_atoi(const char *nptr);
+
+int		ft_get_rgba(int r, int g, int b, int a);
 
 #endif

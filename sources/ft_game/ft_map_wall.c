@@ -6,30 +6,44 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/15 16:42:53 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:10:23 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-void	ft_print_line_screen(t_data *data, t_data_wall wall)
+/**
+ * MAX_PRECISION is a limit for X position.
+ * texture NORTH and EAST are reversed, so the pos_x is reverse
+ * to get the right feel
+*/
+static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 {
-	int	color;
+	mlx_texture_t	*texture;
+	float			pos_x;
 
-	color = GREEN;
+	texture = NULL;
+	pos_x = 0;
 	if (wall.collide.wall_dir == W_NORTH)
-		color = BLACK | ALPHA_255;
+		texture = data->texture.north;
 	else if (wall.collide.wall_dir == W_SOUTH)
-		color = RED | ALPHA_255;
+		texture = data->texture.south;
 	else if (wall.collide.wall_dir == W_EAST)
-		color = PINK | ALPHA_255;
+		texture = data->texture.east;
 	else if (wall.collide.wall_dir == W_WEST)
-		color = WHITE | ALPHA_255;
-	if (wall.height < 0 || wall.height > data->mlx->height)
+		texture = data->texture.west;
+	if (wall.height < 0)
 		wall.height = data->mlx->height;
-	ft_put_block(data->img.game, (t_vec){wall.start,
-		data->middle.screen.y - wall.height / 2, 0},
-		(t_vec){wall.width, wall.height, 0}, color);
+	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_SOUTH)
+		pos_x = wall.collide.len.x;
+	else
+		pos_x = wall.collide.len.y;
+	pos_x = pos_x - (int)pos_x;
+	if (pos_x > MAX_PRECISION)
+		pos_x = MAX_PRECISION;
+	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_EAST)
+		pos_x = MAX_PRECISION - pos_x;
+	ft_print_line_texture(data, texture, wall, pos_x);
 }
 
 static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
@@ -45,7 +59,7 @@ static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
 	if (wall.collide.checker)
 	{
 		height_dist = (float)(data->mlx->height)
-			/ ((wall.collide.dist) * cos(rotat * PI180));
+			/ ((wall.collide.dist) * cos((rotat) * PI180));
 		wall.height = height_dist;
 		wall.start = ray_start;
 		wall.width = size;

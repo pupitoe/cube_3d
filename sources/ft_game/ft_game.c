@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/18 12:36:14 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:53:01 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,6 @@ static void	ft_key_hook_other_key(mlx_key_data_t key, void *vdata)
 		mlx_close_window(data->mlx);
 	else
 		ft_key_hook_tab(key, vdata);
-}
-
-static int	ft_set_icon(t_data *data)
-{
-	int	status;
-
-	status = FAIL;
-	data->texture.icon = mlx_load_png("./asset/debug.png");
-	if (data->texture.icon)
-	{
-		status = SUCCESS;
-		mlx_set_icon(data->mlx, data->texture.icon);
-	}
-	return (status);
 }
 
 static int	ft_set_hook(t_data *data)
@@ -74,7 +60,9 @@ int	ft_game_start(t_data *data)
 		mlx_set_window_limit(data->mlx, 960, 540, 1920, 1080);
 		ft_set_icon(data);
 		if (ft_load_image(data, width, height) == SUCCESS
-			&& ft_put_img(data) == SUCCESS && ft_set_hook(data) == SUCCESS)
+			&& ft_set_textures(data) == SUCCESS
+			&& ft_put_img(data) == SUCCESS
+			&& ft_set_hook(data) == SUCCESS)
 			mlx_loop(data->mlx);
 		ft_delet_images(data);
 		ft_delet_textures(data);
