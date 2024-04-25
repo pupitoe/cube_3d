@@ -1,7 +1,7 @@
-NO ./asset/debug.png
-SO ./asset/debug.png
-WE ./asset/debug.png
-EA ./asset/debug.png
+NO ./asset/brick.png
+SO ./asset/brick.png
+WE ./asset/brick.png
+EA ./asset/brick.png
 
 F 0, 0, 0
 C 0, 0, 100
