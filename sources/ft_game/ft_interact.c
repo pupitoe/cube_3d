@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:25:46 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/25 15:40:50 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:43:49 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_interact(t_collide_data collide, t_data *data)
 		data->map[collide.block_cheked.y][collide.block_cheked.x] = DOOR_OP;
 		if (ft_is_hitbox(data->map, data->player))
 			data->map[collide.block_cheked.y]
-				[collide.block_cheked.x] = DOOR_CL;
+			[collide.block_cheked.x] = DOOR_CL;
 	}
 	return ;
 }
@@ -42,7 +42,7 @@ void	ft_key_hook_interact(t_data *data)
 
 	player_pos = (t_fvec){(float)(data->player.x
 			+ data->middle.player_size) / SCALE,
-			(float)(data->player.y) / SCALE};
+		(float)(data->player.y) / SCALE};
 	collide_center = ft_dda_interact(data, player_pos, data->player.rotat);
 	collide_right = ft_dda_interact(data, player_pos, data->player.rotat
 			- ROTATE_INTERACT);
