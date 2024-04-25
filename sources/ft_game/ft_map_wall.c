@@ -6,11 +6,29 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/23 16:10:23 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:56:53 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+
+static mlx_texture_t	*ft_get_texture_face(t_data *data, t_data_wall wall)
+{
+	mlx_texture_t	*texture;
+
+	texture = NULL;
+	if (wall.collide.block_touch == DOOR_OP)
+		texture = data->texture.door;
+	else if (wall.collide.wall_dir == W_NORTH)
+		texture = data->texture.north;
+	else if (wall.collide.wall_dir == W_SOUTH)
+		texture = data->texture.south;
+	else if (wall.collide.wall_dir == W_EAST)
+		texture = data->texture.east;
+	else if (wall.collide.wall_dir == W_WEST)
+		texture = data->texture.west;
+	return (texture);
+}
 
 /**
  * MAX_PRECISION is a limit for X position.
@@ -22,16 +40,8 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 	mlx_texture_t	*texture;
 	float			pos_x;
 
-	texture = NULL;
+	texture = ft_get_texture_face(data, wall);
 	pos_x = 0;
-	if (wall.collide.wall_dir == W_NORTH)
-		texture = data->texture.north;
-	else if (wall.collide.wall_dir == W_SOUTH)
-		texture = data->texture.south;
-	else if (wall.collide.wall_dir == W_EAST)
-		texture = data->texture.east;
-	else if (wall.collide.wall_dir == W_WEST)
-		texture = data->texture.west;
 	if (wall.height < 0)
 		wall.height = data->mlx->height;
 	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_SOUTH)
