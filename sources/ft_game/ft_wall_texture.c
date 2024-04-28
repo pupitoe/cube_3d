@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:13 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/28 15:21:32 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/28 16:24:49 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ static int	ft_get_pixel_color(uint8_t *texture_pixel)
 static size_t	ft_get_y_pos(long double ratio, long double pos_y,
 	size_t width)
 {
-	
-	return ((size_t)((ratio * pos_y)) *width);
+	return ((size_t)((ratio * pos_y)) * width);
 }
 
 /**
