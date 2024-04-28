@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:37 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/18 18:38:45 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:54:24 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ int	ft_get_rgba(int r, int g, int b, int a)
 
 static void	ft_set_data(t_data *data, t_pov *player, t_map *map)
 {
-	int	meedle_player;
+	int	middle_player;
 
-	meedle_player = SCALE / 2 - PLAYER_SIZE / 2;
-	meedle_player = 0;
+	middle_player = SCALE / 2 - PLAYER_SIZE / 2;
 	data->map_parser = map;
-	data->player.x = player->position_x * SCALE + meedle_player;
-	data->player.y = player->position_y * SCALE + meedle_player;
+	data->player.x = (player->position_x * SCALE) + middle_player;
+	data->player.y = (player->position_y * SCALE) + middle_player;
 	data->player.rotat = player->angle;
 	data->texture.floor_rgba = ft_get_rgba(map->floor->red,
 			map->floor->green, map->floor->blue, 255);
