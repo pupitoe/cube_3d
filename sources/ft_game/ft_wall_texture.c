@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:13 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/28 14:51:36 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:21:32 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ static int	ft_get_pixel_color(uint8_t *texture_pixel)
  * @param width is with of texture
  * @return Y position of image 
 */
-static unsigned int	ft_get_y_pos(long double ratio, float pos_y,
-	unsigned int width)
+static size_t	ft_get_y_pos(long double ratio, long double pos_y,
+	size_t width)
 {
-	return ((unsigned int)(ratio * pos_y) *width);
+	
+	return ((size_t)((ratio * pos_y)) *width);
 }
 
 /**
@@ -40,7 +41,7 @@ static unsigned int	ft_get_y_pos(long double ratio, float pos_y,
 */
 static uint8_t	*ft_get_x_pos(mlx_texture_t *texture, float pos_x)
 {
-	return (texture->pixels + (unsigned int)(texture->width * pos_x)
+	return (texture->pixels + (size_t)(texture->width * pos_x)
 		* sizeof(int));
 }
 
