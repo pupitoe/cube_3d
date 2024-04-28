@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/25 15:44:40 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/28 18:30:44 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct s_data
 	struct s_texture	texture;
 	struct s_img		img;
 	struct s_middle		middle;
+	int					mouse_toggle;
 }	t_data;
 
 #endif
