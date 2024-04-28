@@ -18,20 +18,21 @@ void	ft_put_white_block(t_data *data, t_vec pos)
 		(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, WHITE | ALPHA_128);
 }
 
-void	ft_put_block(mlx_image_t *img, t_vec pos, t_vec size, int color)
+void	ft_put_valid_block(t_data *data, t_vec block_position,
+	int pos_y, int pos_x)
 {
-	int	x;
-
-	while (size.y)
-	{
-		x = size.x;
-		size.y--;
-		while (x)
-		{
-			x--;
-			mlx_put_pixel(img, x + pos.x, pos.y + size.y, color);
-		}
-	}
+	if (data->map[data->player.y / SCALE + pos_y]
+		[data->player.x / SCALE + pos_x] == 0
+		|| data->map[data->player.y / SCALE + pos_y]
+		[data->player.x / SCALE + pos_x] == 3)
+		ft_put_white_block(data, block_position);
+	else if (data->map[data->player.y / SCALE + pos_y]
+		[data->player.x / SCALE + pos_x] == 2)
+		ft_put_block(data->img.map, block_position,
+			(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, RED | ALPHA_128);
+	else
+		ft_put_block(data->img.map, block_position,
+			(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, BLACK | ALPHA_128);
 }
 
 void	choose_block(t_data *data, int pos_y, int pos_x)
@@ -52,12 +53,8 @@ void	choose_block(t_data *data, int pos_y, int pos_x)
 		ft_put_white_block(data, block_position);
 	else if (data->player.x / SCALE + pos_x >= data->map_size.x)
 		ft_put_white_block(data, block_position);
-	else if (data->map[data->player.y / SCALE + pos_y]
-		[data->player.x / SCALE + pos_x] == 0)
-		ft_put_white_block(data, block_position);
 	else
-		ft_put_block(data->img.map, block_position,
-			(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, BLACK | ALPHA_128);
+		ft_put_valid_block(data, block_position, pos_y, pos_x);
 }
 
 void	ft_print_border(t_data *data)
