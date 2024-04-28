@@ -18,7 +18,7 @@ FT_PARSER		::= $(foreach buffer, $(T_FT_PARSER), ft_parser/$(buffer))
 T_FT_GAME		::= ft_game	ft_map ft_move ft_move_hook ft_images ft_ray \
 					ft_collision ft_dda ft_math ft_map_wall ft_game_print \
 					ft_print ft_textures ft_wall_texture ft_interact \
-					ft_dda_call
+					ft_dda_call ft_put_block
 FT_GAME			::= $(foreach buffer, $(T_FT_GAME), ft_game/$(buffer))
 SOURCES_CONTENT ::= ft_cube $(FT_PARSER) $(FT_GAME)
 OBJS_FOLDER		::= objects
