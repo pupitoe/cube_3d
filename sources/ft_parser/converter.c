@@ -67,12 +67,10 @@ int	clear_map(int **map, size_t line_to_clear)
 void	copy_line(t_data *data, int **map, size_t line)
 {
 	char	*src;
-	int		**dst;
 	size_t	cursor;
 	size_t	line_src;
 
 	src = data->map_parser->map;
-	dst = map;
 	cursor = 0;
 	line_src = 0;
 	while (*src && line_src < line)
@@ -84,13 +82,15 @@ void	copy_line(t_data *data, int **map, size_t line)
 	while (cursor < data->map_size.x && src[cursor] != '\n')
 	{
 		if (src[cursor] == ' ')
-			dst[line][cursor] = 0;
+			map[line][cursor] = 0;
+		else if (src[cursor] == 'D')
+			map[line][cursor] = 2;
 		else
-			dst[line][cursor] = (int) src[cursor] - '0';
+			map[line][cursor] = (int) src[cursor] - '0';
 		cursor++;
 	}
 	while (cursor < data->map_size.x)
-		dst[line][cursor++] = 0;
+		map[line][cursor++] = 0;
 }
 
 int	convert(t_data *data)

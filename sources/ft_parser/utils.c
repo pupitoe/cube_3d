@@ -14,7 +14,7 @@
 
 int	empty(char c)
 {
-	if (c == '0' || c == ' ')
+	if (c == '0' || c == ' ' || c == 'D')
 		return (1);
 	return (0);
 }

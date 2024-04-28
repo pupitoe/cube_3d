@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:13 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/20 00:28:57 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/28 16:24:49 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static int	ft_get_pixel_color(uint8_t *texture_pixel)
  * @param width is with of texture
  * @return Y position of image 
 */
-static unsigned int	ft_get_y_pos(long double ratio, float pos_y,
-	unsigned int width)
+static size_t	ft_get_y_pos(long double ratio, long double pos_y,
+	size_t width)
 {
-	return ((unsigned int)(ratio * pos_y) *width * sizeof(int));
+	return ((size_t)((ratio * pos_y)) * width);
 }
 
 /**
@@ -40,7 +40,7 @@ static unsigned int	ft_get_y_pos(long double ratio, float pos_y,
 */
 static uint8_t	*ft_get_x_pos(mlx_texture_t *texture, float pos_x)
 {
-	return (texture->pixels + (unsigned int)(texture->width * pos_x)
+	return (texture->pixels + (size_t)(texture->width * pos_x)
 		* sizeof(int));
 }
 
@@ -60,6 +60,7 @@ void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 	t_data_wall wall, float pos_x)
 {
 	t_texture_pos	texture_pos;
+	size_t			texture_width;
 	int				step;
 
 	step = 0;
@@ -68,12 +69,13 @@ void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 	{
 		ft_init_texture(&texture_pos, texture, wall, data->mlx->height);
 		texture_pos.ptr_texutre_x = ft_get_x_pos(texture, pos_x);
+		texture_width = texture->width * sizeof(int);
 		while (step < data->mlx->height && step < wall.height)
 		{
 			mlx_put_pixel(data->img.game, wall.start, step + texture_pos.middle,
 				ft_get_pixel_color(texture_pos.ptr_texutre_x
 					+ ft_get_y_pos(texture_pos.ratio_height,
-						step + texture_pos.start_pixel, texture->width)));
+						step + texture_pos.start_pixel, texture_width)));
 			step++;
 		}
 	}

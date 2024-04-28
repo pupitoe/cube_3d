@@ -6,11 +6,16 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 17:31:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/16 20:16:45 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:54:03 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
+
+int	ft_is_collide(int block)
+{
+	return (block == WALL || block == DOOR_OP);
+}
 
 bool	ft_is_hitbox(int **map, t_vec pos)
 {
@@ -25,8 +30,8 @@ bool	ft_is_hitbox(int **map, t_vec pos)
 	hit.top_right = (t_vec){hit_size.x, hit_basic.y, 0};
 	hit.bottum_left = (t_vec){hit_basic.x, hit_size.y, 0};
 	hit.bottum_right = (t_vec){hit_size.x, hit_size.y, 0};
-	return (map[hit.top_left.y][hit.top_left.x] == WALL
-		|| map[hit.top_right.y][hit.top_right.x] == WALL
-		|| map[hit.bottum_left.y][hit.bottum_left.x] == WALL
-		|| map[hit.bottum_right.y][hit.bottum_right.x] == WALL);
+	return (ft_is_collide(map[hit.top_left.y][hit.top_left.x])
+		|| ft_is_collide(map[hit.top_right.y][hit.top_right.x])
+		|| ft_is_collide(map[hit.bottum_left.y][hit.bottum_left.x])
+		|| ft_is_collide(map[hit.bottum_right.y][hit.bottum_right.x]));
 }
