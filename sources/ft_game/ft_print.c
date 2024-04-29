@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 22:18:29 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/07 22:18:48 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:01:09 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	ft_print_hook(void *vdata)
 		ft_clear_map(data);
 		if (data->print_map)
 			ft_print_map(data);
-		data->time.time_passed -= data->time.framerate;
+		data->time.time_passed = 0;
 	}
 }
