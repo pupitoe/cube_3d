@@ -6,7 +6,7 @@
 #    By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 16:29:01 by tlassere          #+#    #+#              #
-#    Updated: 2024/04/29 17:11:31 by tlassere         ###   ########.fr        #
+#    Updated: 2024/04/29 18:52:14 by tlassere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ T_FT_GAME		::= ft_game	ft_map ft_move ft_move_hook ft_images ft_ray \
 					ft_collision ft_dda ft_math ft_map_wall ft_game_print \
 					ft_print ft_textures ft_wall_texture ft_interact \
 					ft_dda_call ft_put_block ft_mouse ft_game_hook \
-					ft_print_hud
+					ft_print_hud ft_konami
 FT_GAME			::= $(foreach buffer, $(T_FT_GAME), ft_game/$(buffer))
 SOURCES_CONTENT ::= ft_cube $(FT_PARSER) $(FT_GAME)
 OBJS_FOLDER		::= objects
