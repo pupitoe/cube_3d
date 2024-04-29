@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:13 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/28 16:24:49 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:35:05 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * @param texture_pixel is position of pixel to get color;
  * @return color of pixel pos;
 */
-static int	ft_get_pixel_color(uint8_t *texture_pixel)
+int	ft_get_pixel_color(uint8_t *texture_pixel)
 {
 	return (ft_get_rgba(texture_pixel[0], texture_pixel[1], texture_pixel[2],
 			texture_pixel[3]));

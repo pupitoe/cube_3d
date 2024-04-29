@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/28 19:04:37 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:51:29 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@
 # define DIST_INTERACT 2.0f
 # define ROTATE_INTERACT 10.0f
 
+# define KONAMI_SIZE 10
+
 int		ft_game_start(t_data *data);
+void	ft_key_hook_other_key(mlx_key_data_t key, void *vdata);
 void	ft_put_block(mlx_image_t *img, t_vec pos, t_vec size, int color);
+int		ft_set_hook(t_data *data);
 void	ft_print_hook(void *vdata);
 
 void	ft_delet_images(t_data *data);
@@ -45,14 +49,9 @@ int		ft_set_textures(t_data *data);
 void	ft_delet_textures(t_data *data);
 int		ft_set_icon(t_data *data);
 int		ft_put_img(t_data *data);
-void	ft_print_many_ray(t_data *data);
-void	ft_print_map(t_data *data);
-void	ft_print_wall(t_data *data);
-void	ft_print_game(t_data *data);
-void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
-			t_data_wall wall, float pos_x);
 void	ft_key_hook_interact(t_data *data);
 void	ft_cursor_func(double xpos, double ypos, void *vdata);
 int		ft_interact_block(int block);
+void	ft_konami(mlx_key_data_t key, t_data *data);
 
 #endif
