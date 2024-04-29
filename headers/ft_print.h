@@ -6,12 +6,14 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:09:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 17:10:58 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:48:50 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINT_H
 # define FT_PRINT_H
+
+# define HEIGHT_HUD 90
 
 void	ft_print_many_ray(t_data *data);
 void	ft_print_map(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 19:34:30 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/19 23:11:23 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:31:12 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define RED 0xFF000000
 # define PINK 0x0000FF00
 # define GREEN 0x00800000
+# define BLUE 0x0000FF00
 
 # define ALPHA_255 0x000000FF
 # define ALPHA_192 0x000000C0
