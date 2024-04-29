@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/28 19:04:37 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:02:45 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@
 # define ROTATE_INTERACT 10.0f
 
 int		ft_game_start(t_data *data);
+void	ft_key_hook_other_key(mlx_key_data_t key, void *vdata);
 void	ft_put_block(mlx_image_t *img, t_vec pos, t_vec size, int color);
+int		ft_set_hook(t_data *data);
 void	ft_print_hook(void *vdata);
 
 void	ft_delet_images(t_data *data);
