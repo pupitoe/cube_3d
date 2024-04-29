@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:54:58 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/17 18:43:42 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:31:40 by abareux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ void	ft_put_valid_block(t_data *data, t_vec block_position,
 	int pos_y, int pos_x)
 {
 	if (data->map[data->player.y / SCALE + pos_y]
-		[data->player.x / SCALE + pos_x] == 0
-		|| data->map[data->player.y / SCALE + pos_y]
-		[data->player.x / SCALE + pos_x] == 3)
+		[data->player.x / SCALE + pos_x] == 0)
 		ft_put_white_block(data, block_position);
+	else if (data->map[data->player.y / SCALE + pos_y]
+		[data->player.x / SCALE + pos_x] == 3)
+		ft_put_block(data->img.map, block_position,
+			(t_vec){MAP_SIZE_OBJECT, MAP_SIZE_OBJECT, 0}, GREEN | ALPHA_128);
 	else if (data->map[data->player.y / SCALE + pos_y]
 		[data->player.x / SCALE + pos_x] == 2)
 		ft_put_block(data->img.map, block_position,
