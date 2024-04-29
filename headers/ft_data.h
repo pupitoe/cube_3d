@@ -6,31 +6,12 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 18:48:27 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:13:30 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_DATA_H
 # define FT_DATA_H
-
-typedef struct s_vec
-{
-	size_t	x;
-	size_t	y;
-	float	rotat;
-}	t_vec;
-
-typedef struct s_ivec
-{
-	int	x;
-	int	y;
-}	t_ivec;
-
-typedef struct s_fvec
-{
-	float	x;
-	float	y;
-}	t_fvec;
 
 struct s_data_time
 {

@@ -6,7 +6,7 @@
 #    By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 16:29:01 by tlassere          #+#    #+#              #
-#    Updated: 2024/04/29 18:52:14 by tlassere         ###   ########.fr        #
+#    Updated: 2024/04/29 19:14:01 by tlassere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ OBJECTS			::= $(foreach buffer, $(SOURCES_CONTENT), \
 						$(OBJS_FOLDER)/$(buffer).o)
 HEADER			::= headers
 T_HEADER_FILES	::= ft_cub ft_data ft_game ft_move ft_parser ft_math ft_color \
-					ft_dda ft_data_wall ft_print
+					ft_dda ft_data_wall ft_print ft_vec
 HEADER_FILES	::= $(foreach buffer, $(T_HEADER_FILES), $(HEADER)/$(buffer).h)
 LIBMLX			::= ./MLX42
 LIBFT_DIR		::= libft
