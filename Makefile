@@ -6,7 +6,7 @@
 #    By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 16:29:01 by tlassere          #+#    #+#              #
-#    Updated: 2024/04/29 16:38:12 by tlassere         ###   ########.fr        #
+#    Updated: 2024/04/29 17:11:31 by tlassere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ FT_PARSER		::= $(foreach buffer, $(T_FT_PARSER), ft_parser/$(buffer))
 T_FT_GAME		::= ft_game	ft_map ft_move ft_move_hook ft_images ft_ray \
 					ft_collision ft_dda ft_math ft_map_wall ft_game_print \
 					ft_print ft_textures ft_wall_texture ft_interact \
-					ft_dda_call ft_put_block ft_mouse ft_game_hook
+					ft_dda_call ft_put_block ft_mouse ft_game_hook \
+					ft_print_hud
 FT_GAME			::= $(foreach buffer, $(T_FT_GAME), ft_game/$(buffer))
 SOURCES_CONTENT ::= ft_cube $(FT_PARSER) $(FT_GAME)
 OBJS_FOLDER		::= objects
@@ -29,7 +30,7 @@ OBJECTS			::= $(foreach buffer, $(SOURCES_CONTENT), \
 						$(OBJS_FOLDER)/$(buffer).o)
 HEADER			::= headers
 T_HEADER_FILES	::= ft_cub ft_data ft_game ft_move ft_parser ft_math ft_color \
-					ft_dda ft_data_wall
+					ft_dda ft_data_wall ft_print
 HEADER_FILES	::= $(foreach buffer, $(T_HEADER_FILES), $(HEADER)/$(buffer).h)
 LIBMLX			::= ./MLX42
 LIBFT_DIR		::= libft

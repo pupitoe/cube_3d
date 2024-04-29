@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 23:15:28 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/07 21:48:05 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:06:40 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	ft_print_game(t_data *data)
 	data->middle.screen.x = data->mlx->width / 2;
 	ft_print_horizon(data);
 	ft_print_wall(data);
+	ft_print_hud(data);
 }

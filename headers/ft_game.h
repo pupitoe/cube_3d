@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 16:02:45 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:10:54 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,6 @@ int		ft_set_textures(t_data *data);
 void	ft_delet_textures(t_data *data);
 int		ft_set_icon(t_data *data);
 int		ft_put_img(t_data *data);
-void	ft_print_many_ray(t_data *data);
-void	ft_print_map(t_data *data);
-void	ft_print_wall(t_data *data);
-void	ft_print_game(t_data *data);
-void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
-			t_data_wall wall, float pos_x);
 void	ft_key_hook_interact(t_data *data);
 void	ft_cursor_func(double xpos, double ypos, void *vdata);
 int		ft_interact_block(int block);
