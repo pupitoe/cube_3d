@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 19:13:30 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:16:23 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ struct s_texture
 	mlx_texture_t	*west;
 	mlx_texture_t	*east;
 	mlx_texture_t	*door;
+	mlx_texture_t	*hud;
+	mlx_texture_t	*hud_konami;
 	int				floor_rgba;
 	int				ceiling_rgba;
 };
