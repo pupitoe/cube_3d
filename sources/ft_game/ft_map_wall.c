@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/25 15:56:53 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/30 18:59:59 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 		pos_x = MAX_PRECISION;
 	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_EAST)
 		pos_x = MAX_PRECISION - pos_x;
-	ft_print_line_texture(data, texture, wall, pos_x);
+	if (wall.collide.block_touch == DOOR_OP)
+		ft_print_line_animated(data, texture, wall, pos_x);
+	else	
+		ft_print_line_texture(data, texture, wall, pos_x);
 }
 
 static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)

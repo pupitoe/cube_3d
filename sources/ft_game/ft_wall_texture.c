@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:13 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 19:35:05 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/30 18:58:18 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,31 @@ static void	ft_init_texture(t_texture_pos *texture_pos,
 }
 
 void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
+	t_data_wall wall, float pos_x)
+{
+	t_texture_pos	texture_pos;
+	size_t			texture_width;
+	int				step;
+
+	step = 0;
+	if (texture && wall.height >= 0
+		&& (unsigned int)wall.start < data->img.game->width && pos_x < 1)
+	{
+		ft_init_texture(&texture_pos, texture, wall, data->mlx->height);
+		texture_pos.ptr_texutre_x = ft_get_x_pos(texture, pos_x);
+		texture_width = texture->width * sizeof(int);
+		while (step < data->mlx->height && step < wall.height)
+		{
+			mlx_put_pixel(data->img.game, wall.start, step + texture_pos.middle,
+				ft_get_pixel_color(texture_pos.ptr_texutre_x
+					+ ft_get_y_pos(texture_pos.ratio_height,
+						step + texture_pos.start_pixel, texture_width)));
+			step++;
+		}
+	}
+}
+
+void	ft_print_line_animated(t_data *data, mlx_texture_t *texture,
 	t_data_wall wall, float pos_x)
 {
 	t_texture_pos	texture_pos;
