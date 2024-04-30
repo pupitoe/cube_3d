@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:09:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/30 18:47:25 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/30 18:53:31 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define CENTER_HUD 75
 # define SPEED_FRAME 10
 
-# define FRAME_ANIMATION_FULL 15
-# define SIZE_FULL 256
+# define FRAME_ANIMATION_DOOR 15
+# define SIZE_DOOR 256
 
 void	ft_print_map(t_data *data);
 void	ft_print_wall(t_data *data);
