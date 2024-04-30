@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 22:18:29 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 17:01:09 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:36:32 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_print_hook(void *vdata)
 	data = vdata;
 	ft_print_game(data);
 	data->time.time_passed += data->mlx->delta_time;
+	data->time.all_time += data->mlx->delta_time * 15;
 	if (data->time.time_passed >= data->time.framerate)
 	{
 		ft_clear_map(data);

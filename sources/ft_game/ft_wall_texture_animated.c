@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:23:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/30 19:28:15 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:34:40 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static uint8_t	*ft_get_pos_x(mlx_texture_t *texture, float pos_x, int frame)
 void	ft_print_line_animated(t_data *data, mlx_texture_t *texture,
 	t_data_wall wall, float pos_x)
 {
-	static unsigned int	frame = 0;
 	t_texture_pos	texture_pos;
 	size_t			texture_width;
 	int				step;
@@ -30,7 +29,7 @@ void	ft_print_line_animated(t_data *data, mlx_texture_t *texture,
 		&& (unsigned int)wall.start < data->img.game->width && pos_x < 1)
 	{
 		ft_init_texture(&texture_pos, texture, wall, data->mlx->height);
-		texture_pos.ptr_texutre_x = ft_get_pos_x(texture, pos_x, frame / 1000);
+		texture_pos.ptr_texutre_x = ft_get_pos_x(texture, pos_x, (long long)data->time.all_time % 15);
 		texture_width = texture->width * sizeof(int);
 		while (step < data->mlx->height && step < wall.height)
 		{
@@ -41,6 +40,4 @@ void	ft_print_line_animated(t_data *data, mlx_texture_t *texture,
 			step++;
 		}
 	}
-	if (++frame >= FRAME_ANIMATION_DOOR * 1000)
-		frame = 0;
 }

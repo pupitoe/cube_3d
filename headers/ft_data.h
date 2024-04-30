@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 19:16:23 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:32:43 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 struct s_data_time
 {
-	float	time_passed;
-	float	framerate;
+	float		time_passed;
+	float		framerate;
+	long double	all_time;
 };
 
 struct s_img
