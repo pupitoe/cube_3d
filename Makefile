@@ -6,7 +6,7 @@
 #    By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 16:29:01 by tlassere          #+#    #+#              #
-#    Updated: 2024/04/29 19:14:01 by tlassere         ###   ########.fr        #
+#    Updated: 2024/04/30 11:58:56 by tlassere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ T_FT_PARSER		::=	ft_map_free ft_parser celling check_extension error flood \
 					floor load map purge set_angle strdup_parser \
 					strjoin_parser texture utils validate converter
 FT_PARSER		::= $(foreach buffer, $(T_FT_PARSER), ft_parser/$(buffer))
-T_FT_GAME		::= ft_game	ft_map ft_move ft_move_hook ft_images ft_ray \
+T_FT_GAME		::= ft_game	ft_map ft_move ft_move_hook ft_images \
 					ft_collision ft_dda ft_math ft_map_wall ft_game_print \
 					ft_print ft_textures ft_wall_texture ft_interact \
 					ft_dda_call ft_put_block ft_mouse ft_game_hook \

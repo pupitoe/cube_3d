@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:09:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 21:05:49 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/30 11:58:36 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define CENTER_HUD 75
 # define SPEED_FRAME 10
 
-void	ft_print_many_ray(t_data *data);
 void	ft_print_map(t_data *data);
 void	ft_print_wall(t_data *data);
 void	ft_print_game(t_data *data);
