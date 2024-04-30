@@ -6,13 +6,13 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 18:50:40 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 18:51:15 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/30 11:22:14 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub.h"
 
-static int	ft_konami_check(keys_t *buffer, t_data *data)
+static void	ft_konami_check(keys_t *buffer, t_data *data)
 {
 	keys_t	konami_imput[KONAMI_SIZE];
 	int		cmp;
@@ -32,18 +32,18 @@ static int	ft_konami_check(keys_t *buffer, t_data *data)
 		cmp++;
 	if (cmp == KONAMI_SIZE)
 		data->konami_toggle = !(data->konami_toggle);
-	return (cmp == KONAMI_SIZE);
 }
 
-void	ft_konami(mlx_key_data_t key, t_data *data)
+void	ft_konami(keys_t key, t_data *data)
 {
 	static int		size = 0;
 	static keys_t	buffer[KONAMI_SIZE] = {0};
 
-	buffer[size] = key.key;
+	buffer[size] = key;
 	size++;
-	if (size == KONAMI_SIZE && ft_konami_check(buffer, data) == false)
+	if (size == KONAMI_SIZE)
 	{
+		ft_konami_check(buffer, data);
 		while (size)
 		{
 			size--;
