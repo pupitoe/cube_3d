@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:00:45 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 18:52:29 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/30 11:23:01 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_key_hook_other_key(mlx_key_data_t key, void *vdata)
 			|| key.key == MLX_KEY_RIGHT || key.key == MLX_KEY_DOWN
 			|| key.key == MLX_KEY_UP || key.key == MLX_KEY_A
 			|| key.key == MLX_KEY_B))
-		ft_konami(key, data);
+		ft_konami(key.key, data);
 }
 
 int	ft_set_hook(t_data *data)

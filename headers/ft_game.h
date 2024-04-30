@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 18:51:29 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/04/30 11:22:30 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ int		ft_put_img(t_data *data);
 void	ft_key_hook_interact(t_data *data);
 void	ft_cursor_func(double xpos, double ypos, void *vdata);
 int		ft_interact_block(int block);
-void	ft_konami(mlx_key_data_t key, t_data *data);
+void	ft_konami(keys_t key, t_data *data);
 
 #endif
