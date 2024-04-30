@@ -16,6 +16,8 @@ int	validate_map(t_map *map)
 {
 	char	*buffer;
 
+	if (!map->map)
+		return (FAIL);
 	buffer = ft_strdup(map->map);
 	if (!buffer)
 		return (MALLOC_FAIL);
@@ -60,15 +62,15 @@ int	validate_line(char *line)
 	cursor = 2;
 	while (line[cursor] && line[cursor] == ' ')
 		cursor++;
-	if (intlen(line + cursor) > 3)
+	if (intlen(line + cursor) > 3 || intlen(line + cursor) == 0)
 		return (0);
 	while (line[cursor] && line[cursor] != ',')
 		cursor++;
-	if (intlen(++line + cursor) > 3)
+	if (intlen(line + cursor) > 3 || intlen(line + cursor) == 0)
 		return (0);
 	while (line[cursor] && line[cursor] != ',')
 		cursor++;
-	if (intlen(++line + cursor) > 3)
+	if (intlen(line + cursor) > 3 || intlen(line + cursor) == 0)
 		return (0);
 	line += 2;
 	while (*line)
