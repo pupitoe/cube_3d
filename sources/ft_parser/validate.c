@@ -33,10 +33,22 @@ int	validate_data(t_map *map)
 	if (map->celling->green > 255)
 		return (map_error(map, "Green celling color invalid\n"));
 	if (map->celling->blue < 0)
-		return (map_error(map, "Blue floor color invalid\n"));
+		return (map_error(map, "Blue celling color invalid\n"));
 	if (map->celling->red < 0)
-		return (map_error(map, "Red floor color invalid\n"));
+		return (map_error(map, "Red celling color invalid\n"));
 	if (map->celling->green < 0)
+		return (map_error(map, "Green celling color invalid\n"));
+	if (map->floor->blue > 255)
+		return (map_error(map, "Blue floor color invalid\n"));
+	if (map->floor->red > 255)
+		return (map_error(map, "Red floor color invalid\n"));
+	if (map->floor->green > 255)
+		return (map_error(map, "Green floor color invalid\n"));
+	if (map->floor->blue < 0)
+		return (map_error(map, "Blue floor color invalid\n"));
+	if (map->floor->red < 0)
+		return (map_error(map, "Red floor color invalid\n"));
+	if (map->floor->green < 0)
 		return (map_error(map, "Green floor color invalid\n"));
 	return (SUCCESS);
 }
