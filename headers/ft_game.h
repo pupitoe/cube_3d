@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 16:46:38 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:58:31 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # define WINDOW_HEIGHT 540
 # define WINDOW_WIDTH 960
+# define WINDOW_WIDTH_MAX 1920
+# define WINDOW_HEIGHT_MAX 1080
 
 # define WALL 1
 # define FLOOR 0
@@ -44,7 +46,7 @@ int		ft_set_hook(t_data *data);
 void	ft_print_hook(void *vdata);
 
 void	ft_delet_images(t_data *data);
-int		ft_load_image(t_data *data, uint32_t width, uint32_t height);
+int		ft_load_image(t_data *data);
 int		ft_set_textures(t_data *data);
 void	ft_delet_textures(t_data *data);
 int		ft_set_icon(t_data *data);

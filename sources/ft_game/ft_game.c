@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 16:50:06 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:58:49 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@ static void	ft_set_data(t_data *data)
 	data->middle.player_size = PLAYER_SIZE / 2;
 	data->print_map = false;
 }
-
-# define WINDOW_WIDTH_MAX 1920
-# define WINDOW_HEIGHT_MAX 1080
-
 
 int	ft_game_start(t_data *data)
 {
@@ -33,9 +29,10 @@ int	ft_game_start(t_data *data)
 	if (data->mlx)
 	{
 		status = SUCCESS;
-		mlx_set_window_limit(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_WIDTH_MAX, WINDOW_HEIGHT_MAX);
+		mlx_set_window_limit(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT,
+			WINDOW_WIDTH_MAX, WINDOW_HEIGHT_MAX);
 		ft_set_icon(data);
-		if (ft_load_image(data, WINDOW_WIDTH_MAX, WINDOW_HEIGHT_MAX) == SUCCESS
+		if (ft_load_image(data) == SUCCESS
 			&& ft_set_textures(data) == SUCCESS
 			&& ft_put_img(data) == SUCCESS
 			&& ft_set_hook(data) == SUCCESS)
