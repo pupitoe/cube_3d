@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:59:49 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/18 12:24:26 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:46:45 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_load_image(t_data *data, uint32_t width, uint32_t height)
 	int	status;
 
 	status = SUCCESS;
-	data->img.map = mlx_new_image(data->mlx, WINDOW_HIGHT * 4,
+	data->img.map = mlx_new_image(data->mlx, WINDOW_HEIGHT * 4,
 			WINDOW_WIDTH * 4);
 	data->img.player = mlx_new_image(data->mlx, PLAYER_SIZE
 			* MAP_SIZE_OBJECT / SCALE,
