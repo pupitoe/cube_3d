@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:28:39 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 18:09:13 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:20:50 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	ft_set_textures(t_data *data)
 	data->texture.south = mlx_load_png(data->map_parser->south_texture);
 	data->texture.west = mlx_load_png(data->map_parser->west_texture);
 	data->texture.east = mlx_load_png(data->map_parser->east_texture);
-	data->texture.door = mlx_load_png("./asset/door.png");
-	data->texture.hud = mlx_load_png("./asset/hud.png");
-	data->texture.hud_konami = mlx_load_png("./asset/hud_konami.png");
+	data->texture.door = mlx_load_png(DOOR_PATH);
+	data->texture.hud = mlx_load_png(HUD_PATH);
+	data->texture.hud_konami = mlx_load_png(HUDK_PATH);
 	if (data->texture.north && data->texture.south
 		&& data->texture.west && data->texture.east
 		&& data->texture.door && data->texture.hud
