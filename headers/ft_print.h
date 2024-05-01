@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:09:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 16:29:57 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:30:38 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define SIZE_FRAME_HUD 64
 # define SIZE_FRAME_MID_HUD 32
 # define CENTER_HUD 75
-# define SPEED_FRAME 10
 
 # define FRAME_ANIMATION_DOOR 15
 # define SIZE_DOOR 256
