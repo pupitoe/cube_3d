@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:06:56 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 21:11:43 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:28:33 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,10 @@ static void	ft_print_texture(mlx_image_t *image, mlx_texture_t *hud,
 
 void	ft_print_hud(t_data *data)
 {
-	static unsigned int	i = 0;
-	static int			signe = 1;
-
-	ft_put_block(data->img.game, (t_vec){0, data->mlx->height - HEIGHT_HUD, 0},
-		(t_vec){data->mlx->width, HEIGHT_HUD, 0}, BLUE | ALPHA_255);
 	if (!data->konami_toggle)
 		ft_print_texture(data->img.game, data->texture.hud,
-			i / SPEED_FRAME, data);
+			(size_t)data->time.all_time % FRAME_ANIMATION, data);
 	else
 		ft_print_texture(data->img.game, data->texture.hud_konami,
-			i / SPEED_FRAME, data);
-	i += signe;
-	if (i >= FRAME_ANIMATION * SPEED_FRAME - 1)
-		signe = -1;
-	else if (i == 0)
-		signe = 1;
+			(size_t)data->time.all_time % FRAME_ANIMATION, data);
 }
