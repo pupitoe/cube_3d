@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:51:14 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 16:31:12 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:34:06 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ typedef struct s_data
 	struct s_middle		middle;
 	int					mouse_toggle;
 	int					konami_toggle;
+	int32_t				width;
+	int32_t				height;
 }	t_data;
 
 #endif
