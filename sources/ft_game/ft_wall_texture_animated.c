@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:23:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 15:57:12 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:24:44 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	ft_print_line_animated(t_data *data, mlx_texture_t *texture,
 	if (texture && wall.height >= 0
 		&& (unsigned int)wall.start < data->img.game->width && pos_x < 1)
 	{
-		ft_init_texture(&texture_pos, texture, wall, data->mlx->height);
+		ft_init_texture(&texture_pos, texture, wall, data->height);
 		texture_pos.ptr_texutre_x = ft_get_pos_x(texture, pos_x,
 				(long long)data->time.all_time % FRAME_ANIMATION_DOOR);
 		texture_width = texture->width * sizeof(int);
-		while (step < data->mlx->height && step < wall.height)
+		while (step < data->height && step < wall.height)
 		{
 			mlx_put_pixel(data->img.game, wall.start, step + texture_pos.middle,
 				ft_get_pixel_color(texture_pos.ptr_texutre_x

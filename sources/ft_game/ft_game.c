@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 17:02:40 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:58:49 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,18 @@ static void	ft_set_data(t_data *data)
 int	ft_game_start(t_data *data)
 {
 	int		status;
-	int32_t	width;
-	int32_t	height;
 
 	status = FAIL;
 	data->time.framerate = 1.0f / 4.0f;
-	data->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HIGHT, "cub3D", true);
-	mlx_get_monitor_size(0, &width, &height);
+	data->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", true);
 	ft_set_data(data);
 	if (data->mlx)
 	{
 		status = SUCCESS;
-		mlx_set_window_limit(data->mlx, 960, 540, 1920, 1080);
+		mlx_set_window_limit(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT,
+			WINDOW_WIDTH_MAX, WINDOW_HEIGHT_MAX);
 		ft_set_icon(data);
-		if (ft_load_image(data, width, height) == SUCCESS
+		if (ft_load_image(data) == SUCCESS
 			&& ft_set_textures(data) == SUCCESS
 			&& ft_put_img(data) == SUCCESS
 			&& ft_set_hook(data) == SUCCESS)

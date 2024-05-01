@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:06:56 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 16:28:33 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:36:42 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_print_texture(mlx_image_t *image, mlx_texture_t *hud,
 			color = hud->pixels + ((width + SIZE_FRAME_HUD * frame)
 					+ height * hud->width) * sizeof(int);
 			mlx_put_pixel(image, width + data->middle.screen.x
-				- SIZE_FRAME_MID_HUD, data->mlx->height - CENTER_HUD + height,
+				- SIZE_FRAME_MID_HUD, data->height - CENTER_HUD + height,
 				ft_get_pixel_color(color));
 			height++;
 		}

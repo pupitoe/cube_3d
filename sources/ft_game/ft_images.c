@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:59:49 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/18 12:24:26 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:57:54 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,18 @@ void	ft_delet_images(t_data *data)
 	data->img.game = NULL;
 }
 
-int	ft_load_image(t_data *data, uint32_t width, uint32_t height)
+int	ft_load_image(t_data *data)
 {
 	int	status;
 
 	status = SUCCESS;
-	data->img.map = mlx_new_image(data->mlx, WINDOW_HIGHT * 4,
+	data->img.map = mlx_new_image(data->mlx, WINDOW_HEIGHT * 4,
 			WINDOW_WIDTH * 4);
 	data->img.player = mlx_new_image(data->mlx, PLAYER_SIZE
 			* MAP_SIZE_OBJECT / SCALE,
 			PLAYER_SIZE * MAP_SIZE_OBJECT / SCALE);
-	data->img.game = mlx_new_image(data->mlx, width, height);
+	data->img.game = mlx_new_image(data->mlx, WINDOW_WIDTH_MAX,
+			WINDOW_HEIGHT_MAX);
 	if (data->img.player)
 		ft_put_block(data->img.player, (t_vec){0, 0, 0},
 			(t_vec){PLAYER_SIZE * MAP_SIZE_OBJECT / SCALE, PLAYER_SIZE
