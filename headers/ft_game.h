@@ -6,14 +6,14 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/30 11:22:30 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:46:38 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_GAME_H
 # define FT_GAME_H
 
-# define WINDOW_HIGHT 540
+# define WINDOW_HEIGHT 540
 # define WINDOW_WIDTH 960
 
 # define WALL 1
