@@ -55,6 +55,13 @@ int	validate_data(t_map *map)
 	return (SUCCESS);
 }
 
+int	increment(char *line, int cursor)
+{
+	if (line[cursor])
+		return (cursor + 1);
+	return (cursor);
+}
+
 int	validate_line(char *line)
 {
 	int	cursor;
@@ -66,11 +73,12 @@ int	validate_line(char *line)
 		return (0);
 	while (line[cursor] && line[cursor] != ',')
 		cursor++;
+	cursor = increment(line, cursor);
 	if (intlen(line + cursor) > 3 || intlen(line + cursor) == 0)
 		return (0);
 	while (line[cursor] && line[cursor] != ',')
 		cursor++;
-	if (intlen(line + cursor) > 3 || intlen(line + cursor) == 0)
+	if (intlen(line + cursor + 1) > 3 || intlen(line + cursor + 1) == 0)
 		return (0);
 	line += 2;
 	while (*line)
