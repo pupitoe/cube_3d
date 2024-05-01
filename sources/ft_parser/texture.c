@@ -16,13 +16,13 @@ int	is_texture(char *line, t_map *map)
 {
 	if (ft_strlen(line) < 4)
 		return (0);
-	if (*(line + 0) == 'N' && *(line + 1) == 'O' && *(line + 2) == ' ')
+	if (*(line + 0) == 'N' && *(line + 1) == 'O' && *(line + 2) != '\0')
 		return (!map->north_texture);
-	if (*(line + 0) == 'S' && *(line + 1) == 'O' && *(line + 2) == ' ')
+	if (*(line + 0) == 'S' && *(line + 1) == 'O' && *(line + 2) != '\0')
 		return (!map->south_texture);
-	if (*(line + 0) == 'W' && *(line + 1) == 'E' && *(line + 2) == ' ')
+	if (*(line + 0) == 'W' && *(line + 1) == 'E' && *(line + 2) != '\0')
 		return (!map->west_texture);
-	if (*(line + 0) == 'E' && *(line + 1) == 'A' && *(line + 2) == ' ')
+	if (*(line + 0) == 'E' && *(line + 1) == 'A' && *(line + 2) != '\0')
 		return (!map->east_texture);
 	return (0);
 }
@@ -49,27 +49,27 @@ void	trim_space(char *line)
 void	set_texture(char *line, t_map *map)
 {
 	trim_space(line);
-	if (*(line + 0) == 'N' && *(line + 1) == 'O' && *(line + 2) == ' ')
+	if (*(line + 0) == 'N' && *(line + 1) == 'O')
 	{
-		map->north_texture = ft_strdup_parser(skip_space(line + 3));
+		map->north_texture = ft_strdup_parser(skip_space(line + 2));
 		if (map->north_texture > (char *) 1)
 			map->north_texture[ft_strlen(map->north_texture)] = 0;
 	}
-	if (*(line + 0) == 'S' && *(line + 1) == 'O' && *(line + 2) == ' ')
+	if (*(line + 0) == 'S' && *(line + 1) == 'O')
 	{
-		map->south_texture = ft_strdup_parser(skip_space(line + 3));
+		map->south_texture = ft_strdup_parser(skip_space(line + 2));
 		if (map->south_texture > (char *) 1)
 			map->south_texture[ft_strlen(map->south_texture)] = 0;
 	}
-	if (*(line + 0) == 'W' && *(line + 1) == 'E' && *(line + 2) == ' ')
+	if (*(line + 0) == 'W' && *(line + 1) == 'E')
 	{
-		map->west_texture = ft_strdup_parser(skip_space(line + 3));
+		map->west_texture = ft_strdup_parser(skip_space(line + 2));
 		if (map->west_texture > (char *) 1)
 			map->west_texture[ft_strlen(map->west_texture)] = 0;
 	}
-	if (*(line + 0) == 'E' && *(line + 1) == 'A' && *(line + 2) == ' ')
+	if (*(line + 0) == 'E' && *(line + 1) == 'A')
 	{
-		map->east_texture = ft_strdup_parser(skip_space(line + 3));
+		map->east_texture = ft_strdup_parser(skip_space(line + 2));
 		if (map->east_texture > (char *) 1)
 			map->east_texture[ft_strlen(map->east_texture)] = 0;
 	}

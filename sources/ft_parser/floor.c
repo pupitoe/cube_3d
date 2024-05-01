@@ -14,7 +14,7 @@
 
 int	is_floor(char *line, t_map *map)
 {
-	if (*(line + 0) == 'F' && *(line + 1) == ' ' && *(line + 2) != '\0')
+	if (*(line + 0) == 'F' && *(line + 1) != '\0')
 		return (!map->floor);
 	return (0);
 }
@@ -31,7 +31,7 @@ void	set_floor(char *line, t_map *map)
 		map->floor = (void *) 1;
 		return ;
 	}
-	result->red = ft_atoi(line + 2);
+	result->red = ft_atoi(line + 1);
 	while (*line != ',' && *line)
 		line++;
 	result->green = ft_atoi(++line);

@@ -62,6 +62,18 @@ int	increment(char *line, int cursor)
 	return (cursor);
 }
 
+int	check_end_line(char *line, int cursor)
+{
+	cursor++;
+	while (line[cursor] == ' ')
+		cursor++;
+	while (ft_isdigit(line[cursor]))
+		cursor++;
+	if (line[cursor + 1] != '\0')
+		return (0);
+	return (1);
+}
+
 int	validate_line(char *line)
 {
 	int	cursor;
@@ -80,12 +92,11 @@ int	validate_line(char *line)
 		cursor++;
 	if (intlen(line + cursor + 1) > 3 || intlen(line + cursor + 1) == 0)
 		return (0);
-	line += 2;
-	while (*line)
-	{
+	if (!check_end_line(line, cursor))
+		return (0);
+	line += 1;
+	while (*(++line))
 		if (!ft_isdigit(*line) && *line != ' ' && *line != ',' && *line != '\n')
 			return (0);
-		line++;
-	}
 	return (1);
 }
