@@ -50,5 +50,7 @@ int	intlen(char *str)
 		str++;
 	while (ft_isdigit(*(str + len)))
 		len++;
+	if (len == 0 && *(str - 1) == '0')
+		return (1);
 	return (len);
 }
