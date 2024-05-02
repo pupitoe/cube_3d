@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 16:58:49 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:06:00 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_game_start(t_data *data)
 	int		status;
 
 	status = FAIL;
-	data->time.framerate = 1.0f / 4.0f;
+	data->time.framerate = 1.0f / 30.0f;
 	data->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D", true);
 	ft_set_data(data);
 	if (data->mlx)

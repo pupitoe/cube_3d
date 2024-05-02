@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:25:46 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/25 16:39:51 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:25:14 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_interact(t_collide_data collide, t_data *data)
 			&& buffer_touched == DOOR_CL && collide.dist < DIST_INTERACT)
 		{
 			data->map[collide.block_cheked.y][collide.block_cheked.x] = DOOR_OP;
-			if (ft_is_hitbox(data->map, data->player))
+			if (ft_is_hitbox(data->map, data->map_size, data->player))
 				data->map[collide.block_cheked.y]
 				[collide.block_cheked.x] = DOOR_CL;
 		}

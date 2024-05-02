@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 17:28:28 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:27:55 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,7 @@ void	ft_print_wall(t_data *data)
 	fov_2 = FOV / 2.0f;
 	ray_number = data->width;
 	rad = FOV / ray_number;
-	size_ray = 0;
-	if (ray_number > 0)
-		size_ray = data->width / ray_number;
+	size_ray = 1;
 	while (i < ray_number)
 	{
 		if (i != 0)

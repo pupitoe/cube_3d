@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:59:49 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 16:57:54 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:16:42 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_load_image(t_data *data)
 {
 	int	status;
 
-	status = SUCCESS;
+	status = FAIL;
 	data->img.map = mlx_new_image(data->mlx, WINDOW_HEIGHT * 4,
 			WINDOW_WIDTH * 4);
 	data->img.player = mlx_new_image(data->mlx, PLAYER_SIZE
@@ -41,12 +41,8 @@ int	ft_load_image(t_data *data)
 		ft_put_block(data->img.player, (t_vec){0, 0, 0},
 			(t_vec){PLAYER_SIZE * MAP_SIZE_OBJECT / SCALE, PLAYER_SIZE
 			*MAP_SIZE_OBJECT / SCALE, 0}, RED | ALPHA_64);
-	if (data->img.player == NULL || data->img.map == NULL
-		|| data->img.game == NULL)
-	{
-		status = FAIL;
-		ft_delet_images(data);
-	}
+	if (data->img.player && data->img.map && data->img.game)
+		status = SUCCESS;
 	return (status);
 }
 
