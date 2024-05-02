@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 17:31:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 19:50:23 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 20:07:51 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	ft_is_collide(int block)
 
 static int	ft_check_dist(t_vec map_size, t_vec player)
 {
-	return (player.x >= 0 && player.x < map_size.x
-		&& player.y >= 0 && player.y < map_size.y);
+	return (player.x < map_size.x && player.y < map_size.y);
 }
 
 bool	ft_is_hitbox(int **map, t_vec map_size, t_vec pos)
