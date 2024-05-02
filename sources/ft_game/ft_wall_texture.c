@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:13 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 15:16:08 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:43:08 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
 	int				step;
 
 	step = 0;
-	if (texture && wall.height >= 0
-		&& (unsigned int)wall.start < data->img.game->width && pos_x < 1)
+	if (texture && wall.height >= 0 && pos_x > 0 && pos_x < 1
+		&& (unsigned int)wall.start < data->img.game->width)
 	{
 		ft_init_texture(&texture_pos, texture, wall, data->height);
 		texture_pos.ptr_texutre_x = ft_get_x_pos(texture, pos_x);
