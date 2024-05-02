@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:09:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 14:12:45 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:16:41 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	ft_print_wall(t_data *data);
 void	ft_print_game(t_data *data);
 void	ft_print_hud(t_data *data);
 void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
-			t_data_wall wall, float pos_x);
+			t_data_wall wall, double pos_x);
 int		ft_get_pixel_color(uint8_t *texture_pixel);
 void	ft_print_line_animated(t_data *data, mlx_texture_t *texture,
-			t_data_wall wall, float pos_x);
+			t_data_wall wall, double pos_x);
 size_t	ft_get_y_pos(long double ratio, long double pos_y,
 			size_t width);
 void	ft_init_texture(t_texture_pos *texture_pos,

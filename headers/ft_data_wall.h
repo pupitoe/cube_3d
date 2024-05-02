@@ -6,14 +6,14 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:49:51 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/23 15:38:45 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:15:08 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_DATA_WALL_H
 # define FT_DATA_WALL_H
 
-# define MAX_PRECISION 0.9999999f
+# define MAX_PRECISION 0.9999999999999999
 
 typedef struct s_data_wall
 {

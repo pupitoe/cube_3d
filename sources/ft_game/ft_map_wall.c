@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 18:27:55 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:13:23 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ static mlx_texture_t	*ft_get_texture_face(t_data *data, t_data_wall wall)
  * texture NORTH and EAST are reversed, so the pos_x is reverse
  * to get the right feel
 */
+// TODO fix cast in int
 static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 {
 	mlx_texture_t	*texture;
-	float			pos_x;
+	double			pos_x;
 
 	texture = ft_get_texture_face(data, wall);
 	pos_x = 0;
