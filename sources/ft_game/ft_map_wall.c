@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 16:41:48 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:24:08 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 {
 	mlx_texture_t	*texture;
 	double			pos_x;
+	//double			buffer;
 
 	texture = ft_get_texture_face(data, wall);
 	pos_x = 0;
@@ -49,11 +50,17 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 	else
 		pos_x = wall.collide.len.y;
 	pos_x = pos_x - (long long)pos_x;
+	//buffer = pos_x;
 	if (pos_x > MAX_PRECISION)
 		pos_x = MAX_PRECISION;
-	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_EAST)
+	if ((wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_EAST) && pos_x)
 		pos_x = MAX_PRECISION - pos_x;
-	
+	//if (pos_x > 0.9999 && wall.collide.wall_dir == W_NORTH)
+	//{
+	//	printf("lenx %.20f\nleny %.20f\n", wall.collide.len.x, wall.collide.len.y);
+	//	printf("posx 1 %.20f\n", buffer);
+	//	printf("posx 2 %.20f\n", pos_x);
+	//}
 	if (wall.collide.block_touch == DOOR_OP)
 		ft_print_line_animated(data, texture, wall, pos_x);
 	else
