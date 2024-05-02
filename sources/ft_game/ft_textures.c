@@ -6,11 +6,26 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:28:39 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 18:20:50 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:24:37 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_cub.h>
+
+static int	ft_check_texture(struct s_texture texture)
+{
+	int	status;
+
+	status = FAIL;
+	if (texture.hud->width == WIDTH_HUD
+		&& texture.hud->height == HEIGHT_HUD
+		&& texture.hud_konami->width == WIDTH_HUD
+		&& texture.hud_konami->height == HEIGHT_HUD
+		&& texture.door->width == WIDTH_DOOR 
+		&& texture.door->height == HEIGHT_DOOR)
+		status = SUCCESS;
+	return (status);
+}
 
 int	ft_set_textures(t_data *data)
 {
@@ -27,7 +42,8 @@ int	ft_set_textures(t_data *data)
 	if (data->texture.north && data->texture.south
 		&& data->texture.west && data->texture.east
 		&& data->texture.door && data->texture.hud
-		&& data->texture.hud_konami)
+		&& data->texture.hud_konami
+		&& ft_check_texture(data->texture) == SUCCESS)
 		status = SUCCESS;
 	else
 		ft_printf("Error\nFail to load textures\n");

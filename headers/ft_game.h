@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 18:21:05 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:24:23 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@
 # define DOOR_PATH "./asset/door.png"
 # define HUD_PATH "./asset/hud.png"
 # define HUDK_PATH "./asset/hud_konami.png"
+
+# define WIDTH_HUD 320
+# define HEIGHT_HUD 64
+# define WIDTH_DOOR 3840
+# define HEIGHT_DOOR 256 
 
 int		ft_game_start(t_data *data);
 void	ft_key_hook_other_key(mlx_key_data_t key, void *vdata);
