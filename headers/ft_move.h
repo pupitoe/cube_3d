@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 23:14:22 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 14:23:50 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:50:23 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ typedef struct s_hitbox_point
 {
 	t_vec	top_left;
 	t_vec	top_right;
-	t_vec	bottum_left;
-	t_vec	bottum_right;
+	t_vec	bottom_left;
+	t_vec	bottom_right;
 }	t_hitbox_point;
 
 void	ft_key_hook_y(void *vdata);
