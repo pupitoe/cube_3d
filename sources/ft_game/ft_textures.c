@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:28:39 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 19:19:51 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:09:13 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	ft_set_textures(t_data *data)
 		&& data->texture.door && data->texture.hud
 		&& data->texture.hud_konami)
 		status = SUCCESS;
+	else
+		ft_printf("Error\nFail to load textures\n");
 	return (status);
 }
 
