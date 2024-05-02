@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:02:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 13:24:23 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:32:36 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define PLAYER_SPEED 2
 # define ROT_SPEED 2.0f
 
-# define FOV 60.0f
+# define FOV 60.0
 # define COUNT_RAY 200.0f
 # define COUNT_RAY_MAP 30.0f
 

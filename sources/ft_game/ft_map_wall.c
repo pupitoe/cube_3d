@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 15:27:51 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:33:40 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 		pos_x = wall.collide.len.x;
 	else
 		pos_x = wall.collide.len.y;
-	pos_x = pos_x - (int)pos_x;
+	pos_x = pos_x - (long long)pos_x;
 	if (pos_x > MAX_PRECISION)
 		pos_x = MAX_PRECISION;
 	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_EAST)
@@ -60,15 +60,15 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 		ft_print_line_texture(data, texture, wall, pos_x);
 }
 
-static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
+static void	ft_use_dda(t_data *data, double rotat, int size, int ray_start)
 {
 	t_data_wall		wall;
 	int				height_dist;
 
-	wall.collide = ft_dda(data, (t_dvec){(float)(data->player.x
-				+ data->middle.player_size) / SCALE, (float)(data->player.y
+	wall.collide = ft_dda(data, (t_dvec){(double)(data->player.x
+				+ data->middle.player_size) / SCALE, (double)(data->player.y
 				+ data->middle.player_size) / SCALE},
-			data->player.rotat + rotat);
+			(double)data->player.rotat + rotat);
 	height_dist = 0;
 	if (wall.collide.checker)
 	{
@@ -84,7 +84,7 @@ static void	ft_use_dda(t_data *data, float rotat, int size, int ray_start)
 void	ft_print_wall(t_data *data)
 {
 	int		ray_number;
-	float	rad;
+	double	rad;
 	int		size_ray;
 	int		i;
 	float	fov_2;
@@ -97,7 +97,7 @@ void	ft_print_wall(t_data *data)
 	while (i < ray_number)
 	{
 		if (i != 0)
-			ft_use_dda(data, (float)(i) *rad - fov_2, size_ray,
+			ft_use_dda(data, (double)(i) *rad - fov_2, size_ray,
 				(ray_number - i) * size_ray);
 		else
 			ft_use_dda(data, fov_2, size_ray, 0);
