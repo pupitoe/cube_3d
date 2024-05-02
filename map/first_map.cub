@@ -3,7 +3,7 @@ SO ./asset/stone.png
 WE ./asset/debug.png
 EA ./asset/brick.png
 
-F 0, 255, 0 
+F 0, 255, 0
 C 255, 255, 0
 
 
