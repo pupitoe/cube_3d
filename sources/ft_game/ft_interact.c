@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:25:46 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 14:25:14 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:27:51 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	ft_key_hook_interact(t_data *data)
 	t_collide_data	collide_right;
 	t_collide_data	collide_center;
 	t_collide_data	collide_left;
-	t_fvec			player_pos;
+	t_dvec			player_pos;
 
-	player_pos = (t_fvec){(float)(data->player.x
+	player_pos = (t_dvec){(float)(data->player.x
 			+ data->middle.player_size) / SCALE,
 		(float)(data->player.y) / SCALE};
 	collide_center = ft_dda_interact(data, player_pos, data->player.rotat);

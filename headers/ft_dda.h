@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:23:52 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/25 14:15:10 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:27:51 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@
 
 typedef struct s_ray_data
 {
-	t_fvec	start;
-	t_fvec	end;
-	t_fvec	norm;
-	t_fvec	step_size;
+	t_dvec	start;
+	t_dvec	end;
+	t_dvec	norm;
+	t_dvec	step_size;
 	t_ivec	step_unit;
-	t_fvec	length;
+	t_dvec	length;
 	t_ivec	map_checker;
 }	t_ray_data;
 
 typedef struct s_collide_data
 {
-	t_fvec	len;
+	t_dvec	len;
 	float	dist;
 	int		checker;
 	int		wall_dir;
@@ -38,9 +38,9 @@ typedef struct s_collide_data
 	t_ivec	block_cheked;
 }	t_collide_data;
 
-t_collide_data	ft_dda_call(t_data *data, t_fvec ray_start, float rotat,
+t_collide_data	ft_dda_call(t_data *data, t_dvec ray_start, float rotat,
 					int (*check_block)(int));
-t_collide_data	ft_dda(t_data *data, t_fvec ray_start, float rotat);
-t_collide_data	ft_dda_interact(t_data *data, t_fvec ray_start, float rotat);
+t_collide_data	ft_dda(t_data *data, t_dvec ray_start, float rotat);
+t_collide_data	ft_dda_interact(t_data *data, t_dvec ray_start, float rotat);
 
 #endif

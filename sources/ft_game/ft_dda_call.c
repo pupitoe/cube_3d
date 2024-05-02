@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:22:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/25 14:48:54 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:27:51 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static t_collide_data	ft_collide(t_ray_data ray, t_data *data,
 	return (ray_content);
 }
 
-t_collide_data	ft_dda_call(t_data *data, t_fvec ray_start,
+t_collide_data	ft_dda_call(t_data *data, t_dvec ray_start,
 	float rotat, int (*check_block)(int))
 {
 	double			rotat_op;
