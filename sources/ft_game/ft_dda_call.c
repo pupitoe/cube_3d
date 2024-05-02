@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:22:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 15:34:39 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:17:48 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,32 @@ static void	ft_set_step(t_ray_data *ray)
 	if (ray->norm.x < 0)
 	{
 		ray->step_unit.x = -1;
-		ray->length.x = (ray->start.x - (float)ray->map_checker.x)
+		ray->length.x = (ray->start.x - (double)ray->map_checker.x)
 			* ray->step_size.x;
 	}
 	else
 	{
 		ray->step_unit.x = 1;
-		ray->length.x = (((float)ray->map_checker.x + 1) - ray->start.x)
+		ray->length.x = (((double)ray->map_checker.x + 1) - ray->start.x)
 			* ray->step_size.x;
 	}
 	if (ray->norm.y < 0)
 	{
 		ray->step_unit.y = -1;
-		ray->length.y = (ray->start.y - (float)ray->map_checker.y)
+		ray->length.y = (ray->start.y - (double)ray->map_checker.y)
 			* ray->step_size.y;
 	}
 	else
 	{
 		ray->step_unit.y = 1;
-		ray->length.y = (((float)ray->map_checker.y + 1) - ray->start.y)
+		ray->length.y = (((double)ray->map_checker.y + 1) - ray->start.y)
 			* ray->step_size.y;
 	}
 }
 
-static float	ft_collide_while(t_ray_data *ray, int *buffer_dir)
+static double	ft_collide_while(t_ray_data *ray, int *buffer_dir)
 {
-	float	ray_dist;
+	double	ray_dist;
 
 	ray_dist = 0;
 	if (ray->length.x < ray->length.y)

@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 15:33:40 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:13:56 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	ft_use_dda(t_data *data, double rotat, int size, int ray_start)
 	height_dist = 0;
 	if (wall.collide.checker)
 	{
-		height_dist = (float)(data->height)
+		height_dist = (double)(data->height)
 			/ ((wall.collide.dist) * cos((rotat) * PI180));
 		wall.height = height_dist;
 		wall.start = ray_start;
