@@ -6,14 +6,14 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:09:41 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 16:30:38 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:12:45 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINT_H
 # define FT_PRINT_H
 
-# define FRAME_ANIMATION 5
+# define FRAME_ANIMATION_HUD 5
 # define SIZE_FRAME_HUD 64
 # define SIZE_FRAME_MID_HUD 32
 # define CENTER_HUD 75

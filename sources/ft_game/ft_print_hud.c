@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:06:56 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 17:36:42 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:12:41 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	ft_print_hud(t_data *data)
 {
 	if (!data->konami_toggle)
 		ft_print_texture(data->img.game, data->texture.hud,
-			(size_t)data->time.all_time % FRAME_ANIMATION, data);
+			(size_t)data->time.all_time % FRAME_ANIMATION_HUD, data);
 	else
 		ft_print_texture(data->img.game, data->texture.hud_konami,
-			(size_t)data->time.all_time % FRAME_ANIMATION, data);
+			(size_t)data->time.all_time % FRAME_ANIMATION_HUD, data);
 }
