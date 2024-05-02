@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:28:39 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 13:24:37 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:31:21 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_check_texture(struct s_texture texture)
 		&& texture.hud->height == HEIGHT_HUD
 		&& texture.hud_konami->width == WIDTH_HUD
 		&& texture.hud_konami->height == HEIGHT_HUD
-		&& texture.door->width == WIDTH_DOOR 
+		&& texture.door->width == WIDTH_DOOR
 		&& texture.door->height == HEIGHT_DOOR)
 		status = SUCCESS;
 	return (status);
