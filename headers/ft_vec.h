@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 19:12:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 19:13:35 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:27:51 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ typedef struct s_ivec
 	int	y;
 }	t_ivec;
 
-typedef struct s_fvec
+typedef struct s_dvec
 {
-	float	x;
-	float	y;
-}	t_fvec;
+	double	x;
+	double	y;
+}	t_dvec;
 
 #endif

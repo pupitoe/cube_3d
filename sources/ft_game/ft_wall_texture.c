@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:13 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 17:24:59 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 17:03:07 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ size_t	ft_get_y_pos(long double ratio, long double pos_y,
  * @param pos_x value 0 >= && .9999... <= value; to get X of image
  * @return ptr of pixel in X
 */
-static uint8_t	*ft_get_x_pos(mlx_texture_t *texture, float pos_x)
+static uint8_t	*ft_get_x_pos(mlx_texture_t *texture, double pos_x)
 {
 	return (texture->pixels + (size_t)(texture->width * pos_x)
 		* sizeof(int));
@@ -57,15 +57,15 @@ void	ft_init_texture(t_texture_pos *texture_pos,
 }
 
 void	ft_print_line_texture(t_data *data, mlx_texture_t *texture,
-	t_data_wall wall, float pos_x)
+	t_data_wall wall, double pos_x)
 {
 	t_texture_pos	texture_pos;
 	size_t			texture_width;
 	int				step;
 
 	step = 0;
-	if (texture && wall.height >= 0
-		&& (unsigned int)wall.start < data->img.game->width && pos_x < 1)
+	if (texture && wall.height >= 0 && pos_x >= 0 && pos_x < 1
+		&& (unsigned int)wall.start < data->img.game->width)
 	{
 		ft_init_texture(&texture_pos, texture, wall, data->height);
 		texture_pos.ptr_texutre_x = ft_get_x_pos(texture, pos_x);
