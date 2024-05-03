@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 20:11:37 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 19:30:39 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:53:59 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	copy_line(t_data *data, int **map, size_t line)
 		if (src[cursor] == ' ')
 			map[line][cursor] = FLOOR;
 		else if (src[cursor] == 'D')
-			map[line][cursor] = DOOR_OP;
+			map[line][cursor] = DOOR_CL;
 		else
 			map[line][cursor] = (int) src[cursor] - '0';
 		cursor++;
