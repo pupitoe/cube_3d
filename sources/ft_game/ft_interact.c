@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:25:46 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 15:27:51 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:18:20 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ static void	ft_interact(t_collide_data collide, t_data *data)
 
 	if (collide.checker)
 	{
-		buffer_touched = data->map[collide.block_cheked.y]
-		[collide.block_cheked.x];
+		buffer_touched = data->map[collide.block_checked.y]
+		[collide.block_checked.x];
 		if (collide.block_touch == DOOR_OP
 			&& buffer_touched == DOOR_OP && collide.dist < DIST_INTERACT)
-			data->map[collide.block_cheked.y][collide.block_cheked.x] = DOOR_CL;
+			data->map[collide.block_checked.y][collide.block_checked.x] = DOOR_CL;
 		else if (collide.block_touch == DOOR_CL
 			&& buffer_touched == DOOR_CL && collide.dist < DIST_INTERACT)
 		{
-			data->map[collide.block_cheked.y][collide.block_cheked.x] = DOOR_OP;
+			data->map[collide.block_checked.y][collide.block_checked.x] = DOOR_OP;
 			if (ft_is_hitbox(data->map, data->map_size, data->player))
-				data->map[collide.block_cheked.y]
-				[collide.block_cheked.x] = DOOR_CL;
+				data->map[collide.block_checked.y]
+				[collide.block_checked.x] = DOOR_CL;
 		}
 	}
 	return ;

@@ -1,7 +1,7 @@
-NO ./asset/debug_color.png
+EA ./asset/debug_color.png
+NO ./asset/stone.png
 SO ./asset/stone.png
-WE ./asset/debug.png
-EA ./asset/brick.png
+WE ./asset/stone.png
 
 F 0, 255, 0
 C 255, 255, 0

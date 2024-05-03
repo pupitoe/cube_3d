@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:22:20 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 16:17:48 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:18:20 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static t_collide_data	ft_collide(t_ray_data ray, t_data *data,
 	ray_content.len.x = ray_content.dist * ray.norm.x;
 	ray_content.len.y = ray_content.dist * ray.norm.y;
 	ray_content.checker = checker;
-	ray_content.block_cheked = ray.map_checker;
+	ray_content.block_checked = ray.map_checker;
 	return (ray_content);
 }
 
