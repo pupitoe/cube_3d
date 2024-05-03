@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/03 12:33:43 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:53:59 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static mlx_texture_t	*ft_get_texture_face(t_data *data, t_data_wall wall)
 	mlx_texture_t	*texture;
 
 	texture = NULL;
-	if (wall.collide.block_touch == DOOR_OP)
+	if (wall.collide.block_touch == DOOR_CL)
 		texture = data->texture.door;
 	else if (wall.collide.wall_dir == W_NORTH)
 		texture = data->texture.north;
@@ -41,7 +41,7 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 		wall.height = data->height;
 	pos_x = ft_get_pos_x_wall(wall.collide.wall_dir, wall.collide.len,
 			wall.collide.block_checked);
-	if (wall.collide.block_touch == DOOR_OP)
+	if (wall.collide.block_touch == DOOR_CL)
 		ft_print_line_animated(data, texture, wall, pos_x);
 	else
 		ft_print_line_texture(data, texture, wall, pos_x);

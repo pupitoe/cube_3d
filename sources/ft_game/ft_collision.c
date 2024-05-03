@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 17:31:21 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 20:07:51 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:53:59 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_is_collide(int block)
 {
-	return (block == WALL || block == DOOR_OP);
+	return (block == WALL || block == DOOR_CL);
 }
 
 static int	ft_check_dist(t_vec map_size, t_vec player)
