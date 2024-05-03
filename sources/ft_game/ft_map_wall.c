@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/02 17:24:08 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/03 10:13:55 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,38 @@ static mlx_texture_t	*ft_get_texture_face(t_data *data, t_data_wall wall)
 	return (texture);
 }
 
+static double	ft_get_pos_x(int wall_dir, t_dvec len)
+{
+	double	pos_x;
+	t_dvec	pos_test;
+	//double buffer;
+	//static unsigned t;
+
+	pos_test.x = len.x - (long long)len.x;
+	pos_test.y = len.y - (long long)len.y;
+	if (pos_test.x > MAX_PRECISION)
+		pos_test.x = MAX_PRECISION;
+	if (pos_test.y > MAX_PRECISION)
+		pos_test.y = MAX_PRECISION;
+	if (wall_dir == W_NORTH || wall_dir == W_SOUTH)
+		pos_x = pos_test.x;
+	else
+		pos_x = pos_test.y;
+	//buffer = pos_x;
+	if ((wall_dir == W_NORTH || wall_dir == W_EAST) && (pos_x && (len.x == 0 || len.x == MAX_PRECISION)))
+		pos_x = MAX_PRECISION - pos_x;
+	//if (pos_x >= 0 && pos_x < 0.0000009 && wall_dir == W_NORTH)
+	//{
+	//	printf("lenx %.32f\nleny %.20f\n", len.x, len.y);
+	//	printf("buffer %.20f\n", buffer);
+	//	printf("posx 1 %.20f\n", buffer);
+	//	printf("posx 2 %.20f\n", pos_x);
+	//	printf("%u\n", t);
+	//	t++;
+	//}
+	return (pos_x);
+}
+
 /**
  * MAX_PRECISION is a limit for X position.
  * texture NORTH and EAST are reversed, so the pos_x is reverse
@@ -45,22 +77,7 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 	pos_x = 0;
 	if (wall.height < 0)
 		wall.height = data->height;
-	if (wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_SOUTH)
-		pos_x = wall.collide.len.x;
-	else
-		pos_x = wall.collide.len.y;
-	pos_x = pos_x - (long long)pos_x;
-	//buffer = pos_x;
-	if (pos_x > MAX_PRECISION)
-		pos_x = MAX_PRECISION;
-	if ((wall.collide.wall_dir == W_NORTH || wall.collide.wall_dir == W_EAST) && pos_x)
-		pos_x = MAX_PRECISION - pos_x;
-	//if (pos_x > 0.9999 && wall.collide.wall_dir == W_NORTH)
-	//{
-	//	printf("lenx %.20f\nleny %.20f\n", wall.collide.len.x, wall.collide.len.y);
-	//	printf("posx 1 %.20f\n", buffer);
-	//	printf("posx 2 %.20f\n", pos_x);
-	//}
+	pos_x = ft_get_pos_x(wall.collide.wall_dir, wall.collide.len);
 	if (wall.collide.block_touch == DOOR_OP)
 		ft_print_line_animated(data, texture, wall, pos_x);
 	else
