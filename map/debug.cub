@@ -1,0 +1,18 @@
+NO ./asset/brick.png
+SO ./asset/stone.png
+WE ./asset/wood.png
+EA ./asset/debug.png
+
+F 0, 0, 0
+C 0, 0, 200
+
+
+
+
+
+   11111111111
+111111 111 111111111
+  111100000100010001
+110 00011111111111111
+110N111
+1 1111 

@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cub.h                                           :+:      :+:    :+:   */
+/*   ft_color.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 22:10:03 by tlassere          #+#    #+#             */
-/*   Updated: 2024/04/29 19:13:54 by tlassere         ###   ########.fr       */
+/*   Created: 2024/03/31 19:34:30 by tlassere          #+#    #+#             */
+/*   Updated: 2024/04/29 17:31:12 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CUB_H
-# define FT_CUB_H
+#ifndef FT_COLOR_H
+# define FT_COLOR_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <stddef.h>
-# include <math.h>
+# define BLACK 0x00000000
+# define WHITE 0xFFFFFF00
+# define RED 0xFF000000
+# define PINK 0x0000FF00
+# define GREEN 0x00800000
+# define BLUE 0x0000FF00
 
-# include "libft.h"
-# include "MLX42/MLX42.h"
-# include "ft_vec.h"
-# include "ft_data.h"
-# include "ft_parser.h"
-# include "ft_dda.h"
-# include "ft_data_wall.h"
-# include "ft_game.h"
-# include "ft_math.h"
-# include "ft_move.h"
-# include "ft_color.h"
-# include "ft_print.h"
+# define ALPHA_255 0x000000FF
+# define ALPHA_192 0x000000C0
+# define ALPHA_128 0x00000080
+# define ALPHA_64 0x00000040
 
 #endif

@@ -1,0 +1,14 @@
+EA ./asset/debug_color.png
+NO ./asset/stone.png
+SO ./asset/stone.png
+WE ./asset/stone.png
+
+F 0, 255, 0
+C 255, 255, 0
+
+
+111111111111111111
+100000000000000001
+100000001000D00001
+10000000S000000001
+111111111111111111
