@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:59:49 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/01 18:16:42 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/02 20:04:05 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ int	ft_load_image(t_data *data)
 	int	status;
 
 	status = FAIL;
-	data->img.map = mlx_new_image(data->mlx, WINDOW_HEIGHT * 4,
-			WINDOW_WIDTH * 4);
-	data->img.player = mlx_new_image(data->mlx, PLAYER_SIZE
-			* MAP_SIZE_OBJECT / SCALE,
-			PLAYER_SIZE * MAP_SIZE_OBJECT / SCALE);
+	data->img.map = mlx_new_image(data->mlx, WINDOW_WIDTH_MAX,
+			WINDOW_HEIGHT_MAX);
+	data->img.player = mlx_new_image(data->mlx, WINDOW_WIDTH_MAX,
+			WINDOW_HEIGHT_MAX);
 	data->img.game = mlx_new_image(data->mlx, WINDOW_WIDTH_MAX,
 			WINDOW_HEIGHT_MAX);
 	if (data->img.player)
@@ -55,8 +54,7 @@ int	ft_put_img(t_data *data)
 		status = FAIL;
 	if (mlx_image_to_window(data->mlx, data->img.map, 0, 0) == -1)
 		status = FAIL;
-	if (mlx_image_to_window(data->mlx, data->img.player, data->player.x
-			* MAP_SIZE_OBJECT, data->player.y * MAP_SIZE_OBJECT) == -1)
+	if (mlx_image_to_window(data->mlx, data->img.player, 0, 0) == -1)
 		status = FAIL;
 	return (status);
 }
