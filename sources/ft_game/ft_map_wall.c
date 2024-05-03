@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/03 11:29:41 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:18:52 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,25 @@ static mlx_texture_t	*ft_get_texture_face(t_data *data, t_data_wall wall)
 	return (texture);
 }
 
-static double	ft_get_pos_x(int wall_dir, t_dvec len, int b, t_data_wall wall)
+static double	ft_get_pos_x(int wall_dir, t_dvec len, t_ivec block_checked)
 {
 	double	pos_x;
 	t_dvec	pos_test;
 	double buffer;
-	static unsigned t;
 
 	pos_test.x = len.x - (long long)len.x;
 	pos_test.y = len.y - (long long)len.y;
+	if (wall_dir != W_NORTH)
+	{
+		if ((int)(len.x) - 1 == block_checked.x)
+			pos_test.x = MAX_PRECISION;
+		else if ((int)(len.y) + 1 == block_checked.y)
+			pos_test.x = 0;
+		if ((int)(len.y) - 1 == block_checked.y)
+			pos_test.y = MAX_PRECISION;
+		else if ((int)(len.y) + 1 == block_checked.y)
+			pos_test.y = 0;
+	}
 	if (pos_test.x > MAX_PRECISION)
 		pos_test.x = MAX_PRECISION;
 	if (pos_test.y > MAX_PRECISION)
@@ -50,19 +60,11 @@ static double	ft_get_pos_x(int wall_dir, t_dvec len, int b, t_data_wall wall)
 	buffer = pos_x;
 	if (wall_dir == W_NORTH || wall_dir == W_EAST)
 		pos_x = MAX_PRECISION - pos_x;
-	if (wall_dir == W_NORTH && ((int)len.x) != wall.collide.block_cheked.x && pos_test.x != MAX_PRECISION)
-		pos_x = 0;
-	else if (wall_dir == W_NORTH && ((int)len.x) != wall.collide.block_cheked.x)
-		pos_x = MAX_PRECISION;
-	if (b && wall_dir == W_NORTH)
+	if (wall_dir == W_NORTH && ((int)len.x) != block_checked.x)
 	{
-		printf("\n");
-		printf("lenx %.32f\nleny %.20f\n", len.x, len.y);
-		printf("wlenx %d\nwleny %d\n", wall.collide.block_cheked.x, wall.collide.block_cheked.y);
-		printf("posx 1 %.20f\n", buffer);
-		printf("posx 2 %.20f\n", pos_x);
-		printf("%u\n", t);
-		t++;
+		pos_x = MAX_PRECISION;
+		if (pos_test.x != MAX_PRECISION)
+			pos_x = 0;
 	}
 	return (pos_x);
 }
@@ -81,7 +83,7 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 	pos_x = 0;
 	if (wall.height < 0)
 		wall.height = data->height;
-	pos_x = ft_get_pos_x(wall.collide.wall_dir, wall.collide.len, data->t, wall);
+	pos_x = ft_get_pos_x(wall.collide.wall_dir, wall.collide.len, wall.collide.block_checked);
 	if (wall.collide.block_touch == DOOR_OP)
 		ft_print_line_animated(data, texture, wall, pos_x);
 	else
