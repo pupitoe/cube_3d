@@ -6,7 +6,7 @@
 /*   By: tlassere <tlassere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:36:35 by tlassere          #+#    #+#             */
-/*   Updated: 2024/05/03 12:18:52 by tlassere         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:33:43 by tlassere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,50 +30,6 @@ static mlx_texture_t	*ft_get_texture_face(t_data *data, t_data_wall wall)
 	return (texture);
 }
 
-static double	ft_get_pos_x(int wall_dir, t_dvec len, t_ivec block_checked)
-{
-	double	pos_x;
-	t_dvec	pos_test;
-	double buffer;
-
-	pos_test.x = len.x - (long long)len.x;
-	pos_test.y = len.y - (long long)len.y;
-	if (wall_dir != W_NORTH)
-	{
-		if ((int)(len.x) - 1 == block_checked.x)
-			pos_test.x = MAX_PRECISION;
-		else if ((int)(len.y) + 1 == block_checked.y)
-			pos_test.x = 0;
-		if ((int)(len.y) - 1 == block_checked.y)
-			pos_test.y = MAX_PRECISION;
-		else if ((int)(len.y) + 1 == block_checked.y)
-			pos_test.y = 0;
-	}
-	if (pos_test.x > MAX_PRECISION)
-		pos_test.x = MAX_PRECISION;
-	if (pos_test.y > MAX_PRECISION)
-		pos_test.y = MAX_PRECISION;
-	if (wall_dir == W_NORTH || wall_dir == W_SOUTH)
-		pos_x = pos_test.x;
-	else
-		pos_x = pos_test.y;
-	buffer = pos_x;
-	if (wall_dir == W_NORTH || wall_dir == W_EAST)
-		pos_x = MAX_PRECISION - pos_x;
-	if (wall_dir == W_NORTH && ((int)len.x) != block_checked.x)
-	{
-		pos_x = MAX_PRECISION;
-		if (pos_test.x != MAX_PRECISION)
-			pos_x = 0;
-	}
-	return (pos_x);
-}
-
-/**
- * MAX_PRECISION is a limit for X position.
- * texture NORTH and EAST are reversed, so the pos_x is reverse
- * to get the right feel
-*/
 static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 {
 	mlx_texture_t	*texture;
@@ -83,7 +39,8 @@ static void	ft_print_line_screen(t_data *data, t_data_wall wall)
 	pos_x = 0;
 	if (wall.height < 0)
 		wall.height = data->height;
-	pos_x = ft_get_pos_x(wall.collide.wall_dir, wall.collide.len, wall.collide.block_checked);
+	pos_x = ft_get_pos_x_wall(wall.collide.wall_dir, wall.collide.len,
+			wall.collide.block_checked);
 	if (wall.collide.block_touch == DOOR_OP)
 		ft_print_line_animated(data, texture, wall, pos_x);
 	else
