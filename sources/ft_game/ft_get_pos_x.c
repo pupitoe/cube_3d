@@ -40,7 +40,6 @@ static t_dvec	ft_get_pos_ratio(int wall_dir, t_dvec len, t_ivec block_checked)
 double	ft_get_pos_x_wall(int wall_dir, t_dvec len, t_ivec block_checked)
 {
 	double	pos_x;
-	double	buffer;
 	t_dvec	posx_ratio;
 
 	posx_ratio = ft_get_pos_ratio(wall_dir, len, block_checked);
@@ -52,7 +51,6 @@ double	ft_get_pos_x_wall(int wall_dir, t_dvec len, t_ivec block_checked)
 		pos_x = posx_ratio.x;
 	else
 		pos_x = posx_ratio.y;
-	buffer = pos_x;
 	if (wall_dir == W_NORTH || wall_dir == W_EAST)
 		pos_x = MAX_PRECISION - pos_x;
 	if (wall_dir == W_NORTH && ((int)len.x) != block_checked.x)
